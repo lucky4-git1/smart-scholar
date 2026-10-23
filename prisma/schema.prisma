@@ -1,0 +1,483 @@
+// Smart Scholars - Prisma Schema
+// Supports SQLite (default) and PostgreSQL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String                   @id @default(uuid())
+  email            String                   @unique
+  passwordHash     String
+  fullName         String
+  role             String                   @default("RESEARCHER") // RESEARCHER, EDITOR, INSTITUTION_ADMIN, PORTFOLIO_MGR, ADMIN
+  avatarUrl        String?
+  institution      String?
+  orcid            String?
+  isVerified       Boolean                  @default(false)
+  verificationToken String?
+  resetToken       String?
+  resetTokenExpires DateTime?
+  createdAt        DateTime                 @default(now())
+  updatedAt        DateTime                 @updatedAt
+
+  memberships      OrganizationMembership[]
+  assessments      JournalAssessment[]
+  auditJobs        AuditJob[]
+  notifications    Notification[]
+  supportRequests  SupportRequest[]
+  adminLogs        AdminAuditLog[]
+  indexingApps     IndexingApplication[]
+  watchlistEntries WatchlistEntry[]
+
+  @@index([email])
+  @@index([role])
+}
+
+model Organization {
+  id          String                   @id @default(uuid())
+  name        String
+  slug        String                   @unique
+  type        String                   @default("UNIVERSITY") // UNIVERSITY, PUBLISHER, SOCIETY, RESEARCH_INSTITUTE
+  country     String?
+  rorId       String?
+  website     String?
+  createdAt   DateTime                 @default(now())
+  updatedAt   DateTime                 @updatedAt
+
+  members     OrganizationMembership[]
+  portfolios  Portfolio[]
+  watchlists  WatchlistEntry[]
+  auditJobs   AuditJob[]
+
+  @@index([slug])
+  @@index([type])
+}
+
+model OrganizationMembership {
+  id             String       @id @default(uuid())
+  organizationId String
+  userId         String
+  role           String       @default("MEMBER") // OWNER, ADMIN, AUDITOR, MEMBER
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, userId])
+}
+
+model Journal {
+  id                   String              @id @default(uuid())
+  title                String
+  publisher            String?
+  country              String?
+  websiteUrl           String?
+  subjects             String?             // JSON string array of disciplines
+  languages            String?             // JSON string array
+  oaType               String?             // Diamond, Gold, Hybrid, Closed
+  apcAmount            Float?
+  apcCurrency          String?
+  crossrefMemberId     String?
+  doajIndexed          Boolean             @default(false)
+  crossrefActive       Boolean             @default(false)
+  currentScore         Float?
+  currentGrade         String?             // A+, A, B, C, D, RED_FLAG, UNVERIFIED
+  lastAssessedAt       DateTime?
+  createdAt            DateTime            @default(now())
+  updatedAt            DateTime            @updatedAt
+
+  identifiers          JournalIdentifier[]
+  assessments          JournalAssessment[]
+  auditJobs            AuditJob[]
+  doiRecords           DOIRecord[]
+  indexingApplications IndexingApplication[]
+  watchlistEntries     WatchlistEntry[]
+
+  @@index([title])
+  @@index([publisher])
+}
+
+model JournalIdentifier {
+  id         String   @id @default(uuid())
+  journalId  String
+  type       String   // ISSN_PRINT, ISSN_ONLINE, DOI_PREFIX, ROR, WIKIDATA
+  value      String
+  isPrimary  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  journal    Journal  @relation(fields: [journalId], references: [id], onDelete: Cascade)
+
+  @@unique([type, value])
+  @@index([value])
+  @@index([journalId])
+}
+
+model AssessmentMethodologyVersion {
+  id          String              @id @default(uuid())
+  version     String              @unique // e.g. "v1.2.0-2026"
+  description String
+  rulesJson   String              // Codified criteria and weights
+  isActive    Boolean             @default(true)
+  createdAt   DateTime            @default(now())
+
+  assessments JournalAssessment[]
+}
+
+model JournalAssessment {
+  id                    String                       @id @default(uuid())
+  journalId             String
+  userId                String?
+  methodologyVersionId  String
+  totalScore            Float                        // 0 - 100
+  letterGrade           String                       // A+, A, B, C, D, RED_FLAG, UNVERIFIED
+  identityGovernanceScore Float                      // max 25
+  editorialIntegrityScore Float                      // max 25
+  technicalStandingScore  Float                      // max 20
+  preservationAccessScore Float                      // max 15
+  reachCitationScore      Float                      // max 15
+  redFlagCount          Int                          @default(0)
+  summaryText           String?
+  isPublished           Boolean                      @default(true)
+  evidenceSummaryJson   String?
+  createdAt             DateTime                     @default(now())
+
+  journal               Journal                      @relation(fields: [journalId], references: [id], onDelete: Cascade)
+  user                  User?                        @relation(fields: [userId], references: [id], onDelete: SetNull)
+  methodology           AssessmentMethodologyVersion @relation(fields: [methodologyVersionId], references: [id])
+  criteriaResults       AssessmentCriterionResult[]
+  evidenceRecords       EvidenceRecord[]
+
+  @@index([journalId])
+  @@index([letterGrade])
+}
+
+model AssessmentCriterionResult {
+  id           String            @id @default(uuid())
+  assessmentId String
+  pillar       String            // IDENTITY, EDITORIAL, TECHNICAL, PRESERVATION, REACH
+  criterionKey String            // e.g. "ISSN_REGISTERED", "DOAJ_MEMBER", "PRESERVATION_ARCHIVED"
+  name         String
+  description  String?
+  maxPoints    Float
+  awardedPoints Float
+  status       String            // VERIFIED, FAILED, UNAVAILABLE, NOT_APPLICABLE
+  explanation  String
+  sourceName   String            // Crossref, OpenAlex, DOAJ, ISSN Portal, Direct Crawl
+  sourceUrl    String?
+  createdAt    DateTime          @default(now())
+
+  assessment   JournalAssessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+
+  @@index([assessmentId])
+  @@index([criterionKey])
+}
+
+model EvidenceRecord {
+  id             String            @id @default(uuid())
+  assessmentId   String
+  sourceName     String            // Crossref, OpenAlex, DOAJ, Wayback, DNS
+  endpointUrl    String
+  httpStatus     Int?
+  rawPayloadJson String?
+  extractedSummary String?
+  verifiedAt     DateTime          @default(now())
+
+  assessment     JournalAssessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+
+  @@index([assessmentId])
+  @@index([sourceName])
+}
+
+model AuditJob {
+  id              String         @id @default(uuid())
+  journalId       String?
+  organizationId  String?
+  userId          String?
+  targetUrl       String
+  status          String         @default("QUEUED") // QUEUED, CRAWLING, ANALYZING, COMPLETED, FAILED
+  progressPercent Int            @default(0)
+  totalPagesParsed Int           @default(0)
+  totalFindings   Int            @default(0)
+  criticalCount   Int            @default(0)
+  warningCount    Int            @default(0)
+  infoCount       Int            @default(0)
+  score           Float?
+  errorMessage    String?
+  startedAt       DateTime?
+  completedAt     DateTime?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  journal         Journal?       @relation(fields: [journalId], references: [id], onDelete: SetNull)
+  organization    Organization?  @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+  user            User?          @relation(fields: [userId], references: [id], onDelete: SetNull)
+  findings        AuditFinding[]
+  repairPlans     RepairRecommendation[]
+
+  @@index([status])
+  @@index([targetUrl])
+}
+
+model AuditFinding {
+  id             String       @id @default(uuid())
+  auditJobId     String
+  category       String       // POLICIES, EDITORIAL_BOARD, APC, PEER_REVIEW, PLAGIARISM, PRESERVATION, DOI_IMPLEMENTATION
+  severity       String       // CRITICAL, WARNING, INFO
+  title          String
+  description    String
+  affectedUrl    String?
+  evidenceSnippet String?
+  ruleKey        String
+  isResolved     Boolean      @default(false)
+  createdAt      DateTime     @default(now())
+
+  auditJob       AuditJob     @relation(fields: [auditJobId], references: [id], onDelete: Cascade)
+
+  @@index([auditJobId])
+  @@index([severity])
+}
+
+model RepairRecommendation {
+  id             String   @id @default(uuid())
+  auditJobId     String
+  priority       Int      @default(1) // 1 = High, 2 = Medium, 3 = Low
+  title          String
+  actionPlan     String
+  codeTemplate   String?
+  status         String   @default("OPEN") // OPEN, IN_PROGRESS, RESOLVED, DISMISSED
+  createdAt      DateTime @default(now())
+
+  auditJob       AuditJob @relation(fields: [auditJobId], references: [id], onDelete: Cascade)
+
+  @@index([auditJobId])
+}
+
+model DOIRecord {
+  id              String             @id @default(uuid())
+  doi             String             @unique
+  journalId       String?
+  title           String?
+  registeredUrl   String?
+  resolvedUrl     String?
+  httpStatus      Int?
+  isResolving     Boolean            @default(false)
+  citationCount   Int?               @default(0)
+  depositedDate   DateTime?
+  metadataCompleteness Float?        // 0 - 100%
+  hasAbstract     Boolean            @default(false)
+  hasReferences   Boolean            @default(false)
+  hasLicense      Boolean            @default(false)
+  hasFunding      Boolean            @default(false)
+  hasArchive      Boolean            @default(false)
+  lastCheckedAt   DateTime           @default(now())
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+
+  journal         Journal?           @relation(fields: [journalId], references: [id], onDelete: SetNull)
+  snapshots       MetadataSnapshot[]
+  proposals       MetadataCorrectionProposal[]
+  monitoringChecks MonitoringCheck[]
+
+  @@index([doi])
+  @@index([isResolving])
+}
+
+model MetadataSnapshot {
+  id             String    @id @default(uuid())
+  doiRecordId    String
+  source         String    // Crossref, DataCite, Medra
+  rawJson        String
+  schemaVersion  String?
+  snapshotDate   DateTime  @default(now())
+
+  doiRecord      DOIRecord @relation(fields: [doiRecordId], references: [id], onDelete: Cascade)
+
+  @@index([doiRecordId])
+}
+
+model MetadataCorrectionProposal {
+  id             String    @id @default(uuid())
+  doiRecordId    String
+  fieldKey       String    // e.g. "license_url", "abstract", "author_orcid"
+  currentValue   String?
+  proposedValue  String
+  provenanceNote String
+  status         String    @default("PROPOSED") // PROPOSED, APPROVED, REJECTED, SUBMITTED
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  doiRecord      DOIRecord @relation(fields: [doiRecordId], references: [id], onDelete: Cascade)
+
+  @@index([doiRecordId])
+}
+
+model DepositJob {
+  id             String    @id @default(uuid())
+  registry       String    @default("CROSSREF") // CROSSREF, DATACITE
+  status         String    @default("DRAFT")    // DRAFT, VALIDATED, SUBMITTED, FAILED, COMPLETED
+  submissionXml  String
+  validationErrors String?
+  responseLog    String?
+  retryCount     Int       @default(0)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([status])
+}
+
+model IndexingService {
+  id                  String                @id @default(uuid())
+  name                String                @unique // Scopus, Web of Science, DOAJ, PubMed Central, Embase, etc.
+  slug                String                @unique
+  category            String                // GLOBAL_INDEX, OPEN_ACCESS, BIOMEDICAL, REGIONAL
+  websiteUrl          String
+  applicationUrl      String
+  acceptanceRateEst   String?
+  reviewPeriodMonths  String?
+  scopeDescription    String
+  requirementsSummary String
+  evaluationCriteria  String                // JSON array of strings
+  feeDescription      String?
+  isActive            Boolean               @default(true)
+  createdAt           DateTime              @default(now())
+
+  applications        IndexingApplication[]
+
+  @@index([slug])
+}
+
+model IndexingApplication {
+  id                String          @id @default(uuid())
+  journalId         String
+  indexingServiceId String
+  userId            String
+  status            String          @default("PREPARING") // PREPARING, SUBMITTED, UNDER_REVIEW, ACCEPTED, REJECTED
+  dossierNotes      String?
+  submissionDate    DateTime?
+  targetSubmitDate  DateTime?
+  decisionDate      DateTime?
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+
+  journal           Journal         @relation(fields: [journalId], references: [id], onDelete: Cascade)
+  indexingService   IndexingService @relation(fields: [indexingServiceId], references: [id], onDelete: Cascade)
+  user              User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([journalId])
+  @@index([indexingServiceId])
+}
+
+model Portfolio {
+  id              String        @id @default(uuid())
+  organizationId  String
+  name            String
+  description     String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  organization    Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+}
+
+model WatchlistEntry {
+  id              String        @id @default(uuid())
+  organizationId  String?
+  userId          String?
+  journalId       String
+  category        String        @default("APPROVED") // APPROVED, UNDER_REVIEW, FLAGGED, PROHIBITED
+  notes           String?
+  addedAt         DateTime      @default(now())
+
+  organization    Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user            User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  journal         Journal       @relation(fields: [journalId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([journalId])
+  @@index([category])
+}
+
+model MonitoringCheck {
+  id            String    @id @default(uuid())
+  doiRecordId   String
+  checkType     String    // RESOLUTION, METADATA_DIFF, PRESERVATION_PING
+  status        String    // SUCCESS, FAILURE, TIMEOUT
+  latencyMs     Int
+  errorMessage  String?
+  checkedAt     DateTime  @default(now())
+
+  doiRecord     DOIRecord @relation(fields: [doiRecordId], references: [id], onDelete: Cascade)
+
+  @@index([doiRecordId])
+  @@index([checkedAt])
+}
+
+model Notification {
+  id         String   @id @default(uuid())
+  userId     String
+  title      String
+  message    String
+  type       String   @default("INFO") // INFO, WARNING, SUCCESS, ERROR
+  link       String?
+  isRead     Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model SupportRequest {
+  id          String   @id @default(uuid())
+  userId      String?
+  name        String
+  email       String
+  subject     String
+  message     String
+  status      String   @default("OPEN") // OPEN, IN_PROGRESS, RESOLVED, CLOSED
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([status])
+}
+
+model AdminAuditLog {
+  id         String   @id @default(uuid())
+  userId     String?
+  action     String   // USER_ROLE_CHANGED, JOURNAL_REASSESSED, ORG_CREATED, SYSTEM_CONFIG_UPDATED
+  resource   String
+  details    String?
+  ipAddress  String?
+  createdAt  DateTime @default(now())
+
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([action])
+  @@index([createdAt])
+}
+
+model BackgroundJob {
+  id          String    @id @default(uuid())
+  jobType     String    // AUDIT_CRAWL, DOI_CENSUS_RECONCILE, BATCH_JOURNAL_EVALUATE, DOI_HEALTH_PING
+  payloadJson String
+  status      String    @default("PENDING") // PENDING, PROCESSING, COMPLETED, FAILED
+  resultJson  String?
+  error       String?
+  attempts    Int       @default(0)
+  maxAttempts Int       @default(3)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([status])
+  @@index([jobType])
+}
