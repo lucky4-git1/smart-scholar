@@ -25,35 +25,35 @@ export const NewsroomPage: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8 text-[#0A3D36]">
       
       <div>
-        <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400">
+        <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
           Smart Scholars Newsroom
         </span>
-        <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-zinc-100 mt-1">
+        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A3D36] tracking-tight mt-2">
           Research Integrity & Indexing Updates
         </h1>
-        <p className="text-xs sm:text-sm text-[#A3998B] mt-2 leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#4B635E] mt-1.5 leading-relaxed">
           Technical analysis, policy changes, and investigative reports on scholarly communication integrity.
         </p>
       </div>
 
       <div className="space-y-4">
         {articles.map((a, i) => (
-          <article key={i} className="ss-card p-6 space-y-2.5">
-            <div className="flex items-center gap-3 text-[11px] font-mono text-[#8C8375]">
-              <span className="text-emerald-400 uppercase px-2 py-0.5 rounded bg-[#1C1814] border border-[#27272a]">
+          <article key={i} className="ss-card p-6 space-y-2.5 shadow-paper">
+            <div className="flex items-center gap-3 text-[11px] font-mono text-[#4B635E]">
+              <span className="text-[#0A3D36] font-bold uppercase px-2 py-0.5 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/15">
                 {a.category}
               </span>
-              <span>{a.date}</span>
+              <span className="font-semibold">{a.date}</span>
             </div>
 
-            <h2 className="font-display font-bold text-lg text-zinc-100">
+            <h2 className="font-serif font-bold text-xl text-[#0A3D36]">
               {a.title}
             </h2>
 
-            <p className="text-xs text-zinc-400 leading-relaxed">
+            <p className="text-xs text-[#4B635E] leading-relaxed">
               {a.summary}
             </p>
           </article>

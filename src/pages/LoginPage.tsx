@@ -38,30 +38,30 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md space-y-6 bg-[#121215] border border-[#27272a] rounded-xl p-8 shadow-tactile">
+    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 text-[#0A3D36]">
+      <div className="w-full max-w-md space-y-6 ss-card p-8 shadow-paper">
         
         <div className="text-center space-y-2">
-          <div className="w-10 h-10 rounded-md bg-[#1D1914] border border-[#3E342B] flex items-center justify-center text-emerald-400 mx-auto shadow-tactile">
+          <div className="w-12 h-12 rounded-sm bg-[#0A3D36] border border-[#06231E] flex items-center justify-center text-[#22D0B9] mx-auto shadow-sm">
             <ShieldCheck className="w-6 h-6" />
           </div>
-          <h1 className="font-display font-extrabold text-2xl text-zinc-100">
+          <h1 className="font-serif font-bold text-2xl sm:text-3xl text-[#0A3D36] tracking-tight">
             Sign in to Smart Scholars
           </h1>
-          <p className="text-xs text-[#8C8275]">
+          <p className="text-xs text-[#4B635E]">
             Access saved checks, institutional watchlists, and indexing dossiers.
           </p>
         </div>
 
         {error && (
-          <div className="p-3 rounded bg-rose-950/40 border border-rose-800 text-rose-300 text-xs">
+          <div className="p-3 rounded-sm bg-[#FDF2F2] border border-[#E05252] text-[#A81B1B] text-xs font-medium">
             {error}
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4 text-xs">
           <div>
-            <label className="block font-mono text-[#8C8375] uppercase mb-1">
+            <label className="block font-mono text-[#0A3D36] uppercase font-bold mb-1">
               Email Address
             </label>
             <input
@@ -69,12 +69,12 @@ export const LoginPage: React.FC = () => {
               required
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className="w-full bg-[#09090b] border border-[#27272a] rounded-md px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:border-emerald-500/40"
+              className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm px-3 py-2 text-sm text-[#0A3D36] placeholder-[#4B635E]/60 focus:outline-none focus:border-[#0A3D36] focus:ring-1 focus:ring-[#0A3D36]"
             />
           </div>
 
           <div>
-            <label className="block font-mono text-[#8C8375] uppercase mb-1">
+            <label className="block font-mono text-[#0A3D36] uppercase font-bold mb-1">
               Password
             </label>
             <input
@@ -82,7 +82,7 @@ export const LoginPage: React.FC = () => {
               required
               value={password}
               onChange={e => setPassword(e.target.value)}
-              className="w-full bg-[#09090b] border border-[#27272a] rounded-md px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:border-emerald-500/40"
+              className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm px-3 py-2 text-sm text-[#0A3D36] placeholder-[#4B635E]/60 focus:outline-none focus:border-[#0A3D36] focus:ring-1 focus:ring-[#0A3D36]"
             />
           </div>
 
@@ -91,36 +91,36 @@ export const LoginPage: React.FC = () => {
             disabled={loading}
             className="ss-btn-primary w-full py-2.5 text-xs font-bold"
           >
-            {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Sign In'}
+            {loading ? <Loader2 className="w-4 h-4 animate-spin mx-auto" /> : 'Sign In'}
           </button>
         </form>
 
         {/* Demo Credentials Quick Fill */}
-        <div className="pt-4 border-t border-[#221D18] space-y-2">
-          <span className="text-[10px] font-mono uppercase text-[#7A7165] block text-center">
+        <div className="pt-4 border-t border-[#0A3D36]/15 space-y-2">
+          <span className="text-[10px] font-mono uppercase text-[#4B635E] font-bold block text-center">
             Demo Credentials
           </span>
           <div className="flex gap-2">
             <button
               type="button"
               onClick={setDemoAdmin}
-              className="flex-1 py-1 px-2 rounded bg-[#1A1713] border border-[#2E2822] text-[11px] font-mono text-emerald-400 hover:border-emerald-500/40"
+              className="flex-1 py-1.5 px-2 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/20 text-[11px] font-mono font-bold text-[#0A3D36] hover:bg-[#FEDAB8] transition-colors"
             >
               Fill Admin
             </button>
             <button
               type="button"
               onClick={setDemoAuditor}
-              className="flex-1 py-1 px-2 rounded bg-[#1A1713] border border-[#2E2822] text-[11px] font-mono text-emerald-400 hover:border-emerald-500/40"
+              className="flex-1 py-1.5 px-2 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/20 text-[11px] font-mono font-bold text-[#0A3D36] hover:bg-[#FEDAB8] transition-colors"
             >
               Fill Auditor
             </button>
           </div>
         </div>
 
-        <div className="text-center text-xs text-[#8C8275]">
+        <div className="text-center text-xs text-[#4B635E]">
           Don't have an account?{' '}
-          <Link to="/auth/register" className="text-emerald-400 hover:underline font-semibold">
+          <Link to="/auth/register" className="text-[#0A3D36] hover:underline font-bold">
             Create an Account
           </Link>
         </div>

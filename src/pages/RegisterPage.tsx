@@ -37,30 +37,30 @@ export const RegisterPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md space-y-6 bg-[#121215] border border-[#27272a] rounded-xl p-8 shadow-tactile">
+    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 text-[#0A3D36]">
+      <div className="w-full max-w-md space-y-6 ss-card p-8 shadow-paper">
         
         <div className="text-center space-y-2">
-          <div className="w-10 h-10 rounded-md bg-[#1D1914] border border-[#3E342B] flex items-center justify-center text-emerald-400 mx-auto shadow-tactile">
+          <div className="w-12 h-12 rounded-sm bg-[#0A3D36] border border-[#06231E] flex items-center justify-center text-[#22D0B9] mx-auto shadow-sm">
             <ShieldCheck className="w-6 h-6" />
           </div>
-          <h1 className="font-display font-extrabold text-2xl text-zinc-100">
+          <h1 className="font-serif font-bold text-2xl sm:text-3xl text-[#0A3D36] tracking-tight">
             Create an Account
           </h1>
-          <p className="text-xs text-[#8C8275]">
+          <p className="text-xs text-[#4B635E]">
             Join the research integrity network for verified journal assessments.
           </p>
         </div>
 
         {error && (
-          <div className="p-3 rounded bg-rose-950/40 border border-rose-800 text-rose-300 text-xs">
+          <div className="p-3 rounded-sm bg-[#FDF2F2] border border-[#E05252] text-[#A81B1B] text-xs font-medium">
             {error}
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-3.5 text-xs">
           <div>
-            <label className="block font-mono text-[#8C8375] uppercase mb-1">
+            <label className="block font-mono text-[#0A3D36] uppercase font-bold mb-1">
               Full Name & Title
             </label>
             <input
@@ -69,12 +69,12 @@ export const RegisterPage: React.FC = () => {
               value={fullName}
               onChange={e => setFullName(e.target.value)}
               placeholder="Dr. Jordan Smith"
-              className="w-full bg-[#09090b] border border-[#27272a] rounded-md px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:border-emerald-500/40"
+              className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm px-3 py-2 text-sm text-[#0A3D36] placeholder-[#4B635E]/60 focus:outline-none focus:border-[#0A3D36] focus:ring-1 focus:ring-[#0A3D36]"
             />
           </div>
 
           <div>
-            <label className="block font-mono text-[#8C8375] uppercase mb-1">
+            <label className="block font-mono text-[#0A3D36] uppercase font-bold mb-1">
               Academic Email
             </label>
             <input
@@ -83,12 +83,12 @@ export const RegisterPage: React.FC = () => {
               value={email}
               onChange={e => setEmail(e.target.value)}
               placeholder="jordan.smith@university.edu"
-              className="w-full bg-[#09090b] border border-[#27272a] rounded-md px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:border-emerald-500/40"
+              className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm px-3 py-2 text-sm text-[#0A3D36] placeholder-[#4B635E]/60 focus:outline-none focus:border-[#0A3D36] focus:ring-1 focus:ring-[#0A3D36]"
             />
           </div>
 
           <div>
-            <label className="block font-mono text-[#8C8375] uppercase mb-1">
+            <label className="block font-mono text-[#0A3D36] uppercase font-bold mb-1">
               Institution / Affiliation
             </label>
             <input
@@ -96,18 +96,18 @@ export const RegisterPage: React.FC = () => {
               value={institution}
               onChange={e => setInstitution(e.target.value)}
               placeholder="e.g. Stanford University or Independent Scholar"
-              className="w-full bg-[#09090b] border border-[#27272a] rounded-md px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:border-emerald-500/40"
+              className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm px-3 py-2 text-sm text-[#0A3D36] placeholder-[#4B635E]/60 focus:outline-none focus:border-[#0A3D36] focus:ring-1 focus:ring-[#0A3D36]"
             />
           </div>
 
           <div>
-            <label className="block font-mono text-[#8C8375] uppercase mb-1">
+            <label className="block font-mono text-[#0A3D36] uppercase font-bold mb-1">
               Primary Role
             </label>
             <select
               value={role}
               onChange={e => setRole(e.target.value)}
-              className="w-full bg-[#09090b] border border-[#27272a] rounded-md px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:border-emerald-500/40"
+              className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm px-3 py-2 text-sm text-[#0A3D36] font-medium focus:outline-none focus:border-[#0A3D36] focus:ring-1 focus:ring-[#0A3D36]"
             >
               <option value="RESEARCHER">Researcher / Author</option>
               <option value="EDITOR">Journal Editor / Publisher</option>
@@ -117,7 +117,7 @@ export const RegisterPage: React.FC = () => {
           </div>
 
           <div>
-            <label className="block font-mono text-[#8C8375] uppercase mb-1">
+            <label className="block font-mono text-[#0A3D36] uppercase font-bold mb-1">
               Password (min. 8 characters)
             </label>
             <input
@@ -126,7 +126,7 @@ export const RegisterPage: React.FC = () => {
               minLength={8}
               value={password}
               onChange={e => setPassword(e.target.value)}
-              className="w-full bg-[#09090b] border border-[#27272a] rounded-md px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:border-emerald-500/40"
+              className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm px-3 py-2 text-sm text-[#0A3D36] placeholder-[#4B635E]/60 focus:outline-none focus:border-[#0A3D36] focus:ring-1 focus:ring-[#0A3D36]"
             />
           </div>
 
@@ -135,13 +135,13 @@ export const RegisterPage: React.FC = () => {
             disabled={loading}
             className="ss-btn-primary w-full py-2.5 text-xs font-bold mt-2"
           >
-            {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Create Account'}
+            {loading ? <Loader2 className="w-4 h-4 animate-spin mx-auto" /> : 'Create Account'}
           </button>
         </form>
 
-        <div className="text-center text-xs text-[#8C8275]">
+        <div className="text-center text-xs text-[#4B635E]">
           Already have an account?{' '}
-          <Link to="/auth/login" className="text-emerald-400 hover:underline font-semibold">
+          <Link to="/auth/login" className="text-[#0A3D36] hover:underline font-bold">
             Sign In
           </Link>
         </div>

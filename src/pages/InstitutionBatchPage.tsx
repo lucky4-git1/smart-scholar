@@ -58,45 +58,45 @@ Study on Synthetic Materials in Tropical Environments,International Journal of A
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#0A3D36]">
       
       <div className="flex items-center justify-between">
-        <Link to="/institution/dashboard" className="text-xs font-mono text-zinc-400 hover:text-zinc-100 inline-flex items-center gap-1.5">
+        <Link to="/institution/dashboard" className="text-xs font-mono text-[#4B635E] hover:text-[#0A3D36] inline-flex items-center gap-1.5 font-semibold">
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Integrity Desk
         </Link>
       </div>
 
       <div>
-        <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400">
+        <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
           Research Integrity Desk · Batch Faculty Publication Screening
         </span>
-        <h1 className="font-display text-3xl font-extrabold text-zinc-100 mt-1">
+        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A3D36] tracking-tight mt-2">
           Batch Publication Compliance Screening
         </h1>
-        <p className="text-xs sm:text-sm text-[#A3998B] mt-1 max-w-2xl leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#4B635E] mt-1.5 max-w-2xl leading-relaxed">
           Upload faculty publications or tenure dossiers in CSV format. The engine cross-references each serial against bibliographic indices and flags high-risk or unverified venues.
         </p>
       </div>
 
       {/* CSV Input Form */}
-      <div className="bg-[#121215] border border-[#27272a] rounded-xl p-6 shadow-tactile max-w-3xl">
+      <div className="ss-card p-6 shadow-paper max-w-3xl">
         <form onSubmit={handleEvaluate} className="space-y-4">
           <div>
-            <label className="block text-xs font-mono uppercase tracking-wider text-zinc-100 mb-1.5">
+            <label className="block text-xs font-mono uppercase tracking-wider text-[#0A3D36] font-bold mb-1.5">
               Paste Faculty Publications CSV (articleTitle, journalTitle, issn, publisher)
             </label>
             <textarea
               rows={6}
               value={csvText}
               onChange={e => setCsvText(e.target.value)}
-              className="w-full bg-[#09090b] border border-[#2B241D] rounded-md p-3 text-xs font-mono text-zinc-100 focus:outline-none focus:border-emerald-500/40"
+              className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm p-3 text-xs font-mono text-[#0A3D36] placeholder-[#4B635E]/60 focus:outline-none focus:border-[#0A3D36] focus:ring-1 focus:ring-[#0A3D36]"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="ss-btn-primary px-5 py-2 text-xs flex items-center gap-1.5"
+            className="ss-btn-primary px-5 py-2.5 text-xs flex items-center gap-2 font-bold"
           >
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <FileSpreadsheet className="w-4 h-4" />}
             <span>Run Batch Publication Evaluation</span>
@@ -104,7 +104,7 @@ Study on Synthetic Materials in Tropical Environments,International Journal of A
         </form>
 
         {error && (
-          <div className="mt-4 p-3 rounded bg-rose-950/50 border border-rose-800 text-rose-300 text-xs">
+          <div className="mt-4 p-3 rounded-sm bg-[#FDF2F2] border border-[#E05252] text-[#A81B1B] text-xs font-medium">
             {error}
           </div>
         )}
@@ -115,55 +115,55 @@ Study on Synthetic Materials in Tropical Environments,International Journal of A
         <div className="space-y-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             
-            <div className="bg-[#121215] border border-[#26201A] p-4 rounded-lg">
-              <span className="text-[10px] font-mono uppercase text-[#8A8174] block">Screened Articles</span>
-              <span className="font-mono text-2xl font-bold text-zinc-100">{results.totalEvaluated}</span>
+            <div className="ss-card p-4 shadow-paper">
+              <span className="text-[10px] font-mono uppercase text-[#4B635E] font-bold block">Screened Articles</span>
+              <span className="font-mono text-2xl font-bold text-[#0A3D36] tabular-nums mt-1 block">{results.totalEvaluated}</span>
             </div>
 
-            <div className="bg-[#121215] border border-[#26201A] p-4 rounded-lg">
-              <span className="text-[10px] font-mono uppercase text-emerald-400 block">Compliant Venues</span>
-              <span className="font-mono text-2xl font-bold text-emerald-400">{results.compliantCount}</span>
+            <div className="ss-card p-4 shadow-paper">
+              <span className="text-[10px] font-mono uppercase text-[#109C89] font-bold block">Compliant Venues</span>
+              <span className="font-mono text-2xl font-bold text-[#109C89] tabular-nums mt-1 block">{results.compliantCount}</span>
             </div>
 
-            <div className="bg-[#121215] border border-[#26201A] p-4 rounded-lg">
-              <span className="text-[10px] font-mono uppercase text-rose-400 block">Flagged Venues</span>
-              <span className="font-mono text-2xl font-bold text-rose-400">{results.flaggedCount}</span>
+            <div className="ss-card p-4 shadow-paper">
+              <span className="text-[10px] font-mono uppercase text-[#A81B1B] font-bold block">Flagged Venues</span>
+              <span className="font-mono text-2xl font-bold text-[#A81B1B] tabular-nums mt-1 block">{results.flaggedCount}</span>
             </div>
 
-            <div className="bg-[#121215] border border-[#26201A] p-4 rounded-lg">
-              <span className="text-[10px] font-mono uppercase text-emerald-400 block">Faculty Compliance Rate</span>
-              <span className="font-mono text-2xl font-bold text-emerald-400">{results.complianceRate}%</span>
+            <div className="ss-card p-4 shadow-paper">
+              <span className="text-[10px] font-mono uppercase text-[#0A3D36] font-bold block">Faculty Compliance Rate</span>
+              <span className="font-mono text-2xl font-bold text-[#109C89] tabular-nums mt-1 block">{results.complianceRate}%</span>
             </div>
 
           </div>
 
           {/* Results Table */}
-          <div className="bg-[#121215] border border-[#26201A] rounded-xl overflow-hidden">
+          <div className="ss-card overflow-hidden shadow-paper">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-[#18181b] border-b border-[#26201A] text-[#9E9486] font-mono uppercase text-[10px]">
+                <thead className="bg-[#0A3D36] text-[#FAF6EE] font-mono uppercase text-[10.5px]">
                   <tr>
-                    <th className="py-3 px-4">Publication Title</th>
-                    <th className="py-3 px-4">Journal</th>
-                    <th className="py-3 px-4">ISSN</th>
-                    <th className="py-3 px-4">Score</th>
-                    <th className="py-3 px-4">Rating Grade</th>
-                    <th className="py-3 px-4">Flags & Integrity Signals</th>
+                    <th className="py-3 px-4 font-bold">Publication Title</th>
+                    <th className="py-3 px-4 font-bold">Journal</th>
+                    <th className="py-3 px-4 font-bold">ISSN</th>
+                    <th className="py-3 px-4 font-bold">Score</th>
+                    <th className="py-3 px-4 font-bold">Rating Grade</th>
+                    <th className="py-3 px-4 font-bold">Flags & Integrity Signals</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#201B17]">
+                <tbody className="divide-y divide-[#0A3D36]/10 bg-[#FFFDF9]">
                   {results.results?.map((r: any, idx: number) => (
-                    <tr key={idx} className="hover:bg-[#18181b] transition-colors">
-                      <td className="py-3 px-4 font-semibold text-zinc-100 max-w-xs truncate">
+                    <tr key={idx} className="hover:bg-[#FAF6EE] transition-colors">
+                      <td className="py-3 px-4 font-serif font-bold text-sm text-[#0A3D36] max-w-xs truncate">
                         {r.articleTitle}
                       </td>
-                      <td className="py-3 px-4 text-zinc-400">
+                      <td className="py-3 px-4 text-[#4B635E]">
                         {r.journalTitle}
                       </td>
-                      <td className="py-3 px-4 font-mono text-emerald-400">
+                      <td className="py-3 px-4 font-mono text-[#0A3D36] font-semibold">
                         {r.issn || '—'}
                       </td>
-                      <td className="py-3 px-4 font-mono font-bold">
+                      <td className="py-3 px-4 font-mono font-bold text-[#0A3D36] tabular-nums">
                         {r.score} / 100
                       </td>
                       <td className="py-3 px-4">
@@ -171,11 +171,11 @@ Study on Synthetic Materials in Tropical Environments,International Journal of A
                       </td>
                       <td className="py-3 px-4 text-xs">
                         {r.redFlags && r.redFlags.length > 0 ? (
-                          <span className="text-rose-400 font-mono text-[11px]">
+                          <span className="text-[#A81B1B] font-mono text-[11px] font-bold">
                             ⚠ {r.redFlags.join('; ')}
                           </span>
                         ) : (
-                          <span className="text-emerald-400 font-mono text-[11px]">
+                          <span className="text-[#109C89] font-mono text-[11px] font-bold">
                             ✓ Meets institutional baseline
                           </span>
                         )}

@@ -34,27 +34,27 @@ export const UserDashboardPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#0A3D36]">
       
       {/* Header Profile Box */}
-      <div className="bg-[#121215] border border-[#27272a] rounded-xl p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-tactile">
+      <div className="ss-card p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-paper">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-lg font-bold font-mono text-emerald-400">
+          <div className="w-12 h-12 rounded-sm bg-[#0A3D36] border border-[#06231E] flex items-center justify-center text-lg font-bold font-mono text-[#22D0B9]">
             {user?.fullName?.charAt(0) || 'U'}
           </div>
           <div className="space-y-1">
-            <h1 className="font-display font-extrabold text-2xl text-zinc-100">
+            <h1 className="font-serif font-bold text-2xl sm:text-3xl text-[#0A3D36] tracking-tight">
               {user?.fullName}
             </h1>
-            <p className="text-xs text-[#9E9486] font-mono">
+            <p className="text-xs text-[#4B635E] font-mono">
               {user?.email} · {user?.institution || 'Independent Research Affiliation'}
             </p>
             <div className="flex items-center gap-2 pt-1">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 bg-[#201B16] px-2 py-0.5 rounded border border-[#3A3026]">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15 font-bold">
                 Role: {user?.role}
               </span>
               {user?.role === 'ADMIN' && (
-                <Link to="/admin" className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/40 hover:underline">
+                <Link to="/admin" className="text-[10px] font-mono uppercase tracking-wider text-[#0A3D36] bg-[#E8F8F5] px-2 py-0.5 rounded-sm border border-[#109C89] font-bold hover:underline">
                   Open Admin Console &rarr;
                 </Link>
               )}
@@ -63,10 +63,10 @@ export const UserDashboardPage: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <Link to="/journal-check" className="ss-btn-primary text-xs py-2 px-3.5">
+          <Link to="/journal-check" className="ss-btn-primary text-xs py-2 px-4 font-bold">
             <span>Check a Journal</span>
           </Link>
-          <Link to="/journal-audit" className="ss-btn-secondary text-xs py-2 px-3.5">
+          <Link to="/journal-audit" className="ss-btn-secondary text-xs py-2 px-4 font-semibold">
             <span>New Audit</span>
           </Link>
         </div>
@@ -75,50 +75,50 @@ export const UserDashboardPage: React.FC = () => {
       {/* Primary Workspace Shortcuts */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         
-        <Link to="/journal-check" className="ss-card p-5 group hover:border-emerald-500/40/60">
-          <div className="w-8 h-8 rounded bg-[#1D1914] border border-[#3A3026] flex items-center justify-center text-emerald-400 mb-3 group-hover:border-emerald-500/40">
+        <Link to="/journal-check" className="ss-card p-5 group hover:border-[#0A3D36] shadow-paper">
+          <div className="w-8 h-8 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/20 flex items-center justify-center text-[#0A3D36] mb-3 group-hover:bg-[#0A3D36] group-hover:text-[#FAF6EE] transition-colors">
             <ShieldCheck className="w-4 h-4" />
           </div>
-          <h3 className="font-display font-bold text-base text-zinc-100 mb-1">
+          <h3 className="font-serif font-bold text-base text-[#0A3D36] mb-1">
             Journal Check
           </h3>
-          <p className="text-xs text-[#8C8275]">
+          <p className="text-xs text-[#4B635E] leading-relaxed">
             Search journals across Crossref, OpenAlex, and DOAJ with 5-pillar scoring.
           </p>
         </Link>
 
-        <Link to="/journal-audit" className="ss-card p-5 group hover:border-emerald-500/40/60">
-          <div className="w-8 h-8 rounded bg-[#1D1914] border border-[#3A3026] flex items-center justify-center text-emerald-400 mb-3 group-hover:border-emerald-500/40">
+        <Link to="/journal-audit" className="ss-card p-5 group hover:border-[#0A3D36] shadow-paper">
+          <div className="w-8 h-8 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/20 flex items-center justify-center text-[#0A3D36] mb-3 group-hover:bg-[#0A3D36] group-hover:text-[#FAF6EE] transition-colors">
             <FileCheck className="w-4 h-4" />
           </div>
-          <h3 className="font-display font-bold text-base text-zinc-100 mb-1">
+          <h3 className="font-serif font-bold text-base text-[#0A3D36] mb-1">
             Indexing Readiness
           </h3>
-          <p className="text-xs text-[#8C8275]">
+          <p className="text-xs text-[#4B635E] leading-relaxed">
             Run page-level technical scans against Scopus and DOAJ requirements.
           </p>
         </Link>
 
-        <Link to="/doi-doctor" className="ss-card p-5 group hover:border-emerald-500/40/60">
-          <div className="w-8 h-8 rounded bg-[#1D1914] border border-[#3A3026] flex items-center justify-center text-emerald-400 mb-3 group-hover:border-emerald-500/40">
+        <Link to="/doi-doctor" className="ss-card p-5 group hover:border-[#0A3D36] shadow-paper">
+          <div className="w-8 h-8 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/20 flex items-center justify-center text-[#0A3D36] mb-3 group-hover:bg-[#0A3D36] group-hover:text-[#FAF6EE] transition-colors">
             <Stethoscope className="w-4 h-4" />
           </div>
-          <h3 className="font-display font-bold text-base text-zinc-100 mb-1">
+          <h3 className="font-serif font-bold text-base text-[#0A3D36] mb-1">
             DOI Doctor
           </h3>
-          <p className="text-xs text-[#8C8275]">
+          <p className="text-xs text-[#4B635E] leading-relaxed">
             Inspect handle resolution, detect broken links, and reconcile metadata.
           </p>
         </Link>
 
-        <Link to="/institution/watchlist" className="ss-card p-5 group hover:border-emerald-500/40/60">
-          <div className="w-8 h-8 rounded bg-[#1D1914] border border-[#3A3026] flex items-center justify-center text-emerald-400 mb-3 group-hover:border-emerald-500/40">
+        <Link to="/institution/watchlist" className="ss-card p-5 group hover:border-[#0A3D36] shadow-paper">
+          <div className="w-8 h-8 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/20 flex items-center justify-center text-[#0A3D36] mb-3 group-hover:bg-[#0A3D36] group-hover:text-[#FAF6EE] transition-colors">
             <BookmarkCheck className="w-4 h-4" />
           </div>
-          <h3 className="font-display font-bold text-base text-zinc-100 mb-1">
+          <h3 className="font-serif font-bold text-base text-[#0A3D36] mb-1">
             Institutional Watchlist
           </h3>
-          <p className="text-xs text-[#8C8275]">
+          <p className="text-xs text-[#4B635E] leading-relaxed">
             Maintain approved publication lists and monitor high-risk serials.
           </p>
         </Link>
@@ -129,27 +129,27 @@ export const UserDashboardPage: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         
         {/* Active Indexing Applications */}
-        <div className="bg-[#121215] border border-[#27272a] rounded-xl p-5 space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="font-display font-bold text-base text-zinc-100">
+        <div className="ss-card p-5 space-y-4 shadow-paper">
+          <div className="flex items-center justify-between border-b border-[#0A3D36]/10 pb-3">
+            <h3 className="font-serif font-bold text-base text-[#0A3D36]">
               Tracked Indexing Applications
             </h3>
-            <Link to="/indexing/applications" className="text-xs font-semibold text-emerald-400 hover:underline">
+            <Link to="/indexing/applications" className="text-xs font-bold text-[#0A3D36] hover:underline">
               View All &rarr;
             </Link>
           </div>
 
           {applications.length === 0 ? (
-            <p className="text-xs text-[#8A8174]">No active indexing application dossiers.</p>
+            <p className="text-xs text-[#4B635E]">No active indexing application dossiers.</p>
           ) : (
             <div className="space-y-2">
               {applications.map(a => (
-                <div key={a.id} className="p-3 bg-[#18181b] border border-[#27201A] rounded flex items-center justify-between text-xs">
+                <div key={a.id} className="p-3 bg-[#FAF6EE] border border-[#0A3D36]/10 rounded-sm flex items-center justify-between text-xs">
                   <div>
-                    <div className="font-semibold text-zinc-100">{a.journal.title}</div>
-                    <div className="text-[11px] font-mono text-emerald-400">{a.indexingService.name}</div>
+                    <div className="font-serif font-bold text-sm text-[#0A3D36]">{a.journal.title}</div>
+                    <div className="text-[11px] font-mono text-[#109C89] font-semibold">{a.indexingService.name}</div>
                   </div>
-                  <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-[#201B16] text-zinc-100 border border-[#352C23]">
+                  <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded-sm bg-[#FFFDF9] text-[#0A3D36] border border-[#0A3D36]/20">
                     {a.status}
                   </span>
                 </div>
@@ -159,28 +159,28 @@ export const UserDashboardPage: React.FC = () => {
         </div>
 
         {/* Watchlist Quick Summary */}
-        <div className="bg-[#121215] border border-[#27272a] rounded-xl p-5 space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="font-display font-bold text-base text-zinc-100">
+        <div className="ss-card p-5 space-y-4 shadow-paper">
+          <div className="flex items-center justify-between border-b border-[#0A3D36]/10 pb-3">
+            <h3 className="font-serif font-bold text-base text-[#0A3D36]">
               Institutional Watchlist Preview
             </h3>
-            <Link to="/institution/watchlist" className="text-xs font-semibold text-emerald-400 hover:underline">
+            <Link to="/institution/watchlist" className="text-xs font-bold text-[#0A3D36] hover:underline">
               Full List &rarr;
             </Link>
           </div>
 
           {watchlist.length === 0 ? (
-            <p className="text-xs text-[#8A8174]">No journals added to watchlist yet.</p>
+            <p className="text-xs text-[#4B635E]">No journals added to watchlist yet.</p>
           ) : (
             <div className="space-y-2">
               {watchlist.map(w => (
-                <div key={w.id} className="p-3 bg-[#18181b] border border-[#27201A] rounded flex items-center justify-between text-xs">
+                <div key={w.id} className="p-3 bg-[#FAF6EE] border border-[#0A3D36]/10 rounded-sm flex items-center justify-between text-xs">
                   <div>
-                    <div className="font-semibold text-zinc-100">{w.journal.title}</div>
-                    <div className="text-[11px] font-mono text-[#8C8375]">{w.journal.publisher}</div>
+                    <div className="font-serif font-bold text-sm text-[#0A3D36]">{w.journal.title}</div>
+                    <div className="text-[11px] font-mono text-[#4B635E]">{w.journal.publisher}</div>
                   </div>
-                  <span className={`font-mono text-[10px] px-2 py-0.5 rounded border uppercase ${
-                    w.category === 'APPROVED' ? 'bg-emerald-950/60 text-emerald-400 border-emerald-500/40' : 'bg-rose-950/60 text-rose-300 border-rose-500/40'
+                  <span className={`font-mono text-[10.5px] font-bold px-2 py-0.5 rounded-sm border uppercase ${
+                    w.category === 'APPROVED' ? 'bg-[#E8F8F5] text-[#0A3D36] border-[#109C89]' : 'bg-[#FDF2F2] text-[#A81B1B] border-[#E05252]'
                   }`}>
                     {w.category}
                   </span>

@@ -4,56 +4,56 @@ import { ShieldCheck, Database, Search, CheckCircle2, AlertTriangle, ArrowRight 
 
 export const HowItWorksPage: React.FC = () => {
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12 text-[#0A3D36]">
       
       <div>
-        <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400">
+        <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
           Methodology v1.2.0-2026 · Standard of Evidence
         </span>
-        <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-zinc-100 mt-1">
+        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A3D36] tracking-tight mt-2">
           How the Journal Trust Rating Engine Works
         </h1>
-        <p className="text-xs sm:text-sm text-[#A3998B] mt-2 leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#4B635E] mt-1.5 leading-relaxed">
           The Smart Scholars Trust Rating is computed strictly from verifiable public scholarly infrastructure: Crossref, OpenAlex, the Directory of Open Access Journals (DOAJ), and the Keepers Registry.
         </p>
       </div>
 
       {/* 4-Step Process */}
       <div className="space-y-6">
-        <h2 className="font-display font-bold text-xl text-zinc-100">
+        <h2 className="font-serif font-bold text-2xl text-[#0A3D36]">
           From Query to Action Plan in Four Steps
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
           
-          <div className="ss-card p-5 space-y-2">
-            <span className="font-mono text-emerald-400 text-lg font-bold">01</span>
-            <h3 className="font-display font-bold text-base text-zinc-100">Federated Registry Query</h3>
-            <p className="text-zinc-400 leading-relaxed">
+          <div className="ss-card p-5 space-y-2 shadow-paper">
+            <span className="font-mono text-[#0A3D36] text-xl font-bold">01</span>
+            <h3 className="font-serif font-bold text-base text-[#0A3D36]">Federated Registry Query</h3>
+            <p className="text-[#4B635E] leading-relaxed">
               When a journal title, ISSN, or DOI prefix is submitted, our federated adapters query Crossref, OpenAlex, and DOAJ with strict timeouts and response schema validation.
             </p>
           </div>
 
-          <div className="ss-card p-5 space-y-2">
-            <span className="font-mono text-emerald-400 text-lg font-bold">02</span>
-            <h3 className="font-display font-bold text-base text-zinc-100">SSRF-Guarded Technical Crawl</h3>
-            <p className="text-zinc-400 leading-relaxed">
+          <div className="ss-card p-5 space-y-2 shadow-paper">
+            <span className="font-mono text-[#0A3D36] text-xl font-bold">02</span>
+            <h3 className="font-serif font-bold text-base text-[#0A3D36]">SSRF-Guarded Technical Crawl</h3>
+            <p className="text-[#4B635E] leading-relaxed">
               For readiness audits, our crawler safely inspects the journal domain, preventing private address probing (RFC 1918) while testing policy disclosures, editorial board names, APC clarity, and licensing schemas.
             </p>
           </div>
 
-          <div className="ss-card p-5 space-y-2">
-            <span className="font-mono text-emerald-400 text-lg font-bold">03</span>
-            <h3 className="font-display font-bold text-base text-zinc-100">Deterministic 5-Pillar Scoring</h3>
-            <p className="text-zinc-400 leading-relaxed">
+          <div className="ss-card p-5 space-y-2 shadow-paper">
+            <span className="font-mono text-[#0A3D36] text-xl font-bold">03</span>
+            <h3 className="font-serif font-bold text-base text-[#0A3D36]">Deterministic 5-Pillar Scoring</h3>
+            <p className="text-[#4B635E] leading-relaxed">
               Points are awarded according to explicit weights across Identity (25%), Editorial (25%), Technical (20%), Preservation (15%), and Reach (15%). Red flags deduct points and cap letter grades.
             </p>
           </div>
 
-          <div className="ss-card p-5 space-y-2">
-            <span className="font-mono text-emerald-400 text-lg font-bold">04</span>
-            <h3 className="font-display font-bold text-base text-zinc-100">Verifiable Provenance & Repair Plan</h3>
-            <p className="text-zinc-400 leading-relaxed">
+          <div className="ss-card p-5 space-y-2 shadow-paper">
+            <span className="font-mono text-[#0A3D36] text-xl font-bold">04</span>
+            <h3 className="font-serif font-bold text-base text-[#0A3D36]">Verifiable Provenance & Repair Plan</h3>
+            <p className="text-[#4B635E] leading-relaxed">
               Every score breakdown records the exact endpoint, HTTP status, and timestamp. A prioritized repair checklist with code snippets helps editors resolve deficiencies.
             </p>
           </div>
@@ -62,49 +62,54 @@ export const HowItWorksPage: React.FC = () => {
       </div>
 
       {/* Grade Thresholds Table */}
-      <div className="bg-[#121215] border border-[#27272a] rounded-xl p-6 space-y-4">
-        <h2 className="font-display font-bold text-lg text-zinc-100">
-          Documented Letter Grade Mapping
-        </h2>
+      <div className="ss-card overflow-hidden shadow-paper">
+        <div className="p-5 border-b border-[#0A3D36]/15 bg-[#FAF6EE]">
+          <h2 className="font-serif font-bold text-lg text-[#0A3D36]">
+            Documented Letter Grade Mapping
+          </h2>
+          <p className="text-xs text-[#4B635E]">
+            Point cutoffs and standard criteria benchmarks for journal evaluation.
+          </p>
+        </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs font-mono">
-            <thead className="bg-[#1A1713] border-b border-[#2B241D] text-[#8C8375] uppercase text-[10px]">
+            <thead className="bg-[#0A3D36] text-[#FAF6EE] uppercase text-[10.5px]">
               <tr>
-                <th className="py-2.5 px-3">Grade</th>
-                <th className="py-2.5 px-3">Point Threshold</th>
-                <th className="py-2.5 px-3">Integrity Standard</th>
+                <th className="py-3 px-4 font-bold">Grade</th>
+                <th className="py-3 px-4 font-bold">Point Threshold</th>
+                <th className="py-3 px-4 font-bold">Integrity Standard</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#201B17] text-[#C7BFB3]">
-              <tr>
-                <td className="py-2.5 px-3 font-bold text-emerald-400">GRADE A+</td>
-                <td className="py-2.5 px-3">90 – 100 points</td>
-                <td className="py-2.5 px-3">Meets all primary indexing standards across all 5 pillars.</td>
+            <tbody className="divide-y divide-[#0A3D36]/10 bg-[#FFFDF9] text-[#0A3D36]">
+              <tr className="hover:bg-[#FAF6EE] transition-colors">
+                <td className="py-3 px-4 font-bold text-[#0A3D36]">GRADE A+</td>
+                <td className="py-3 px-4 tabular-nums">90 – 100 points</td>
+                <td className="py-3 px-4 text-[#4B635E] font-sans">Meets all primary indexing standards across all 5 pillars.</td>
               </tr>
-              <tr>
-                <td className="py-2.5 px-3 font-bold text-emerald-300">GRADE A</td>
-                <td className="py-2.5 px-3">80 – 89 points</td>
-                <td className="py-2.5 px-3">Strong standing; minor metadata enhancements advised.</td>
+              <tr className="hover:bg-[#FAF6EE] transition-colors">
+                <td className="py-3 px-4 font-bold text-[#109C89]">GRADE A</td>
+                <td className="py-3 px-4 tabular-nums">80 – 89 points</td>
+                <td className="py-3 px-4 text-[#4B635E] font-sans">Strong standing; minor metadata enhancements advised.</td>
               </tr>
-              <tr>
-                <td className="py-2.5 px-3 font-bold text-teal-300">GRADE B</td>
-                <td className="py-2.5 px-3">70 – 79 points</td>
-                <td className="py-2.5 px-3">Solid foundation; needs improved preservation or citation transparency.</td>
+              <tr className="hover:bg-[#FAF6EE] transition-colors">
+                <td className="py-3 px-4 font-bold text-[#0C4840]">GRADE B</td>
+                <td className="py-3 px-4 tabular-nums">70 – 79 points</td>
+                <td className="py-3 px-4 text-[#4B635E] font-sans">Solid foundation; needs improved preservation or citation transparency.</td>
               </tr>
-              <tr>
-                <td className="py-2.5 px-3 font-bold text-amber-300">GRADE C</td>
-                <td className="py-2.5 px-3">55 – 69 points</td>
-                <td className="py-2.5 px-3">Incomplete policy disclosures or inconsistent DOI deposit record.</td>
+              <tr className="hover:bg-[#FAF6EE] transition-colors">
+                <td className="py-3 px-4 font-bold text-[#8C460C]">GRADE C</td>
+                <td className="py-3 px-4 tabular-nums">55 – 69 points</td>
+                <td className="py-3 px-4 text-[#4B635E] font-sans">Incomplete policy disclosures or inconsistent DOI deposit record.</td>
               </tr>
-              <tr>
-                <td className="py-2.5 px-3 font-bold text-orange-400">GRADE D</td>
-                <td className="py-2.5 px-3">40 – 54 points</td>
-                <td className="py-2.5 px-3">Significant deficiencies; high barrier for Scopus or DOAJ admission.</td>
+              <tr className="hover:bg-[#FAF6EE] transition-colors">
+                <td className="py-3 px-4 font-bold text-[#9E3E00]">GRADE D</td>
+                <td className="py-3 px-4 tabular-nums">40 – 54 points</td>
+                <td className="py-3 px-4 text-[#4B635E] font-sans">Significant deficiencies; high barrier for Scopus or DOAJ admission.</td>
               </tr>
-              <tr>
-                <td className="py-2.5 px-3 font-bold text-rose-400">RED FLAG</td>
-                <td className="py-2.5 px-3">&lt; 40 points or &ge; 2 Red Flags</td>
-                <td className="py-2.5 px-3">Severe integrity risk (missing ISSN, fake claims, broken links).</td>
+              <tr className="hover:bg-[#FAF6EE] transition-colors">
+                <td className="py-3 px-4 font-bold text-[#A81B1B]">RED FLAG</td>
+                <td className="py-3 px-4 tabular-nums">&lt; 40 points or &ge; 2 Red Flags</td>
+                <td className="py-3 px-4 text-[#A81B1B] font-sans font-semibold">Severe integrity risk (missing ISSN, fake claims, broken links).</td>
               </tr>
             </tbody>
           </table>

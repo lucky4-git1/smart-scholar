@@ -32,16 +32,16 @@ export const FaqPage: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8 text-[#0A3D36]">
       
       <div>
-        <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400">
+        <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
           FAQ & Knowledge Base
         </span>
-        <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-zinc-100 mt-1">
+        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A3D36] tracking-tight mt-2">
           Frequently Asked Questions
         </h1>
-        <p className="text-xs sm:text-sm text-[#A3998B] mt-2 leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#4B635E] mt-1.5 leading-relaxed">
           Technical specifications, evaluation criteria, and operational policies of the Smart Scholars platform.
         </p>
       </div>
@@ -50,23 +50,23 @@ export const FaqPage: React.FC = () => {
         {faqs.map((f, i) => {
           const isOpen = openIdx === i;
           return (
-            <div key={i} className="ss-card overflow-hidden">
+            <div key={i} className="ss-card overflow-hidden shadow-paper">
               <button
                 onClick={() => setOpenIdx(isOpen ? null : i)}
-                className="w-full p-5 text-left flex items-center justify-between gap-4"
+                className="w-full p-5 text-left flex items-center justify-between gap-4 hover:bg-[#FAF6EE] transition-colors"
               >
-                <span className="font-display font-bold text-sm text-zinc-100">
+                <span className="font-serif font-bold text-base text-[#0A3D36]">
                   {f.q}
                 </span>
                 {isOpen ? (
-                  <ChevronUp className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                  <ChevronUp className="w-4 h-4 text-[#0A3D36] flex-shrink-0" />
                 ) : (
-                  <ChevronDown className="w-4 h-4 text-[#8C8275] flex-shrink-0" />
+                  <ChevronDown className="w-4 h-4 text-[#4B635E] flex-shrink-0" />
                 )}
               </button>
 
               {isOpen && (
-                <div className="px-5 pb-5 text-xs text-zinc-400 leading-relaxed border-t border-[#221D18] pt-3">
+                <div className="px-5 pb-5 text-xs text-[#4B635E] leading-relaxed border-t border-[#0A3D36]/10 pt-3 bg-[#FFFDF9]">
                   {f.a}
                 </div>
               )}

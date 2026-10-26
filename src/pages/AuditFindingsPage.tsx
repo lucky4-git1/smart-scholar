@@ -34,69 +34,69 @@ export const AuditFindingsPage: React.FC = () => {
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6 text-[#0A3D36]">
       
       {/* Breadcrumb & Navigation */}
       <div className="flex items-center justify-between">
-        <Link to={`/journal-audit?url=${encodeURIComponent(job?.targetUrl || '')}`} className="text-xs font-mono text-zinc-400 hover:text-zinc-100 inline-flex items-center gap-1.5">
+        <Link to={`/journal-audit?url=${encodeURIComponent(job?.targetUrl || '')}`} className="text-xs font-mono text-[#4B635E] hover:text-[#0A3D36] inline-flex items-center gap-1.5 font-semibold">
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Audit Overview
         </Link>
-        <Link to={`/journal-audit/${id}/repair-plan`} className="ss-btn-primary text-xs py-1.5 px-3">
+        <Link to={`/journal-audit/${id}/repair-plan`} className="ss-btn-primary text-xs py-1.5 px-3 flex items-center gap-1.5 font-bold">
           <Wrench className="w-3.5 h-3.5" />
           <span>Actionable Repair Checklist</span>
         </Link>
       </div>
 
       {/* Header */}
-      <div className="bg-[#121215] border border-[#27272a] rounded-xl p-6">
-        <span className="text-[10px] font-mono uppercase text-emerald-400 block">
+      <div className="ss-card p-6 shadow-paper">
+        <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15 inline-block">
           Audited Target: {job?.targetUrl || id}
         </span>
-        <h1 className="font-display text-2xl font-extrabold text-zinc-100 mt-1">
+        <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A3D36] tracking-tight mt-2">
           Itemized Audit Findings ({findings.length})
         </h1>
-        <p className="text-xs text-[#8A8173] mt-1">
+        <p className="text-xs sm:text-sm text-[#4B635E] mt-1.5 leading-relaxed">
           Page-level deficiencies categorized by severity according to international indexing inclusion guidelines.
         </p>
 
         {/* Severity Filters */}
-        <div className="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-[#221D18]">
+        <div className="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-[#0A3D36]/15">
           <button
             onClick={() => setSeverityFilter('ALL')}
-            className={`text-xs font-mono px-3 py-1 rounded border transition-colors ${
+            className={`text-xs font-mono px-3 py-1 rounded-sm border transition-colors ${
               severityFilter === 'ALL'
-                ? 'bg-white text-zinc-950 font-semibold border-emerald-500/40 font-bold'
-                : 'bg-[#18181b] text-[#9E9486] border-[#2C251F]'
+                ? 'bg-[#0A3D36] text-[#FAF6EE] font-bold border-[#0A3D36]'
+                : 'bg-[#FFFDF9] text-[#4B635E] border-[#0A3D36]/20 hover:bg-[#FAF6EE]'
             }`}
           >
             ALL ({findings.length})
           </button>
           <button
             onClick={() => setSeverityFilter('CRITICAL')}
-            className={`text-xs font-mono px-3 py-1 rounded border transition-colors ${
+            className={`text-xs font-mono px-3 py-1 rounded-sm border transition-colors ${
               severityFilter === 'CRITICAL'
-                ? 'bg-rose-900 border-rose-600 text-rose-200 font-bold'
-                : 'bg-[#18181b] text-rose-400 border-[#2C251F]'
+                ? 'bg-[#A81B1B] text-[#FAF6EE] font-bold border-[#A81B1B]'
+                : 'bg-[#FFFDF9] text-[#A81B1B] border-[#A81B1B]/30 hover:bg-[#FAF6EE]'
             }`}
           >
             CRITICAL ({findings.filter(f => f.severity === 'CRITICAL').length})
           </button>
           <button
             onClick={() => setSeverityFilter('WARNING')}
-            className={`text-xs font-mono px-3 py-1 rounded border transition-colors ${
+            className={`text-xs font-mono px-3 py-1 rounded-sm border transition-colors ${
               severityFilter === 'WARNING'
-                ? 'bg-amber-900 border-amber-600 text-amber-200 font-bold'
-                : 'bg-[#18181b] text-amber-400 border-[#2C251F]'
+                ? 'bg-[#EF8D41] text-[#FAF6EE] font-bold border-[#EF8D41]'
+                : 'bg-[#FFFDF9] text-[#8C460C] border-[#F6AC6D]/50 hover:bg-[#FAF6EE]'
             }`}
           >
             WARNINGS ({findings.filter(f => f.severity === 'WARNING').length})
           </button>
           <button
             onClick={() => setSeverityFilter('INFO')}
-            className={`text-xs font-mono px-3 py-1 rounded border transition-colors ${
+            className={`text-xs font-mono px-3 py-1 rounded-sm border transition-colors ${
               severityFilter === 'INFO'
-                ? 'bg-zinc-800 border-zinc-600 text-zinc-200 font-bold'
-                : 'bg-[#18181b] text-zinc-400 border-[#2C251F]'
+                ? 'bg-[#109C89] text-[#FAF6EE] font-bold border-[#109C89]'
+                : 'bg-[#FFFDF9] text-[#109C89] border-[#109C89]/30 hover:bg-[#FAF6EE]'
             }`}
           >
             PASSED / INFO ({findings.filter(f => f.severity === 'INFO').length})
@@ -106,36 +106,36 @@ export const AuditFindingsPage: React.FC = () => {
 
       {/* Findings List */}
       {loading ? (
-        <div className="py-12 text-center text-xs text-[#9E9486]">
+        <div className="py-12 text-center text-xs text-[#4B635E] font-mono">
           Loading findings...
         </div>
       ) : (
         <div className="space-y-3">
           {filteredFindings.map((f) => (
-            <div key={f.id} className="ss-card p-5 space-y-2">
+            <div key={f.id} className="ss-card p-5 space-y-2.5 shadow-paper">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
                   <SeverityBadge severity={f.severity} />
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#8A8174] px-1.5 py-0.5 rounded bg-[#1B1814] border border-[#27272a]">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#0A3D36] px-2 py-0.5 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/15 font-semibold">
                     {f.category}
                   </span>
                 </div>
-                <span className="text-[10px] font-mono text-[#6E6457]">
+                <span className="text-[10.5px] font-mono text-[#4B635E] font-semibold">
                   {f.ruleKey}
                 </span>
               </div>
 
-              <h3 className="font-display font-bold text-base text-zinc-100">
+              <h3 className="font-serif font-bold text-base text-[#0A3D36]">
                 {f.title}
               </h3>
 
-              <p className="text-xs text-zinc-400 leading-relaxed">
+              <p className="text-xs text-[#4B635E] leading-relaxed">
                 {f.description}
               </p>
 
               {f.affectedUrl && (
-                <div className="text-[11px] font-mono text-[#8C8274] pt-2 border-t border-[#201B17]">
-                  Target Page: <span className="text-emerald-400">{f.affectedUrl}</span>
+                <div className="text-[11px] font-mono text-[#4B635E] pt-2 border-t border-[#0A3D36]/10">
+                  Target Page: <span className="text-[#0A3D36] font-semibold underline">{f.affectedUrl}</span>
                 </div>
               )}
             </div>

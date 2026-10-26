@@ -18,28 +18,28 @@ export const InstitutionDashboardPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#0A3D36]">
       
       {/* Top Banner */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#0A3D36]/15 pb-6">
         <div>
-          <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-semibold">
-            Research Integrity Desk · Institutional Workspace
+          <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
+            RESEARCH INTEGRITY DESK · INSTITUTIONAL WORKSPACE
           </span>
-          <h1 className="font-display text-3xl font-extrabold text-zinc-100 tracking-tight mt-1">
+          <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A3D36] tracking-tight mt-2">
             University & Institutional Integrity Oversight
           </h1>
-          <p className="text-xs sm:text-sm text-zinc-400 mt-1 max-w-2xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#4B635E] mt-1.5 max-w-2xl leading-relaxed">
             Maintain authorized journal watchlists, evaluate faculty publication submissions against evidence rather than static blacklists, and produce committee reports.
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
-          <Link to="/institution/watchlist" className="ss-btn-secondary text-xs py-1.5 px-3">
-            <BookmarkCheck className="w-3.5 h-3.5 text-zinc-400" />
+        <div className="flex items-center gap-3">
+          <Link to="/institution/watchlist" className="ss-btn-secondary text-xs py-2 px-3.5 font-semibold">
+            <BookmarkCheck className="w-3.5 h-3.5 text-[#0A3D36]" />
             <span>Journal Watchlist</span>
           </Link>
-          <Link to="/institution/batch-evaluation" className="ss-btn-primary text-xs py-1.5 px-3">
+          <Link to="/institution/batch-evaluation" className="ss-btn-primary text-xs py-2 px-4 font-bold">
             <FileSpreadsheet className="w-3.5 h-3.5" />
             <span>Batch Evaluate CSV</span>
           </Link>
@@ -49,30 +49,30 @@ export const InstitutionDashboardPage: React.FC = () => {
       {/* Metric Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         
-        <div className="bg-[#121215] border border-zinc-800 p-5 rounded-xl shadow-tactile">
-          <span className="text-[10px] font-mono text-zinc-400 uppercase block">Watchlist Serials</span>
-          <span className="font-mono text-3xl font-extrabold text-zinc-100 mt-1 block tabular-nums">
+        <div className="ss-card p-5 shadow-paper">
+          <span className="text-[10px] font-mono text-[#4B635E] uppercase font-bold block">Watchlist Serials</span>
+          <span className="font-mono text-3xl font-extrabold text-[#0A3D36] mt-1 block tabular-nums">
             {data?.metrics?.totalWatchlist ?? 0}
           </span>
         </div>
 
-        <div className="bg-[#121215] border border-zinc-800 p-5 rounded-xl shadow-tactile">
-          <span className="text-[10px] font-mono text-emerald-400 uppercase block">Approved Serials</span>
-          <span className="font-mono text-3xl font-extrabold text-emerald-400 mt-1 block tabular-nums">
+        <div className="ss-card p-5 shadow-paper">
+          <span className="text-[10px] font-mono text-[#109C89] uppercase font-bold block">Approved Serials</span>
+          <span className="font-mono text-3xl font-extrabold text-[#109C89] mt-1 block tabular-nums">
             {data?.metrics?.approvedCount ?? 0}
           </span>
         </div>
 
-        <div className="bg-[#121215] border border-zinc-800 p-5 rounded-xl shadow-tactile">
-          <span className="text-[10px] font-mono text-rose-400 uppercase block">Flagged Risk Serials</span>
-          <span className="font-mono text-3xl font-extrabold text-rose-400 mt-1 block tabular-nums">
+        <div className="ss-card p-5 shadow-paper">
+          <span className="text-[10px] font-mono text-[#A81B1B] uppercase font-bold block">Flagged Risk Serials</span>
+          <span className="font-mono text-3xl font-extrabold text-[#A81B1B] mt-1 block tabular-nums">
             {data?.metrics?.flaggedCount ?? 0}
           </span>
         </div>
 
-        <div className="bg-[#121215] border border-zinc-800 p-5 rounded-xl shadow-tactile">
-          <span className="text-[10px] font-mono text-zinc-300 uppercase block">Institutional Compliance</span>
-          <span className="font-mono text-3xl font-extrabold text-zinc-100 mt-1 block tabular-nums">
+        <div className="ss-card p-5 shadow-paper">
+          <span className="text-[10px] font-mono text-[#0A3D36] uppercase font-bold block">Institutional Compliance</span>
+          <span className="font-mono text-3xl font-extrabold text-[#0A3D36] mt-1 block tabular-nums">
             {data?.metrics?.complianceRate ?? 100}%
           </span>
         </div>
@@ -80,51 +80,51 @@ export const InstitutionDashboardPage: React.FC = () => {
       </div>
 
       {/* Recent Evaluations Table */}
-      <div className="bg-[#121215] border border-zinc-800 rounded-xl overflow-hidden shadow-tactile">
-        <div className="p-5 border-b border-zinc-800 flex items-center justify-between">
+      <div className="ss-card overflow-hidden shadow-paper">
+        <div className="p-5 border-b border-[#0A3D36]/15 bg-[#FAF6EE] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <h3 className="font-display font-semibold text-sm text-zinc-100">
+            <h3 className="font-serif font-bold text-lg text-[#0A3D36]">
               Recent Institutional Assessments
             </h3>
-            <p className="text-xs text-zinc-400">
+            <p className="text-xs text-[#4B635E]">
               Latest evaluation history conducted for committee review
             </p>
           </div>
-          <Link to="/institution/watchlist" className="text-xs font-medium text-zinc-300 hover:text-white">
+          <Link to="/institution/watchlist" className="text-xs font-mono font-bold text-[#0A3D36] hover:underline">
             Manage Full Watchlist &rarr;
           </Link>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-zinc-900 border-b border-zinc-800 text-zinc-400 font-mono uppercase text-[10px]">
+            <thead className="bg-[#0A3D36] text-[#FAF6EE] font-mono uppercase text-[10.5px]">
               <tr>
-                <th className="py-3 px-4 font-semibold">Journal Title</th>
-                <th className="py-3 px-4 font-semibold">Evaluation Date</th>
-                <th className="py-3 px-4 font-semibold">Score</th>
-                <th className="py-3 px-4 font-semibold">Trust Grade</th>
-                <th className="py-3 px-4 font-semibold text-right">Action</th>
+                <th className="py-3.5 px-4 font-bold">Journal Title</th>
+                <th className="py-3.5 px-4 font-bold">Evaluation Date</th>
+                <th className="py-3.5 px-4 font-bold">Score</th>
+                <th className="py-3.5 px-4 font-bold">Trust Grade</th>
+                <th className="py-3.5 px-4 font-bold text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-800/80">
+            <tbody className="divide-y divide-[#0A3D36]/10 bg-[#FFFDF9]">
               {data?.recentAssessments?.map((a: any) => (
-                <tr key={a.id} className="hover:bg-zinc-900/50 transition-colors">
-                  <td className="py-3 px-4 font-semibold text-zinc-100">
+                <tr key={a.id} className="hover:bg-[#FAF6EE] transition-colors">
+                  <td className="py-3.5 px-4 font-serif font-bold text-sm text-[#0A3D36]">
                     {a.journal.title}
                   </td>
-                  <td className="py-3 px-4 font-mono text-zinc-400">
+                  <td className="py-3.5 px-4 font-mono text-[#4B635E]">
                     {new Date(a.createdAt).toLocaleDateString()}
                   </td>
-                  <td className="py-3 px-4 font-mono font-bold text-zinc-200 tabular-nums">
+                  <td className="py-3.5 px-4 font-mono font-bold text-[#0A3D36] tabular-nums">
                     {a.totalScore} / 100
                   </td>
-                  <td className="py-3 px-4">
+                  <td className="py-3.5 px-4">
                     <GradeBadge grade={a.letterGrade} size="sm" />
                   </td>
-                  <td className="py-3 px-4 text-right">
+                  <td className="py-3.5 px-4 text-right">
                     <Link
                       to={`/journal-check/results/${a.journalId}`}
-                      className="ss-btn-secondary text-[11px] py-1 px-2.5"
+                      className="ss-btn-secondary text-[11px] py-1 px-3 font-semibold whitespace-nowrap"
                     >
                       Inspect Evidence
                     </Link>

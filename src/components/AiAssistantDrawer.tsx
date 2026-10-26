@@ -79,7 +79,7 @@ export const AiAssistantDrawer: React.FC = () => {
 
       {/* Slide-over Modal / Drawer */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 overflow-hidden flex justify-end bg-black/60 backdrop-blur-sm transition-opacity">
+        <div className="fixed inset-0 z-50 overflow-hidden flex justify-end bg-[#06231E]/60 backdrop-blur-sm transition-opacity">
           <div className="w-full max-w-md bg-[#0A3D36] border-l-2 border-[#06231E] shadow-2xl flex flex-col h-full animate-in slide-in-from-right duration-200 text-[#FAF6EE]">
             
             {/* Header */}

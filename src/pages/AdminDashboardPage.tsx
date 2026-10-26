@@ -49,34 +49,36 @@ export const AdminDashboardPage: React.FC = () => {
   if (user?.role !== 'ADMIN') {
     return (
       <div className="max-w-2xl mx-auto py-20 px-4 text-center space-y-3">
-        <h2 className="font-display text-xl font-bold text-rose-400">Access Denied</h2>
-        <p className="text-xs text-[#8A8173]">Administrative privileges are required to view this interface.</p>
+        <h2 className="font-serif text-xl font-bold text-[#A81B1B]">Access Denied</h2>
+        <p className="text-xs text-[#4B635E]">Administrative privileges are required to view this interface.</p>
       </div>
     );
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#0A3D36]">
       
       {/* Top Banner */}
       <div>
-        <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400">
+        <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
           Smart Scholars · Platform Administration
         </span>
-        <h1 className="font-display text-3xl font-extrabold text-zinc-100 mt-1">
+        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A3D36] tracking-tight mt-2">
           System Administration Console
         </h1>
-        <p className="text-xs sm:text-sm text-[#A3998B] mt-1 max-w-2xl leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#4B635E] mt-1.5 max-w-2xl leading-relaxed">
           Manage user permissions, monitor external bibliographic registry adapters, review database health, and inspect traceable administrative audit logs.
         </p>
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-[#241F1A] pb-2">
+      <div className="flex items-center gap-2 border-b border-[#0A3D36]/15 pb-2">
         <button
           onClick={() => setActiveTab('users')}
-          className={`flex items-center gap-2 text-xs font-mono px-4 py-2 rounded-md transition-colors ${
-            activeTab === 'users' ? 'bg-white text-zinc-950 font-semibold font-bold' : 'text-zinc-400 hover:text-zinc-100'
+          className={`flex items-center gap-2 text-xs font-mono px-4 py-2 rounded-sm border transition-colors ${
+            activeTab === 'users'
+              ? 'bg-[#0A3D36] text-[#FAF6EE] font-bold border-[#0A3D36]'
+              : 'bg-[#FFFDF9] text-[#4B635E] border-[#0A3D36]/20 hover:bg-[#FAF6EE]'
           }`}
         >
           <Users className="w-3.5 h-3.5" />
@@ -85,8 +87,10 @@ export const AdminDashboardPage: React.FC = () => {
 
         <button
           onClick={() => setActiveTab('health')}
-          className={`flex items-center gap-2 text-xs font-mono px-4 py-2 rounded-md transition-colors ${
-            activeTab === 'health' ? 'bg-white text-zinc-950 font-semibold font-bold' : 'text-zinc-400 hover:text-zinc-100'
+          className={`flex items-center gap-2 text-xs font-mono px-4 py-2 rounded-sm border transition-colors ${
+            activeTab === 'health'
+              ? 'bg-[#0A3D36] text-[#FAF6EE] font-bold border-[#0A3D36]'
+              : 'bg-[#FFFDF9] text-[#4B635E] border-[#0A3D36]/20 hover:bg-[#FAF6EE]'
           }`}
         >
           <Activity className="w-3.5 h-3.5" />
@@ -95,8 +99,10 @@ export const AdminDashboardPage: React.FC = () => {
 
         <button
           onClick={() => setActiveTab('logs')}
-          className={`flex items-center gap-2 text-xs font-mono px-4 py-2 rounded-md transition-colors ${
-            activeTab === 'logs' ? 'bg-white text-zinc-950 font-semibold font-bold' : 'text-zinc-400 hover:text-zinc-100'
+          className={`flex items-center gap-2 text-xs font-mono px-4 py-2 rounded-sm border transition-colors ${
+            activeTab === 'logs'
+              ? 'bg-[#0A3D36] text-[#FAF6EE] font-bold border-[#0A3D36]'
+              : 'bg-[#FFFDF9] text-[#4B635E] border-[#0A3D36]/20 hover:bg-[#FAF6EE]'
           }`}
         >
           <History className="w-3.5 h-3.5" />
@@ -105,36 +111,36 @@ export const AdminDashboardPage: React.FC = () => {
       </div>
 
       {loading ? (
-        <div className="py-12 text-center text-xs text-[#9E9486]">
+        <div className="py-12 text-center text-xs text-[#4B635E] font-mono">
           Loading administrative console...
         </div>
       ) : activeTab === 'users' ? (
-        <div className="bg-[#121215] border border-[#26201B] rounded-xl overflow-hidden">
+        <div className="ss-card overflow-hidden shadow-paper">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#18181b] border-b border-[#26201A] text-[#9E9486] font-mono uppercase text-[10px]">
+              <thead className="bg-[#0A3D36] text-[#FAF6EE] font-mono uppercase text-[10.5px]">
                 <tr>
-                  <th className="py-3 px-4">User</th>
-                  <th className="py-3 px-4">Institution</th>
-                  <th className="py-3 px-4">Email</th>
-                  <th className="py-3 px-4">Role</th>
-                  <th className="py-3 px-4 text-right">Modify Permission</th>
+                  <th className="py-3 px-4 font-bold">User</th>
+                  <th className="py-3 px-4 font-bold">Institution</th>
+                  <th className="py-3 px-4 font-bold">Email</th>
+                  <th className="py-3 px-4 font-bold">Role</th>
+                  <th className="py-3 px-4 font-bold text-right">Modify Permission</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#201B17]">
+              <tbody className="divide-y divide-[#0A3D36]/10 bg-[#FFFDF9]">
                 {users.map(u => (
-                  <tr key={u.id} className="hover:bg-[#18181b] transition-colors">
-                    <td className="py-3.5 px-4 font-semibold text-zinc-100">
+                  <tr key={u.id} className="hover:bg-[#FAF6EE] transition-colors">
+                    <td className="py-3.5 px-4 font-serif font-bold text-sm text-[#0A3D36]">
                       {u.fullName}
                     </td>
-                    <td className="py-3.5 px-4 text-zinc-400">
+                    <td className="py-3.5 px-4 text-[#4B635E]">
                       {u.institution || '—'}
                     </td>
-                    <td className="py-3.5 px-4 font-mono text-emerald-400">
+                    <td className="py-3.5 px-4 font-mono text-[#0A3D36] font-semibold">
                       {u.email}
                     </td>
                     <td className="py-3.5 px-4">
-                      <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-[#1C1814] border border-[#2E2822] text-zinc-100">
+                      <span className="font-mono text-[10.5px] font-bold px-2 py-0.5 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/20 text-[#0A3D36]">
                         {u.role}
                       </span>
                     </td>
@@ -142,7 +148,7 @@ export const AdminDashboardPage: React.FC = () => {
                       <select
                         value={u.role}
                         onChange={e => handleRoleChange(u.id, e.target.value)}
-                        className="bg-[#100E0C] border border-[#2E2822] text-[11px] font-mono text-zinc-100 rounded px-2 py-1"
+                        className="bg-[#FFFDF9] border border-[#0A3D36]/25 text-[11px] font-mono text-[#0A3D36] font-semibold rounded-sm px-2 py-1 focus:outline-none focus:border-[#0A3D36]"
                       >
                         <option value="RESEARCHER">RESEARCHER</option>
                         <option value="EDITOR">EDITOR</option>
@@ -160,98 +166,98 @@ export const AdminDashboardPage: React.FC = () => {
       ) : activeTab === 'health' ? (
         <div className="space-y-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-[#121215] border border-[#26201B] p-4 rounded-xl">
-              <span className="text-[10px] font-mono uppercase text-[#8C8375] block">Database Status</span>
-              <span className="font-mono text-xl font-bold text-emerald-400 mt-1 block">
+            <div className="ss-card p-4 shadow-paper">
+              <span className="text-[10px] font-mono uppercase text-[#4B635E] font-bold block">Database Status</span>
+              <span className="font-mono text-xl font-bold text-[#109C89] mt-1 block">
                 ✓ {systemHealth?.database?.status || 'CONNECTED'}
               </span>
             </div>
-            <div className="bg-[#121215] border border-[#26201B] p-4 rounded-xl">
-              <span className="text-[10px] font-mono uppercase text-[#8C8375] block">Server Uptime</span>
-              <span className="font-mono text-xl font-bold text-zinc-100 mt-1 block">
+            <div className="ss-card p-4 shadow-paper">
+              <span className="text-[10px] font-mono uppercase text-[#4B635E] font-bold block">Server Uptime</span>
+              <span className="font-mono text-xl font-bold text-[#0A3D36] mt-1 block tabular-nums">
                 {systemHealth?.uptimeSeconds || 0}s
               </span>
             </div>
-            <div className="bg-[#121215] border border-[#26201B] p-4 rounded-xl">
-              <span className="text-[10px] font-mono uppercase text-[#8C8375] block">RSS Memory</span>
-              <span className="font-mono text-xl font-bold text-zinc-100 mt-1 block">
+            <div className="ss-card p-4 shadow-paper">
+              <span className="text-[10px] font-mono uppercase text-[#4B635E] font-bold block">RSS Memory</span>
+              <span className="font-mono text-xl font-bold text-[#0A3D36] mt-1 block tabular-nums">
                 {systemHealth?.process?.rssMemoryMb || 0} MB
               </span>
             </div>
-            <div className="bg-[#121215] border border-[#26201B] p-4 rounded-xl">
-              <span className="text-[10px] font-mono uppercase text-[#8C8375] block">Node Engine</span>
-              <span className="font-mono text-xl font-bold text-emerald-400 mt-1 block">
+            <div className="ss-card p-4 shadow-paper">
+              <span className="text-[10px] font-mono uppercase text-[#4B635E] font-bold block">Node Engine</span>
+              <span className="font-mono text-xl font-bold text-[#109C89] mt-1 block">
                 {systemHealth?.process?.nodeVersion || 'v20+'}
               </span>
             </div>
           </div>
 
           {/* External Adapters Grid */}
-          <div className="bg-[#121215] border border-[#26201B] rounded-xl p-6 space-y-4">
-            <h3 className="font-display font-bold text-base text-zinc-100">
+          <div className="ss-card p-6 space-y-4 shadow-paper">
+            <h3 className="font-serif font-bold text-lg text-[#0A3D36]">
               Public Registry Adapter Endpoints
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-              <div className="p-3 rounded bg-[#18181b] border border-[#27272a] flex items-center justify-between">
+              <div className="p-3 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/15 flex items-center justify-between">
                 <div>
-                  <span className="font-mono font-bold text-zinc-100 block">Crossref REST API</span>
-                  <span className="font-mono text-[11px] text-[#7A7165]">https://api.crossref.org</span>
+                  <span className="font-serif font-bold text-sm text-[#0A3D36] block">Crossref REST API</span>
+                  <span className="font-mono text-[11px] text-[#4B635E]">https://api.crossref.org</span>
                 </div>
-                <span className="text-[10px] font-mono text-emerald-400 px-2 py-0.5 rounded bg-emerald-950 border border-emerald-500/40">ONLINE</span>
+                <span className="text-[10.5px] font-mono font-bold text-[#0A3D36] px-2 py-0.5 rounded-sm bg-[#E8F8F5] border border-[#109C89]">ONLINE</span>
               </div>
-              <div className="p-3 rounded bg-[#18181b] border border-[#27272a] flex items-center justify-between">
+              <div className="p-3 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/15 flex items-center justify-between">
                 <div>
-                  <span className="font-mono font-bold text-zinc-100 block">OpenAlex API</span>
-                  <span className="font-mono text-[11px] text-[#7A7165]">https://api.openalex.org</span>
+                  <span className="font-serif font-bold text-sm text-[#0A3D36] block">OpenAlex API</span>
+                  <span className="font-mono text-[11px] text-[#4B635E]">https://api.openalex.org</span>
                 </div>
-                <span className="text-[10px] font-mono text-emerald-400 px-2 py-0.5 rounded bg-emerald-950 border border-emerald-500/40">ONLINE</span>
+                <span className="text-[10.5px] font-mono font-bold text-[#0A3D36] px-2 py-0.5 rounded-sm bg-[#E8F8F5] border border-[#109C89]">ONLINE</span>
               </div>
-              <div className="p-3 rounded bg-[#18181b] border border-[#27272a] flex items-center justify-between">
+              <div className="p-3 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/15 flex items-center justify-between">
                 <div>
-                  <span className="font-mono font-bold text-zinc-100 block">DOAJ API v2</span>
-                  <span className="font-mono text-[11px] text-[#7A7165]">https://doaj.org/api/v2</span>
+                  <span className="font-serif font-bold text-sm text-[#0A3D36] block">DOAJ API v2</span>
+                  <span className="font-mono text-[11px] text-[#4B635E]">https://doaj.org/api/v2</span>
                 </div>
-                <span className="text-[10px] font-mono text-emerald-400 px-2 py-0.5 rounded bg-emerald-950 border border-emerald-500/40">ONLINE</span>
+                <span className="text-[10.5px] font-mono font-bold text-[#0A3D36] px-2 py-0.5 rounded-sm bg-[#E8F8F5] border border-[#109C89]">ONLINE</span>
               </div>
-              <div className="p-3 rounded bg-[#18181b] border border-[#27272a] flex items-center justify-between">
+              <div className="p-3 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/15 flex items-center justify-between">
                 <div>
-                  <span className="font-mono font-bold text-zinc-100 block">Wayback Machine API</span>
-                  <span className="font-mono text-[11px] text-[#7A7165]">https://archive.org/wayback</span>
+                  <span className="font-serif font-bold text-sm text-[#0A3D36] block">Wayback Machine API</span>
+                  <span className="font-mono text-[11px] text-[#4B635E]">https://archive.org/wayback</span>
                 </div>
-                <span className="text-[10px] font-mono text-emerald-400 px-2 py-0.5 rounded bg-emerald-950 border border-emerald-500/40">ONLINE</span>
+                <span className="text-[10.5px] font-mono font-bold text-[#0A3D36] px-2 py-0.5 rounded-sm bg-[#E8F8F5] border border-[#109C89]">ONLINE</span>
               </div>
             </div>
           </div>
         </div>
       ) : (
-        <div className="bg-[#121215] border border-[#26201B] rounded-xl overflow-hidden">
+        <div className="ss-card overflow-hidden shadow-paper">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#18181b] border-b border-[#26201A] text-[#9E9486] font-mono uppercase text-[10px]">
+              <thead className="bg-[#0A3D36] text-[#FAF6EE] font-mono uppercase text-[10.5px]">
                 <tr>
-                  <th className="py-3 px-4">Timestamp</th>
-                  <th className="py-3 px-4">Action</th>
-                  <th className="py-3 px-4">Resource</th>
-                  <th className="py-3 px-4">Details</th>
-                  <th className="py-3 px-4">Operator</th>
+                  <th className="py-3 px-4 font-bold">Timestamp</th>
+                  <th className="py-3 px-4 font-bold">Action</th>
+                  <th className="py-3 px-4 font-bold">Resource</th>
+                  <th className="py-3 px-4 font-bold">Details</th>
+                  <th className="py-3 px-4 font-bold">Operator</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#201B17]">
+              <tbody className="divide-y divide-[#0A3D36]/10 bg-[#FFFDF9]">
                 {auditLogs.map(l => (
-                  <tr key={l.id} className="hover:bg-[#18181b] transition-colors">
-                    <td className="py-3 px-4 font-mono text-[#8C8375]">
+                  <tr key={l.id} className="hover:bg-[#FAF6EE] transition-colors">
+                    <td className="py-3 px-4 font-mono text-[#4B635E]">
                       {new Date(l.createdAt).toLocaleTimeString()}
                     </td>
-                    <td className="py-3 px-4 font-mono text-emerald-400">
+                    <td className="py-3 px-4 font-mono font-bold text-[#0A3D36]">
                       {l.action}
                     </td>
-                    <td className="py-3 px-4 text-zinc-100">
+                    <td className="py-3 px-4 text-[#0A3D36] font-serif font-semibold">
                       {l.resource}
                     </td>
-                    <td className="py-3 px-4 text-zinc-400">
+                    <td className="py-3 px-4 text-[#4B635E]">
                       {l.details || '—'}
                     </td>
-                    <td className="py-3 px-4 font-mono text-[#9E9486]">
+                    <td className="py-3 px-4 font-mono text-[#4B635E]">
                       {l.user?.fullName || 'System'}
                     </td>
                   </tr>

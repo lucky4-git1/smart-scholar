@@ -31,14 +31,14 @@ export const StatusPage: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8 text-[#0A3D36]">
       
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400">
+          <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
             Real-Time Infrastructure Health
           </span>
-          <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-zinc-100 mt-1">
+          <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A3D36] tracking-tight mt-2">
             System & Adapter Status
           </h1>
         </div>
@@ -46,7 +46,7 @@ export const StatusPage: React.FC = () => {
         <button
           onClick={checkStatus}
           disabled={loading}
-          className="ss-btn-secondary text-xs py-1.5 px-3 flex items-center gap-1.5"
+          className="ss-btn-secondary text-xs py-1.5 px-3 flex items-center gap-1.5 font-semibold"
         >
           <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
           <span>Refresh</span>
@@ -54,16 +54,16 @@ export const StatusPage: React.FC = () => {
       </div>
 
       {/* Main Status Card */}
-      <div className="bg-[#121215] border border-emerald-500/40 rounded-lg p-6 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-md bg-emerald-950 border border-emerald-500/50 flex items-center justify-center text-emerald-400">
-            <CheckCircle2 className="w-5 h-5" />
+      <div className="ss-card border-2 border-[#109C89] p-6 flex items-center justify-between shadow-paper">
+        <div className="flex items-center gap-3.5">
+          <div className="w-10 h-10 rounded-sm bg-[#E8F8F5] border border-[#109C89] flex items-center justify-center text-[#0A3D36]">
+            <CheckCircle2 className="w-5 h-5 text-[#109C89]" />
           </div>
           <div>
-            <h2 className="font-display font-bold text-lg text-zinc-100">
+            <h2 className="font-serif font-bold text-lg text-[#0A3D36]">
               All Core Systems & Adapters Operational
             </h2>
-            <p className="text-xs text-zinc-400 font-mono">
+            <p className="text-xs text-[#4B635E] font-mono mt-0.5">
               Last checked: {health?.timestamp || new Date().toISOString()}
             </p>
           </div>
@@ -72,20 +72,20 @@ export const StatusPage: React.FC = () => {
 
       {/* Adapters List */}
       <div className="space-y-3">
-        <h3 className="font-display font-bold text-base text-zinc-100">
+        <h3 className="font-serif font-bold text-lg text-[#0A3D36]">
           External Bibliographic Registry Adapters
         </h3>
 
-        <div className="divide-y divide-zinc-800 bg-[#121215] border border-zinc-800 rounded-lg overflow-hidden">
+        <div className="divide-y divide-[#0A3D36]/10 ss-card overflow-hidden shadow-paper">
           {adapters.map((a, i) => (
-            <div key={i} className="p-4 flex items-center justify-between text-xs">
+            <div key={i} className="p-4 flex items-center justify-between text-xs hover:bg-[#FAF6EE] transition-colors">
               <div>
-                <span className="font-semibold text-zinc-100 block">{a.name}</span>
-                <span className="font-mono text-[11px] text-zinc-500">{a.endpoint}</span>
+                <span className="font-serif font-bold text-sm text-[#0A3D36] block">{a.name}</span>
+                <span className="font-mono text-[11px] text-[#4B635E]">{a.endpoint}</span>
               </div>
               <div className="flex items-center gap-3">
-                <span className="font-mono text-[10px] text-zinc-400">{a.latency}</span>
-                <span className="font-mono text-[10px] uppercase px-2 py-0.5 rounded bg-emerald-950 border border-emerald-500/40 text-emerald-400 font-semibold">
+                <span className="font-mono text-[10.5px] text-[#4B635E] font-semibold">{a.latency}</span>
+                <span className="font-mono text-[10px] uppercase px-2 py-0.5 rounded-sm bg-[#E8F8F5] border border-[#109C89] text-[#0A3D36] font-bold">
                   {a.status}
                 </span>
               </div>

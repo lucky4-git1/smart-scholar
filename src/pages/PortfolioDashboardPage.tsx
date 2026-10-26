@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Layers, Stethoscope, AlertTriangle, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Layers, Stethoscope, AlertTriangle, ArrowRight, ShieldCheck, CheckCircle2, Search, ArrowUpRight } from 'lucide-react';
 import { GradeBadge } from '../components/Badge';
 import { apiRequest } from '../lib/api';
 
@@ -18,119 +18,128 @@ export const PortfolioDashboardPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#0A3D36]">
       
       {/* Top Banner */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#0A3D36]/15 pb-6">
         <div>
-          <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-semibold">
-            Portfolio Console · Multi-Journal Governance
+          <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
+            PORTFOLIO CONSOLE · MULTI-JOURNAL SURVEILLANCE
           </span>
-          <h1 className="font-display text-3xl font-extrabold text-zinc-100 tracking-tight mt-1">
+          <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A3D36] tracking-tight mt-2">
             Every Journal You are Responsible For, On One Screen
           </h1>
-          <p className="text-xs sm:text-sm text-zinc-400 mt-1 max-w-2xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#4B635E] mt-1.5 max-w-2xl leading-relaxed">
             Designed for society publishers, university presses, and portfolio managers. Monitor ratings, track dead article URLs, and reconcile metadata across all active titles.
           </p>
         </div>
 
-        <Link to="/journal-audit" className="ss-btn-primary text-xs py-2 px-3.5">
-          <span>Audit Portfolio Journal</span>
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link to="/journal-audit" className="ss-btn-primary text-xs py-2 px-4 whitespace-nowrap font-bold">
+            <span>Audit Portfolio Journal</span>
+          </Link>
+        </div>
       </div>
 
-      {/* Metrics Row */}
+      {/* Metrics Row (Crisp Paper Cards with Deep Pine Figures) */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         
-        <div className="bg-[#121215] border border-zinc-800 p-5 rounded-xl shadow-tactile">
-          <span className="text-[10px] font-mono text-zinc-400 uppercase block">Monitored Journals</span>
-          <span className="font-mono text-3xl font-extrabold text-zinc-100 mt-1 block tabular-nums">
+        <div className="ss-card p-5 shadow-paper">
+          <span className="text-[10px] font-mono text-[#4B635E] uppercase font-bold block">Monitored Journals</span>
+          <span className="font-mono text-3xl font-extrabold text-[#0A3D36] mt-1 block tabular-nums">
             {data?.metrics?.totalJournals ?? 0}
           </span>
         </div>
 
-        <div className="bg-[#121215] border border-zinc-800 p-5 rounded-xl shadow-tactile">
-          <span className="text-[10px] font-mono text-zinc-400 uppercase block">Average Trust Score</span>
-          <span className="font-mono text-3xl font-extrabold text-zinc-100 mt-1 block tabular-nums">
+        <div className="ss-card p-5 shadow-paper">
+          <span className="text-[10px] font-mono text-[#4B635E] uppercase font-bold block">Average Trust Score</span>
+          <span className="font-mono text-3xl font-extrabold text-[#0A3D36] mt-1 block tabular-nums">
             {data?.metrics?.averageTrustScore ?? 0}
-            <span className="text-xs font-mono text-zinc-400"> / 100</span>
+            <span className="text-xs font-mono text-[#4B635E]"> / 100</span>
           </span>
         </div>
 
-        <div className="bg-[#121215] border border-zinc-800 p-5 rounded-xl shadow-tactile">
-          <span className="text-[10px] font-mono text-emerald-400 uppercase block">DOI Resolution Health</span>
-          <span className="font-mono text-3xl font-extrabold text-emerald-400 mt-1 block tabular-nums">
+        <div className="ss-card p-5 shadow-paper">
+          <span className="text-[10px] font-mono text-[#0A3D36] uppercase font-bold block">DOI Resolution Health</span>
+          <span className="font-mono text-3xl font-extrabold text-[#109C89] mt-1 block tabular-nums">
             {data?.metrics?.resolutionHealthRate ?? 100}%
           </span>
         </div>
 
-        <div className="bg-[#121215] border border-zinc-800 p-5 rounded-xl shadow-tactile">
-          <span className="text-[10px] font-mono text-rose-400 uppercase block">Dead DOI Alerts</span>
-          <span className="font-mono text-3xl font-extrabold text-rose-400 mt-1 block tabular-nums">
+        <div className="ss-card p-5 shadow-paper">
+          <span className="text-[10px] font-mono text-[#A81B1B] uppercase font-bold block">Dead DOI Alerts</span>
+          <span className="font-mono text-3xl font-extrabold text-[#A81B1B] mt-1 block tabular-nums">
             {data?.metrics?.brokenDois ?? 0}
           </span>
         </div>
 
       </div>
 
-      {/* Monitored Journals Table */}
-      <div className="bg-[#121215] border border-zinc-800 rounded-xl overflow-hidden shadow-tactile">
-        <div className="p-5 border-b border-zinc-800">
-          <h3 className="font-display font-semibold text-sm text-zinc-100">
-            Active Portfolio Serials
-          </h3>
-          <p className="text-xs text-zinc-400">
-            Continuous surveillance of indexing readiness, DOI persistence, and editorial integrity.
-          </p>
+      {/* Monitored Journals Table (Paper Style with Oxford Pine Header) */}
+      <div className="ss-card overflow-hidden shadow-paper">
+        <div className="p-5 border-b border-[#0A3D36]/15 bg-[#FAF6EE] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h3 className="font-serif font-bold text-lg text-[#0A3D36]">
+              Active Portfolio Serials
+            </h3>
+            <p className="text-xs text-[#4B635E]">
+              Continuous surveillance of indexing readiness, DOI persistence, and editorial integrity.
+            </p>
+          </div>
+          <span className="text-xs font-mono text-[#0A3D36] font-bold">
+            {data?.journals?.length ?? 0} TITLES MONITORED
+          </span>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-zinc-900 border-b border-zinc-800 text-zinc-400 font-mono uppercase text-[10px]">
+            <thead className="bg-[#0A3D36] text-[#FAF6EE] font-mono uppercase text-[10.5px]">
               <tr>
-                <th className="py-3 px-4 font-semibold">Journal Title</th>
-                <th className="py-3 px-4 font-semibold">Publisher</th>
-                <th className="py-3 px-4 font-semibold">Primary ISSN</th>
-                <th className="py-3 px-4 font-semibold">Score</th>
-                <th className="py-3 px-4 font-semibold">Grade</th>
-                <th className="py-3 px-4 font-semibold">Last Checked</th>
-                <th className="py-3 px-4 font-semibold text-right">Actions</th>
+                <th className="py-3.5 px-4 font-bold">Journal Title</th>
+                <th className="py-3.5 px-4 font-bold">Publisher</th>
+                <th className="py-3.5 px-4 font-bold">Primary ISSN</th>
+                <th className="py-3.5 px-4 font-bold">Score</th>
+                <th className="py-3.5 px-4 font-bold">Grade</th>
+                <th className="py-3.5 px-4 font-bold">Last Checked</th>
+                <th className="py-3.5 px-4 font-bold text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-800/80">
+            <tbody className="divide-y divide-[#0A3D36]/10 bg-[#FFFDF9]">
               {data?.journals?.map((j: any) => (
-                <tr key={j.id} className="hover:bg-zinc-900/50 transition-colors">
-                  <td className="py-3.5 px-4 font-semibold text-zinc-100">
+                <tr key={j.id} className="hover:bg-[#FAF6EE] transition-colors">
+                  <td className="py-3.5 px-4 font-serif font-bold text-sm text-[#0A3D36]">
                     {j.title}
                   </td>
-                  <td className="py-3.5 px-4 text-zinc-400">
+                  <td className="py-3.5 px-4 text-[#4B635E]">
                     {j.publisher || 'Unknown'}
                   </td>
-                  <td className="py-3.5 px-4 font-mono text-zinc-300">
+                  <td className="py-3.5 px-4 font-mono text-[#0A3D36]">
                     {j.identifiers?.[0]?.value || '—'}
                   </td>
-                  <td className="py-3.5 px-4 font-mono tabular-nums font-semibold text-zinc-200">
+                  <td className="py-3.5 px-4 font-mono tabular-nums font-bold text-[#0A3D36]">
                     {j.currentScore !== null ? `${j.currentScore} / 100` : '—'}
                   </td>
                   <td className="py-3.5 px-4">
                     <GradeBadge grade={j.currentGrade || 'UNVERIFIED'} size="sm" />
                   </td>
-                  <td className="py-3.5 px-4 font-mono text-zinc-400">
+                  <td className="py-3.5 px-4 font-mono text-[#4B635E]">
                     {j.lastAssessedAt ? new Date(j.lastAssessedAt).toLocaleDateString() : 'Pending'}
                   </td>
                   <td className="py-3.5 px-4 text-right">
-                    <Link
-                      to={`/journal-check/results/${j.id}`}
-                      className="ss-btn-secondary text-[11px] py-1 px-2.5 mr-2"
-                    >
-                      Evidence
-                    </Link>
-                    <Link
-                      to={`/journal-audit?url=${encodeURIComponent(j.websiteUrl || '')}`}
-                      className="ss-btn-primary text-[11px] py-1 px-2.5"
-                    >
-                      Audit
-                    </Link>
+                    <div className="inline-flex items-center justify-end gap-2">
+                      <Link
+                        to={`/journal-check/results/${j.id}`}
+                        className="ss-btn-secondary text-[11px] py-1 px-3 font-semibold whitespace-nowrap"
+                      >
+                        Evidence
+                      </Link>
+                      <Link
+                        to={`/journal-audit?url=${encodeURIComponent(j.websiteUrl || '')}`}
+                        className="ss-btn-primary text-[11px] py-1 px-3 font-bold whitespace-nowrap"
+                      >
+                        Audit
+                      </Link>
+                    </div>
                   </td>
                 </tr>
               ))}
