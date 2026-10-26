@@ -12,7 +12,8 @@ import {
   Calendar,
   Share2,
   Printer,
-  BookmarkPlus
+  BookmarkPlus,
+  ArrowLeft
 } from 'lucide-react';
 import { GradeBadge } from '../components/Badge';
 import { apiRequest } from '../lib/api';
@@ -70,8 +71,8 @@ export const JournalResultsPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="py-20 text-center text-xs text-zinc-400">
-        Loading journal trust evidence...
+      <div className="py-24 text-center text-xs font-mono text-[#0A3D36]">
+        Retrieving verified evidence and computing 5-pillar scores...
       </div>
     );
   }
@@ -79,37 +80,44 @@ export const JournalResultsPage: React.FC = () => {
   if (error || !journal) {
     return (
       <div className="max-w-2xl mx-auto py-16 px-4 text-center space-y-4">
-        <h2 className="font-display text-xl font-bold text-rose-400">Journal Assessment Not Found</h2>
-        <p className="text-xs text-zinc-400">{error || 'The requested journal could not be located.'}</p>
+        <h2 className="font-serif text-2xl font-bold text-[#A81B1B]">Journal Assessment Not Found</h2>
+        <p className="text-xs text-[#4B635E]">{error || 'The requested journal record could not be located in the registry.'}</p>
         <Link to="/journal-check" className="ss-btn-primary text-xs">Return to Journal Check</Link>
       </div>
     );
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 bg-[#FAF6EE]">
       
-      {/* Top Banner & Title */}
-      <div className="bg-[#121215] border border-zinc-800 rounded-xl p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-tactile">
+      {/* Back button */}
+      <div>
+        <Link to="/journal-check" className="inline-flex items-center gap-1.5 text-xs font-mono text-[#4B635E] hover:text-[#0A3D36]">
+          <ArrowLeft className="w-3.5 h-3.5" /> Back to Journal Check
+        </Link>
+      </div>
+
+      {/* Top Banner & Title (Oxford Pine Card with Retro Shadow) */}
+      <div className="bg-[#0A3D36] text-[#FAF6EE] border-2 border-[#06231E] rounded-sm p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-retro">
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">
-              Methodology v1.2.0-2026
+            <span className="font-mono text-[10px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#F6AC6D] px-2 py-0.5 rounded-sm">
+              METHODOLOGY v1.2.0-2026
             </span>
-            <span className="text-xs text-zinc-400 font-mono">
+            <span className="text-xs text-[#22D0B9] font-mono">
               Evaluated: {assessment?.createdAt ? new Date(assessment.createdAt).toLocaleDateString() : 'Recent'}
             </span>
           </div>
 
-          <h1 className="font-display text-2xl sm:text-3xl font-extrabold text-zinc-50 tracking-tight">
+          <h1 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
             {journal.title}
           </h1>
 
-          <div className="flex flex-wrap items-center gap-4 text-xs text-zinc-400">
-            <span>Publisher: <strong className="text-zinc-200">{journal.publisher || 'Not Declared'}</strong></span>
-            <span>ISSN: <strong className="font-mono text-zinc-200">{journal.identifiers?.[0]?.value || '—'}</strong></span>
+          <div className="flex flex-wrap items-center gap-4 text-xs text-[#D1E6E2]">
+            <span>Publisher: <strong className="text-white">{journal.publisher || 'Not Declared'}</strong></span>
+            <span>ISSN: <strong className="font-mono text-[#22D0B9]">{journal.identifiers?.[0]?.value || '—'}</strong></span>
             {journal.websiteUrl && (
-              <a href={journal.websiteUrl} target="_blank" rel="noreferrer" className="text-zinc-300 hover:text-white inline-flex items-center gap-1">
+              <a href={journal.websiteUrl} target="_blank" rel="noreferrer" className="text-[#22D0B9] hover:underline inline-flex items-center gap-1">
                 Website <ExternalLink className="w-3 h-3" />
               </a>
             )}
@@ -117,140 +125,145 @@ export const JournalResultsPage: React.FC = () => {
         </div>
 
         {/* Big Score Card */}
-        <div className="flex items-center gap-4 bg-zinc-900 border border-zinc-800 p-4 rounded-lg self-start md:self-auto shadow-tactile">
+        <div className="flex items-center gap-4 bg-[#06231E] border border-[#166054] p-4 rounded-sm self-start md:self-auto shadow-retro-sm">
           <div className="text-right">
-            <span className="text-[10px] font-mono uppercase text-zinc-400 block">Trust Rating</span>
-            <span className="font-mono text-3xl font-extrabold text-zinc-50 tabular-nums">
+            <span className="text-[10px] font-mono uppercase text-[#8CB8B0] block font-semibold">Trust Rating</span>
+            <span className="font-mono text-3xl font-extrabold text-white tabular-nums">
               {assessment?.totalScore ?? journal.currentScore ?? '—'}
             </span>
-            <span className="text-xs font-mono text-zinc-400"> / 100</span>
+            <span className="text-xs font-mono text-[#8CB8B0]"> / 100</span>
           </div>
-          <div className="h-10 w-px bg-zinc-800"></div>
+          <div className="h-10 w-px bg-[#166054]" />
           <GradeBadge grade={assessment?.letterGrade || journal.currentGrade || 'UNVERIFIED'} size="lg" />
         </div>
       </div>
 
       {/* Action Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-zinc-800/80">
+      <div className="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-[#0A3D36]/15">
         <div className="flex items-center gap-2">
           <button
             onClick={handleAddToWatchlist}
             className="ss-btn-secondary text-xs py-1.5 px-3"
           >
-            <BookmarkPlus className="w-3.5 h-3.5 text-zinc-400" />
+            <BookmarkPlus className="w-3.5 h-3.5 text-[#0A3D36]" />
             <span>{watchlistSuccess ? '✓ Added to Watchlist' : 'Add to Watchlist'}</span>
           </button>
           <button
             onClick={handlePrint}
             className="ss-btn-secondary text-xs py-1.5 px-3"
           >
-            <Printer className="w-3.5 h-3.5 text-zinc-400" />
-            <span>Print Report</span>
+            <Printer className="w-3.5 h-3.5 text-[#0A3D36]" />
+            <span>Print Dossier</span>
           </button>
         </div>
 
         <Link
           to={`/journal-audit?url=${encodeURIComponent(journal.websiteUrl || '')}`}
-          className="ss-btn-primary text-xs py-1.5 px-3"
+          className="ss-btn-primary text-xs py-1.5 px-4 font-bold"
         >
-          <span>Run 121-Point Indexing Audit &rarr;</span>
+          <span>Run 121-Point Technical Audit &rarr;</span>
         </Link>
       </div>
 
       {/* Red Flag Warning Box (if applicable) */}
       {assessment && assessment.redFlagCount > 0 && (
-        <div className="bg-rose-500/10 border border-rose-500/30 rounded-lg p-5 space-y-2 text-rose-300">
-          <div className="flex items-center gap-2 font-display font-bold text-sm text-rose-200">
-            <AlertTriangle className="w-4 h-4 text-rose-400" />
+        <div className="bg-[#FDF2F2] border-2 border-[#E05252] rounded-sm p-5 space-y-2 text-[#A81B1B] shadow-retro-sm">
+          <div className="flex items-center gap-2 font-serif font-bold text-base text-[#A81B1B]">
+            <AlertTriangle className="w-5 h-5 text-[#A81B1B]" />
             <span>Integrity Red Flags Detected ({assessment.redFlagCount})</span>
           </div>
-          <p className="text-xs leading-relaxed text-rose-300">
+          <p className="text-xs leading-relaxed text-[#781414]">
             This journal has triggered critical integrity signals based on missing bibliographic registration, lack of persistent DOIs, or unverified peer review. Review the itemized criteria below.
           </p>
         </div>
       )}
 
-      {/* 5-Pillar Score Breakdown */}
+      {/* 5-Pillar Score Breakdown (Ivory Paper with Pine Accents) */}
       {assessment && (
-        <div className="bg-[#121215] border border-zinc-800 rounded-xl p-6 space-y-4 shadow-tactile">
-          <h2 className="font-display font-bold text-base text-zinc-100">
-            Five Pillars Scoring Breakdown
-          </h2>
+        <div className="ss-card p-6 space-y-4 shadow-paper">
+          <div className="flex items-center justify-between border-b border-[#0A3D36]/10 pb-3">
+            <h2 className="font-serif font-bold text-xl text-[#0A3D36]">
+              Five Pillars Scoring Breakdown
+            </h2>
+            <span className="font-mono text-xs text-[#4B635E]">
+              TOTAL: {assessment.totalScore} / 100
+            </span>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-3 pt-1">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 pt-1">
             
-            <div className="bg-zinc-900 border border-zinc-800/90 p-3.5 rounded-lg">
+            <div className="bg-[#FAF6EE] border border-[#0A3D36]/15 p-4 rounded-sm">
               <div className="flex items-center justify-between text-xs mb-2">
-                <span className="text-zinc-400">Identity</span>
-                <span className="font-mono text-zinc-200 font-bold tabular-nums">
+                <span className="font-serif font-bold text-[#0A3D36]">Identity</span>
+                <span className="font-mono text-[#0A3D36] font-bold tabular-nums">
                   {assessment.identityGovernanceScore} / 25
                 </span>
               </div>
-              <div className="w-full bg-zinc-950 h-1.5 rounded-sm overflow-hidden">
+              <div className="w-full bg-[#EADBC6] h-1.5 rounded-sm overflow-hidden">
                 <div
-                  className="bg-emerald-400 h-full rounded-sm"
+                  className="bg-[#0A3D36] h-full rounded-sm"
                   style={{ width: `${(assessment.identityGovernanceScore / 25) * 100}%` }}
-                ></div>
+                />
               </div>
             </div>
 
-            <div className="bg-zinc-900 border border-zinc-800/90 p-3.5 rounded-lg">
+            <div className="bg-[#FAF6EE] border border-[#0A3D36]/15 p-4 rounded-sm">
               <div className="flex items-center justify-between text-xs mb-2">
-                <span className="text-zinc-400">Editorial</span>
-                <span className="font-mono text-zinc-200 font-bold tabular-nums">
+                <span className="font-serif font-bold text-[#0A3D36]">Editorial</span>
+                <span className="font-mono text-[#0A3D36] font-bold tabular-nums">
                   {assessment.editorialIntegrityScore} / 25
                 </span>
               </div>
-              <div className="w-full bg-zinc-950 h-1.5 rounded-sm overflow-hidden">
+              <div className="w-full bg-[#EADBC6] h-1.5 rounded-sm overflow-hidden">
                 <div
-                  className="bg-emerald-400 h-full rounded-sm"
+                  className="bg-[#0A3D36] h-full rounded-sm"
                   style={{ width: `${(assessment.editorialIntegrityScore / 25) * 100}%` }}
-                ></div>
+                />
               </div>
             </div>
 
-            <div className="bg-zinc-900 border border-zinc-800/90 p-3.5 rounded-lg">
+            <div className="bg-[#FAF6EE] border border-[#0A3D36]/15 p-4 rounded-sm">
               <div className="flex items-center justify-between text-xs mb-2">
-                <span className="text-zinc-400">Technical</span>
-                <span className="font-mono text-zinc-200 font-bold tabular-nums">
+                <span className="font-serif font-bold text-[#0A3D36]">Technical</span>
+                <span className="font-mono text-[#0A3D36] font-bold tabular-nums">
                   {assessment.technicalStandingScore} / 20
                 </span>
               </div>
-              <div className="w-full bg-zinc-950 h-1.5 rounded-sm overflow-hidden">
+              <div className="w-full bg-[#EADBC6] h-1.5 rounded-sm overflow-hidden">
                 <div
-                  className="bg-emerald-400 h-full rounded-sm"
+                  className="bg-[#0A3D36] h-full rounded-sm"
                   style={{ width: `${(assessment.technicalStandingScore / 20) * 100}%` }}
-                ></div>
+                />
               </div>
             </div>
 
-            <div className="bg-zinc-900 border border-zinc-800/90 p-3.5 rounded-lg">
+            <div className="bg-[#FAF6EE] border border-[#0A3D36]/15 p-4 rounded-sm">
               <div className="flex items-center justify-between text-xs mb-2">
-                <span className="text-zinc-400">Preservation</span>
-                <span className="font-mono text-zinc-200 font-bold tabular-nums">
+                <span className="font-serif font-bold text-[#0A3D36]">Preservation</span>
+                <span className="font-mono text-[#0A3D36] font-bold tabular-nums">
                   {assessment.preservationAccessScore} / 15
                 </span>
               </div>
-              <div className="w-full bg-zinc-950 h-1.5 rounded-sm overflow-hidden">
+              <div className="w-full bg-[#EADBC6] h-1.5 rounded-sm overflow-hidden">
                 <div
-                  className="bg-emerald-400 h-full rounded-sm"
+                  className="bg-[#0A3D36] h-full rounded-sm"
                   style={{ width: `${(assessment.preservationAccessScore / 15) * 100}%` }}
-                ></div>
+                />
               </div>
             </div>
 
-            <div className="bg-zinc-900 border border-zinc-800/90 p-3.5 rounded-lg">
+            <div className="bg-[#FAF6EE] border border-[#0A3D36]/15 p-4 rounded-sm">
               <div className="flex items-center justify-between text-xs mb-2">
-                <span className="text-zinc-400">Reach & Cite</span>
-                <span className="font-mono text-zinc-200 font-bold tabular-nums">
+                <span className="font-serif font-bold text-[#0A3D36]">Reach & Cite</span>
+                <span className="font-mono text-[#0A3D36] font-bold tabular-nums">
                   {assessment.reachCitationScore} / 15
                 </span>
               </div>
-              <div className="w-full bg-zinc-950 h-1.5 rounded-sm overflow-hidden">
+              <div className="w-full bg-[#EADBC6] h-1.5 rounded-sm overflow-hidden">
                 <div
-                  className="bg-emerald-400 h-full rounded-sm"
+                  className="bg-[#0A3D36] h-full rounded-sm"
                   style={{ width: `${(assessment.reachCitationScore / 15) * 100}%` }}
-                ></div>
+                />
               </div>
             </div>
 
@@ -260,57 +273,57 @@ export const JournalResultsPage: React.FC = () => {
 
       {/* Itemized Criteria Evidence Table */}
       {assessment && (
-        <div className="bg-[#121215] border border-zinc-800 rounded-xl overflow-hidden shadow-tactile">
-          <div className="p-5 border-b border-zinc-800">
-            <h2 className="font-display font-bold text-base text-zinc-100">
+        <div className="ss-card overflow-hidden shadow-paper">
+          <div className="p-5 border-b border-[#0A3D36]/15 bg-[#FAF6EE]">
+            <h2 className="font-serif font-bold text-xl text-[#0A3D36]">
               Itemized Evaluation Criteria & Explanations
             </h2>
-            <p className="text-xs text-zinc-400">
+            <p className="text-xs text-[#4B635E]">
               Every point awarded or withheld is strictly explained by deterministic rule results.
             </p>
           </div>
 
-          <div className="divide-y divide-zinc-800/80">
+          <div className="divide-y divide-[#0A3D36]/10 bg-[#FFFDF9]">
             {assessment.criteriaResults?.map((c) => {
               const isVerified = c.status === 'VERIFIED';
               const isFailed = c.status === 'FAILED';
 
               return (
-                <div key={c.id} className="p-4 sm:p-5 hover:bg-zinc-900/50 transition-colors flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                <div key={c.id} className="p-4 sm:p-5 hover:bg-[#FAF6EE] transition-colors flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                   <div className="space-y-1.5 max-w-3xl">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400 px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800">
+                      <span className="font-mono text-[9.5px] uppercase font-bold tracking-wider text-[#0A3D36] px-1.5 py-0.5 rounded-sm bg-[#F2E8D8] border border-[#0A3D36]/20">
                         {c.pillar}
                       </span>
-                      <h4 className="font-display font-semibold text-xs sm:text-sm text-zinc-100">
+                      <h4 className="font-serif font-bold text-sm text-[#0A3D36]">
                         {c.name}
                       </h4>
                     </div>
 
-                    <p className="text-xs text-zinc-400 leading-relaxed">
+                    <p className="text-xs text-[#4B635E] leading-relaxed">
                       {c.explanation}
                     </p>
 
-                    <div className="flex items-center gap-2 text-[10px] font-mono text-zinc-400">
-                      <span>Source: <strong className="text-zinc-300">{c.sourceName}</strong></span>
+                    <div className="flex items-center gap-2 text-[10px] font-mono text-[#0A3D36]">
+                      <span>Source: <strong className="text-[#0A3D36]">{c.sourceName}</strong></span>
                     </div>
                   </div>
 
                   <div className="flex items-center sm:flex-col sm:items-end justify-between gap-2 flex-shrink-0">
-                    <span className="font-mono text-xs sm:text-sm font-bold text-zinc-200 tabular-nums">
+                    <span className="font-mono text-xs sm:text-sm font-bold text-[#0A3D36] tabular-nums">
                       {c.awardedPoints} / {c.maxPoints} pts
                     </span>
 
                     <span
-                      className={`inline-flex items-center gap-1 text-[10px] font-mono uppercase px-2 py-0.5 rounded border ${
+                      className={`inline-flex items-center gap-1 text-[10px] font-mono uppercase px-2 py-0.5 rounded-sm border ${
                         isVerified
-                          ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+                          ? 'bg-[#E8F8F5] border-[#109C89] text-[#0A3D36] font-bold'
                           : isFailed
-                          ? 'bg-rose-500/10 border-rose-500/30 text-rose-300'
-                          : 'bg-zinc-800/60 border-zinc-700/60 text-zinc-400'
+                          ? 'bg-[#FDF2F2] border-[#E05252] text-[#A81B1B] font-bold'
+                          : 'bg-[#F5EFE3] border-[#D5BA9B] text-[#4B635E]'
                       }`}
                     >
-                      {isVerified ? <CheckCircle2 className="w-3 h-3" /> : isFailed ? <XCircle className="w-3 h-3" /> : <HelpCircle className="w-3 h-3" />}
+                      {isVerified ? <CheckCircle2 className="w-3 h-3 text-[#109C89]" /> : isFailed ? <XCircle className="w-3 h-3 text-[#A81B1B]" /> : <HelpCircle className="w-3 h-3" />}
                       {c.status}
                     </span>
                   </div>
@@ -323,18 +336,18 @@ export const JournalResultsPage: React.FC = () => {
 
       {/* Verifiable Registry Provenance Records */}
       {assessment && assessment.evidenceRecords && assessment.evidenceRecords.length > 0 && (
-        <div className="bg-[#121215] border border-zinc-800 rounded-xl p-5 space-y-3 shadow-tactile">
-          <h3 className="font-display font-semibold text-xs text-zinc-200 uppercase tracking-wider font-mono">
+        <div className="ss-card p-5 space-y-3 shadow-paper">
+          <h3 className="font-mono font-bold text-xs text-[#0A3D36] uppercase tracking-wider">
             Evidence Provenance & Registry Verification Timestamps
           </h3>
           <div className="space-y-2">
             {assessment.evidenceRecords.map((e) => (
-              <div key={e.id} className="p-3 rounded bg-zinc-900 border border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+              <div key={e.id} className="p-3 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
                 <div>
-                  <div className="font-mono font-semibold text-zinc-200 text-[11px]">{e.sourceName}</div>
-                  <div className="text-zinc-400 text-[11px] mt-0.5">{e.extractedSummary}</div>
+                  <div className="font-mono font-bold text-[#0A3D36] text-[11px]">{e.sourceName}</div>
+                  <div className="text-[#4B635E] text-[11px] mt-0.5">{e.extractedSummary}</div>
                 </div>
-                <div className="text-[10px] font-mono text-zinc-400 sm:text-right">
+                <div className="text-[10px] font-mono text-[#0A3D36] sm:text-right">
                   Verified: {new Date(e.verifiedAt).toISOString()}
                 </div>
               </div>

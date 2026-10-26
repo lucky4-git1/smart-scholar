@@ -10,28 +10,28 @@ export const GradeBadge: React.FC<GradeBadgeProps> = ({ grade = 'UNVERIFIED', si
     switch (grade) {
       case 'A+':
       case 'A':
-        return 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400';
+        return 'bg-[#E8F8F5] border-[#109C89] text-[#0A3D36] font-bold';
       case 'B':
-        return 'bg-teal-500/10 border-teal-500/30 text-teal-300';
+        return 'bg-[#EAF5F3] border-[#18BAA4] text-[#0C4840] font-semibold';
       case 'C':
-        return 'bg-amber-500/10 border-amber-500/30 text-amber-400';
+        return 'bg-[#FEF5ED] border-[#F6AC6D] text-[#8C460C] font-semibold';
       case 'D':
-        return 'bg-orange-500/10 border-orange-500/30 text-orange-400';
+        return 'bg-[#FDF0E7] border-[#EF8D41] text-[#9E3E00] font-semibold';
       case 'RED_FLAG':
-        return 'bg-rose-500/15 border-rose-500/40 text-rose-300 font-bold';
+        return 'bg-[#FDF2F2] border-[#E05252] text-[#A81B1B] font-extrabold';
       default:
-        return 'bg-zinc-800/60 border-zinc-700/60 text-zinc-400';
+        return 'bg-[#F5EFE3] border-[#D5BA9B] text-[#4B635E]';
     }
   };
 
   const sizeClass = {
-    sm: 'text-[11px] px-1.5 py-0.5',
-    md: 'text-xs px-2 py-0.5',
-    lg: 'text-sm px-2.5 py-1 font-bold',
+    sm: 'text-[10.5px] px-2 py-0.5',
+    md: 'text-xs px-2.5 py-0.5',
+    lg: 'text-sm px-3.5 py-1 font-bold',
   }[size];
 
   return (
-    <span className={`inline-block border font-mono rounded ${sizeClass} ${getStyle()}`}>
+    <span className={`inline-block border font-mono rounded-sm ${sizeClass} ${getStyle()}`}>
       {grade === 'RED_FLAG' ? 'RED FLAG' : `GRADE ${grade}`}
     </span>
   );
@@ -41,19 +41,19 @@ export const SeverityBadge: React.FC<{ severity: 'CRITICAL' | 'WARNING' | 'INFO'
   switch (severity) {
     case 'CRITICAL':
       return (
-        <span className="inline-block text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-rose-500/10 border border-rose-500/30 text-rose-300">
+        <span className="inline-block text-[10.5px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-sm bg-[#FDF2F2] border border-[#E05252] text-[#A81B1B] font-bold">
           Critical Defect
         </span>
       );
     case 'WARNING':
       return (
-        <span className="inline-block text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300">
+        <span className="inline-block text-[10.5px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-sm bg-[#FEF5ED] border border-[#F6AC6D] text-[#8C460C] font-semibold">
           Warning
         </span>
       );
     default:
       return (
-        <span className="inline-block text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-zinc-800/60 border border-zinc-700/60 text-zinc-400">
+        <span className="inline-block text-[10.5px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-sm bg-[#F5EFE3] border border-[#D5BA9B] text-[#4B635E]">
           Informational
         </span>
       );

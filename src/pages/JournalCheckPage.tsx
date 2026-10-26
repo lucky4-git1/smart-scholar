@@ -65,71 +65,72 @@ export const JournalCheckPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 bg-[#FAF6EE]">
       
       {/* Header */}
-      <div>
-        <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-semibold">
-          Scholar Shield · Journal Trust Rating
+      <div className="border-b border-[#0A3D36]/15 pb-6">
+        <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#F2E8D8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
+          SCHOLAR SHIELD · JOURNAL TRUST REGISTRY
         </span>
-        <h1 className="font-display text-3xl font-extrabold text-zinc-100 tracking-tight mt-1">
+        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A3D36] tracking-tight mt-2">
           Journal Trust & Safety Search
         </h1>
-        <p className="text-xs sm:text-sm text-zinc-400 mt-1 max-w-2xl leading-relaxed">
-          Search over millions of serials. Check ISSN validation, DOI resolution, editorial board transparency, and peer-review integrity with verifiable evidence.
+        <p className="text-xs sm:text-sm text-[#4B635E] mt-1.5 max-w-2xl leading-relaxed">
+          Search over millions of serials. Verify ISSN registration on CIEPS, DOI resolution, editorial board transparency, and peer-review integrity with verifiable evidence.
         </p>
       </div>
 
       {/* Search Input Box */}
       <form onSubmit={handleSearchSubmit} className="max-w-3xl">
-        <div className="flex items-center bg-zinc-900 border border-zinc-700/80 focus-within:border-zinc-400 focus-within:ring-2 focus-within:ring-zinc-400/20 rounded-lg p-1.5 shadow-tactile transition-all">
-          <Search className="w-4 h-4 text-zinc-400 ml-3" />
+        <div className="flex items-center bg-[#FFFDF9] border-2 border-[#0A3D36] focus-within:border-[#109C89] rounded-sm p-1.5 shadow-retro transition-all">
+          <Search className="w-4 h-4 text-[#0A3D36] ml-2.5" />
           <input
             type="text"
             value={query}
             onChange={e => setQuery(e.target.value)}
-            placeholder="Search by Journal Title, ISSN (e.g. 2044-6055), or Publisher..."
-            className="w-full bg-transparent px-3 py-2 text-xs sm:text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none"
+            placeholder="Search by Journal Title, ISSN (e.g. 0028-0836), or Publisher..."
+            className="w-full bg-transparent px-3 py-2 text-xs sm:text-sm text-[#0A3D36] placeholder-[#7A9891] focus:outline-none font-medium"
           />
           <button
             type="submit"
             disabled={loading}
-            className="ss-btn-primary px-5 py-2 text-xs whitespace-nowrap"
+            className="ss-btn-primary px-5 py-2 text-xs whitespace-nowrap font-bold"
           >
-            {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Search'}
+            {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Search Registry'}
           </button>
         </div>
       </form>
 
       {/* Error state */}
       {error && (
-        <div className="p-4 rounded-md bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs">
+        <div className="p-4 rounded-sm bg-[#FDF2F2] border border-[#E05252] text-[#A81B1B] text-xs font-mono">
           {error}
         </div>
       )}
 
       {/* Loading state */}
       {loading && (
-        <div className="py-12 flex flex-col items-center justify-center text-xs text-zinc-400 gap-2">
-          <Loader2 className="w-5 h-5 animate-spin text-zinc-300" />
-          <span>Querying verified registries and local repository...</span>
+        <div className="py-16 flex flex-col items-center justify-center text-xs text-[#0A3D36] gap-2 font-mono">
+          <Loader2 className="w-6 h-6 animate-spin text-[#109C89]" />
+          <span>Querying verified registries (Crossref, DOAJ, OpenAlex)...</span>
         </div>
       )}
 
       {/* Results List */}
       {!loading && (
         <div className="space-y-4">
-          <div className="flex items-center justify-between text-xs text-zinc-400 font-mono">
+          <div className="flex items-center justify-between text-xs text-[#4B635E] font-mono border-b border-[#0A3D36]/10 pb-2">
             <span>SHOWING {journals.length} JOURNALS</span>
+            <span>METHODOLOGY: v1.2.0-2026</span>
           </div>
 
           {journals.length === 0 ? (
-            <div className="bg-[#121215] border border-zinc-800 rounded-lg p-10 text-center space-y-3 shadow-tactile">
-              <ShieldAlert className="w-8 h-8 text-zinc-500 mx-auto" />
-              <h3 className="font-display font-semibold text-base text-zinc-100">
+            <div className="ss-card p-10 text-center space-y-3 shadow-paper">
+              <ShieldAlert className="w-8 h-8 text-[#A81B1B] mx-auto" />
+              <h3 className="font-serif font-bold text-lg text-[#0A3D36]">
                 No journals found matching "{query}"
               </h3>
-              <p className="text-xs text-zinc-400 max-w-md mx-auto">
+              <p className="text-xs text-[#4B635E] max-w-md mx-auto">
                 Try searching by ISSN (e.g. `0028-0836`), exact journal title, or publisher name. Alternatively, submit a journal website for an indexing audit.
               </p>
               <div className="pt-2">
@@ -139,65 +140,65 @@ export const JournalCheckPage: React.FC = () => {
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {journals.map((j) => {
                 const issn = j.identifiers?.[0]?.value || 'N/A';
                 const isAssessed = j.currentScore !== null && j.currentScore !== undefined;
 
                 return (
-                  <div key={j.id} className="ss-card p-5 flex flex-col justify-between">
+                  <div key={j.id} className="ss-card p-5 flex flex-col justify-between shadow-paper hover:shadow-paper-lg transition-all">
                     <div>
                       <div className="flex items-start justify-between gap-3 mb-2">
                         <div>
-                          <h3 className="font-display font-semibold text-sm text-zinc-100 leading-snug">
+                          <h3 className="font-serif font-bold text-lg text-[#0A3D36] leading-snug">
                             {j.title}
                           </h3>
-                          <p className="text-xs text-zinc-400 mt-0.5">
+                          <p className="text-xs text-[#4B635E] mt-0.5">
                             {j.publisher || 'Unknown Publisher'}
                           </p>
                         </div>
                         <GradeBadge grade={j.currentGrade || 'UNVERIFIED'} size="sm" />
                       </div>
 
-                      <div className="grid grid-cols-2 gap-2 my-4 pt-3 border-t border-zinc-800/80 text-xs">
+                      <div className="grid grid-cols-2 gap-2 my-4 pt-3 border-t border-[#0A3D36]/10 text-xs">
                         <div>
-                          <span className="text-[10px] font-mono uppercase text-zinc-400 block">Primary ISSN</span>
-                          <span className="font-mono text-zinc-200 font-semibold">{issn}</span>
+                          <span className="text-[10px] font-mono uppercase text-[#4B635E] block font-semibold">Primary ISSN</span>
+                          <span className="font-mono text-[#0A3D36] font-bold">{issn}</span>
                         </div>
                         <div>
-                          <span className="text-[10px] font-mono uppercase text-zinc-400 block">Trust Rating Score</span>
-                          <span className="font-mono text-zinc-100 font-bold tabular-nums">
+                          <span className="text-[10px] font-mono uppercase text-[#4B635E] block font-semibold">Trust Rating Score</span>
+                          <span className="font-mono text-[#0A3D36] font-extrabold tabular-nums">
                             {isAssessed ? `${j.currentScore} / 100` : 'Not evaluated'}
                           </span>
                         </div>
                         <div>
-                          <span className="text-[10px] font-mono uppercase text-zinc-400 block">DOAJ Status</span>
-                          <span className="text-zinc-300">
+                          <span className="text-[10px] font-mono uppercase text-[#4B635E] block font-semibold">DOAJ Status</span>
+                          <span className="text-[#0A3D36] font-medium">
                             {j.doajIndexed ? '✓ DOAJ Indexed' : '— Not in DOAJ'}
                           </span>
                         </div>
                         <div>
-                          <span className="text-[10px] font-mono uppercase text-zinc-400 block">Crossref Active</span>
-                          <span className="text-zinc-300">
+                          <span className="text-[10px] font-mono uppercase text-[#4B635E] block font-semibold">Crossref Active</span>
+                          <span className="text-[#0A3D36] font-medium">
                             {j.crossrefActive ? '✓ Active DOIs' : '— No DOIs'}
                           </span>
                         </div>
                       </div>
                     </div>
 
-                    <div className="pt-3 border-t border-zinc-800/80 flex items-center justify-between">
+                    <div className="pt-3 border-t border-[#0A3D36]/10 flex items-center justify-between">
                       {isAssessed && !j.isExternal ? (
                         <Link
                           to={`/journal-check/results/${j.id}`}
-                          className="ss-btn-primary text-xs py-1.5 px-3.5 w-full text-center"
+                          className="ss-btn-primary text-xs py-2 px-3.5 w-full text-center font-bold"
                         >
-                          View Full 5-Pillar Evidence
+                          View Full 5-Pillar Evidence Dossier
                         </Link>
                       ) : (
                         <button
                           onClick={() => handleAssessNow(j)}
                           disabled={evaluating}
-                          className="ss-btn-primary text-xs py-1.5 px-3.5 w-full flex items-center justify-center gap-1.5"
+                          className="ss-btn-primary text-xs py-2 px-3.5 w-full flex items-center justify-center gap-1.5 font-bold"
                         >
                           {evaluating ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}
                           <span>Run 5-Pillar Assessment Now</span>

@@ -13,7 +13,12 @@ import {
   FileCheck2,
   Lock,
   Compass,
-  ArrowUpRight
+  ArrowUpRight,
+  ExternalLink,
+  Check,
+  FileCode,
+  Activity,
+  Globe2
 } from 'lucide-react';
 import { GradeBadge } from '../components/Badge';
 import { apiRequest } from '../lib/api';
@@ -50,251 +55,541 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-20 pb-20">
+    <div className="bg-[#FAF6EE] text-[#0A3D36]">
       
-      {/* 1. HERO SECTION */}
-      <section className="relative pt-20 pb-16 border-b border-zinc-800/80 bg-gradient-to-b from-[#0e0e12] via-[#09090b] to-[#09090b]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
+      {/* 1. HERO SECTION (Deep Oxford Pine with Ivory Dossier Card) */}
+      <section className="relative bg-[#0A3D36] text-[#FAF6EE] pt-16 pb-20 border-b border-[#072E27] overflow-hidden">
+        {/* Subtle architectural grid pattern */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#22D0B9_1px,transparent_1px)] [background-size:16px_16px]" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Col: Headings & Search Form */}
+            <div className="lg:col-span-7 space-y-6">
+              
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-[10px] uppercase tracking-wider bg-[#F6AC6D] text-[#0A3D36] font-bold px-2 py-0.5 rounded-sm">
+                  AUDIT STANDARD v1.2.0
+                </span>
+                <span className="text-xs font-mono text-[#22D0B9] tracking-tight">
+                  121 CRITERIA · VERIFIED EVIDENCE
+                </span>
+              </div>
+
+              <h1 className="font-serif text-4xl sm:text-6xl text-white font-normal leading-[1.08] tracking-tight">
+                Which <span className="italic font-normal text-[#22D0B9]">journals</span> can be <span className="underline decoration-[#F6AC6D] decoration-2 underline-offset-8">trusted</span>?
+              </h1>
+
+              <p className="text-sm sm:text-base text-[#D1E6E2] max-w-xl leading-relaxed">
+                Deterministic trust evaluations, page-level indexing readiness audits, and persistent DOI diagnostics backed by verified bibliographic registries. Zero black-box claims.
+              </p>
+
+              {/* Primary Search Form */}
+              <form onSubmit={handleSearch} className="max-w-xl pt-2">
+                <div className="flex items-center bg-[#06231E] border border-[#166054] focus-within:border-[#22D0B9] rounded-sm p-1.5 shadow-retro transition-all">
+                  <Search className="w-4 h-4 text-[#22D0B9] ml-2.5" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={e => setSearchQuery(e.target.value)}
+                    placeholder="Enter Journal Title, ISSN (e.g. 0028-0836), or DOI..."
+                    className="w-full bg-transparent px-3 py-2 text-xs sm:text-sm text-white placeholder-[#8CB8B0] focus:outline-none"
+                  />
+                  <button
+                    type="submit"
+                    className="ss-btn-primary text-xs px-5 py-2.5 whitespace-nowrap"
+                  >
+                    Check Journal
+                  </button>
+                </div>
+
+                {/* Quick Test Chips */}
+                <div className="flex flex-wrap items-center gap-2 mt-3.5 text-xs text-[#B8D7D1] font-mono">
+                  <span className="text-[#8CB8B0] text-[11px]">Direct records:</span>
+                  <button 
+                    type="button" 
+                    onClick={() => navigate('/journal-check?q=Nature')} 
+                    className="px-2 py-0.5 rounded-sm bg-[#06231E] border border-[#166054] text-[#D1E6E2] hover:border-[#22D0B9] hover:text-white transition-colors"
+                  >
+                    Nature
+                  </button>
+                  <button 
+                    type="button" 
+                    onClick={() => navigate('/journal-check?q=1932-6203')} 
+                    className="px-2 py-0.5 rounded-sm bg-[#06231E] border border-[#166054] text-[#D1E6E2] hover:border-[#22D0B9] hover:text-white transition-colors"
+                  >
+                    1932-6203 (PLOS ONE)
+                  </button>
+                  <button 
+                    type="button" 
+                    onClick={() => navigate('/journal-check?q=Sensors')} 
+                    className="px-2 py-0.5 rounded-sm bg-[#06231E] border border-[#166054] text-[#D1E6E2] hover:border-[#22D0B9] hover:text-white transition-colors"
+                  >
+                    Sensors (MDPI)
+                  </button>
+                </div>
+              </form>
+
+              {/* Verified Sources Disclaimer */}
+              <div className="pt-2 flex items-center gap-6 text-[11px] font-mono text-[#8CB8B0]">
+                <span>CROSSREF RESOLUTION: 100%</span>
+                <span>•</span>
+                <span>DOAJ DIRECTORY: LIVE</span>
+                <span>•</span>
+                <span>OPENALEX: INTEGRATED</span>
+              </div>
+
+            </div>
+
+            {/* Right Col: The Interactive Ivory Audit Dossier Card */}
+            <div className="lg:col-span-5">
+              <div className="bg-[#FFFDF9] border border-[#072E27] rounded-sm p-6 text-[#0A3D36] shadow-retro relative transform hover:-translate-y-1 transition-transform duration-200">
+                
+                {/* Dossier Header */}
+                <div className="flex items-center justify-between pb-3 border-b border-[#0A3D36]/15">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#22D0B9] border border-[#0A3D36]" />
+                    <span className="font-mono text-[10px] uppercase font-bold tracking-wider text-[#0A3D36]">
+                      LIVE AUDIT SPECIMEN #SS-2026
+                    </span>
+                  </div>
+                  <span className="font-mono text-[10px] text-[#4B635E] uppercase">
+                    REGISTRY REF: CR-0836
+                  </span>
+                </div>
+
+                {/* Journal Identity */}
+                <div className="py-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="font-serif text-2xl font-bold text-[#0A3D36] leading-tight">
+                        Nature
+                      </h3>
+                      <p className="text-xs text-[#4B635E] mt-0.5">
+                        Springer Nature · ISSN 0028-0836 · United Kingdom
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-mono text-2xl font-bold text-[#0A3D36] tabular-nums">
+                        96<span className="text-sm text-[#4B635E]">/100</span>
+                      </div>
+                      <span className="inline-block px-2 py-0.5 bg-[#E8F8F5] border border-[#109C89] text-[#0A3D36] font-mono text-[10px] font-bold rounded-sm mt-0.5">
+                        GRADE A+
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 5-Pillar Score Bars */}
+                <div className="space-y-2.5 py-3 border-t border-b border-[#0A3D36]/10 text-xs">
+                  <div>
+                    <div className="flex justify-between text-[11px] font-mono mb-1">
+                      <span className="text-[#0A3D36] font-medium">1. Identity & Governance</span>
+                      <span className="font-bold">24 / 25</span>
+                    </div>
+                    <div className="w-full bg-[#F2E8D8] h-1.5 rounded-sm overflow-hidden">
+                      <div className="bg-[#0A3D36] h-full rounded-sm" style={{ width: '96%' }} />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between text-[11px] font-mono mb-1">
+                      <span className="text-[#0A3D36] font-medium">2. Editorial Integrity</span>
+                      <span className="font-bold">25 / 25</span>
+                    </div>
+                    <div className="w-full bg-[#F2E8D8] h-1.5 rounded-sm overflow-hidden">
+                      <div className="bg-[#0A3D36] h-full rounded-sm" style={{ width: '100%' }} />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between text-[11px] font-mono mb-1">
+                      <span className="text-[#0A3D36] font-medium">3. Technical Standing</span>
+                      <span className="font-bold">19 / 20</span>
+                    </div>
+                    <div className="w-full bg-[#F2E8D8] h-1.5 rounded-sm overflow-hidden">
+                      <div className="bg-[#0A3D36] h-full rounded-sm" style={{ width: '95%' }} />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between text-[11px] font-mono mb-1">
+                      <span className="text-[#0A3D36] font-medium">4. Preservation & Access</span>
+                      <span className="font-bold">14 / 15</span>
+                    </div>
+                    <div className="w-full bg-[#F2E8D8] h-1.5 rounded-sm overflow-hidden">
+                      <div className="bg-[#0A3D36] h-full rounded-sm" style={{ width: '93%' }} />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between text-[11px] font-mono mb-1">
+                      <span className="text-[#0A3D36] font-medium">5. Reach & Citation</span>
+                      <span className="font-bold">14 / 15</span>
+                    </div>
+                    <div className="w-full bg-[#F2E8D8] h-1.5 rounded-sm overflow-hidden">
+                      <div className="bg-[#0A3D36] h-full rounded-sm" style={{ width: '93%' }} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Evidence Badges Strip */}
+                <div className="pt-3 flex flex-wrap items-center gap-2 text-[10.5px] font-mono">
+                  <span className="px-2 py-0.5 rounded-sm bg-[#E8F8F5] border border-[#109C89] text-[#0A3D36] font-semibold flex items-center gap-1">
+                    <Check className="w-3 h-3 text-[#109C89]" /> DOAJ INDEXED
+                  </span>
+                  <span className="px-2 py-0.5 rounded-sm bg-[#E8F8F5] border border-[#109C89] text-[#0A3D36] font-semibold flex items-center gap-1">
+                    <Check className="w-3 h-3 text-[#109C89]" /> CROSSREF DOI: RESOLVED
+                  </span>
+                  <span className="px-2 py-0.5 rounded-sm bg-[#FAF0E4] border border-[#F6AC6D] text-[#8C460C] font-semibold">
+                    CLOCKSS ESCROW
+                  </span>
+                </div>
+
+                {/* Direct Action Link */}
+                <div className="pt-4 mt-2">
+                  <Link
+                    to="/journal-check/results/journal-1"
+                    className="w-full ss-btn-secondary text-xs py-2 text-center flex items-center justify-center gap-1.5 font-bold"
+                  >
+                    <span>Inspect Complete Evidence Dossier</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 2. THE FIVE SCORING PILLARS (Warm Parchment Strip from Reference Screenshot) */}
+      <section className="bg-[#F2E8D8] py-16 border-b border-[#0A3D36]/15">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-[11px] font-mono tracking-wider uppercase text-zinc-400">
-            Standard 5-Pillar Research Integrity Methodology &bull; v1.2
+          <div className="max-w-3xl mb-12">
+            <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FAF6EE] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
+              SCORING METHODOLOGY
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#0A3D36] font-bold mt-2 tracking-tight">
+              What makes a journal trustworthy or predatory?
+            </h2>
+            <p className="text-xs sm:text-sm text-[#4B635E] mt-2 leading-relaxed">
+              Every score on Smart Scholars is derived from 121 normalized criteria evaluated across five deterministic pillars. We query authoritative registries directly — no self-reported numbers.
+            </p>
           </div>
 
-          <h1 className="font-display text-4xl sm:text-6xl font-extrabold text-zinc-50 tracking-[-0.03em] leading-[1.08]">
-            Which journals can be <span className="text-white underline decoration-emerald-500/50 decoration-2 underline-offset-8">trusted</span>?
-          </h1>
-
-          <p className="text-sm sm:text-base text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            Deterministic trust evaluations, page-level indexing readiness audits, and persistent DOI diagnostics backed by verified bibliographic registries.
-          </p>
-
-          {/* Unified Search Form */}
-          <form onSubmit={handleSearch} className="max-w-2xl mx-auto pt-2">
-            <div className="flex items-center bg-zinc-900/90 border border-zinc-700/80 focus-within:border-zinc-400 focus-within:ring-2 focus-within:ring-zinc-400/20 rounded-lg p-1.5 shadow-tactile transition-all">
-              <Search className="w-4 h-4 text-zinc-400 ml-3" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)}
-                placeholder="Enter Journal Title, ISSN (e.g. 1932-6203), or DOI prefix (10.1038)..."
-                className="w-full bg-transparent px-3 py-2.5 text-xs sm:text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="ss-btn-primary px-5 py-2.5 text-xs whitespace-nowrap"
-              >
-                Check Journal
-              </button>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+            
+            {/* Pillar 1 */}
+            <div className="ss-card p-5 flex flex-col justify-between">
+              <div>
+                <div className="font-mono text-2xl font-bold text-[#0A3D36] tabular-nums">01 /</div>
+                <div className="font-mono text-[10.5px] uppercase font-bold text-[#22D0B9] bg-[#0A3D36] px-1.5 py-0.5 rounded-sm inline-block mt-2">
+                  WEIGHT: 25%
+                </div>
+                <h3 className="font-serif text-base font-bold text-[#0A3D36] mt-3 mb-1.5">
+                  Identity & Governance
+                </h3>
+                <p className="text-xs text-[#4B635E] leading-relaxed">
+                  Active ISSN confirmed via CIEPS, verified publisher corporate address, transparent editorial board identity.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-[#0A3D36]/10 mt-4 text-[11px] font-mono text-[#0A3D36]">
+                32 Audit Checks
+              </div>
             </div>
-            <div className="flex flex-wrap items-center justify-center gap-2 mt-3 text-xs text-zinc-400 font-mono">
-              <span className="text-zinc-400">Try verified records:</span>
-              <button type="button" onClick={() => navigate('/journal-check?q=Nature')} className="px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700">Nature</button>
-              <button type="button" onClick={() => navigate('/journal-check?q=1932-6203')} className="px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700">1932-6203 (PLOS ONE)</button>
-              <button type="button" onClick={() => navigate('/journal-check?q=BMJ%20Open')} className="px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700">BMJ Open</button>
+
+            {/* Pillar 2 */}
+            <div className="ss-card p-5 flex flex-col justify-between">
+              <div>
+                <div className="font-mono text-2xl font-bold text-[#0A3D36] tabular-nums">02 /</div>
+                <div className="font-mono text-[10.5px] uppercase font-bold text-[#22D0B9] bg-[#0A3D36] px-1.5 py-0.5 rounded-sm inline-block mt-2">
+                  WEIGHT: 25%
+                </div>
+                <h3 className="font-serif text-base font-bold text-[#0A3D36] mt-3 mb-1.5">
+                  Editorial Integrity
+                </h3>
+                <p className="text-xs text-[#4B635E] leading-relaxed">
+                  Peer-review process disclosure, COPE ethics conformity, retraction policy, automated plagiarism screening.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-[#0A3D36]/10 mt-4 text-[11px] font-mono text-[#0A3D36]">
+                28 Audit Checks
+              </div>
             </div>
-          </form>
+
+            {/* Pillar 3 */}
+            <div className="ss-card p-5 flex flex-col justify-between">
+              <div>
+                <div className="font-mono text-2xl font-bold text-[#0A3D36] tabular-nums">03 /</div>
+                <div className="font-mono text-[10.5px] uppercase font-bold text-[#22D0B9] bg-[#0A3D36] px-1.5 py-0.5 rounded-sm inline-block mt-2">
+                  WEIGHT: 20%
+                </div>
+                <h3 className="font-serif text-base font-bold text-[#0A3D36] mt-3 mb-1.5">
+                  Technical Standing
+                </h3>
+                <p className="text-xs text-[#4B635E] leading-relaxed">
+                  Persistent Crossref DOI resolution, machine-readable CC licensing, JATS XML metadata, OAI-PMH endpoints.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-[#0A3D36]/10 mt-4 text-[11px] font-mono text-[#0A3D36]">
+                24 Audit Checks
+              </div>
+            </div>
+
+            {/* Pillar 4 */}
+            <div className="ss-card p-5 flex flex-col justify-between">
+              <div>
+                <div className="font-mono text-2xl font-bold text-[#0A3D36] tabular-nums">04 /</div>
+                <div className="font-mono text-[10.5px] uppercase font-bold text-[#22D0B9] bg-[#0A3D36] px-1.5 py-0.5 rounded-sm inline-block mt-2">
+                  WEIGHT: 15%
+                </div>
+                <h3 className="font-serif text-base font-bold text-[#0A3D36] mt-3 mb-1.5">
+                  Preservation & Access
+                </h3>
+                <p className="text-xs text-[#4B635E] leading-relaxed">
+                  Digital preservation escrow (Portico, CLOCKSS, Internet Archive), transparent author fees or Diamond OA status.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-[#0A3D36]/10 mt-4 text-[11px] font-mono text-[#0A3D36]">
+                19 Audit Checks
+              </div>
+            </div>
+
+            {/* Pillar 5 */}
+            <div className="ss-card p-5 flex flex-col justify-between">
+              <div>
+                <div className="font-mono text-2xl font-bold text-[#0A3D36] tabular-nums">05 /</div>
+                <div className="font-mono text-[10.5px] uppercase font-bold text-[#22D0B9] bg-[#0A3D36] px-1.5 py-0.5 rounded-sm inline-block mt-2">
+                  WEIGHT: 15%
+                </div>
+                <h3 className="font-serif text-base font-bold text-[#0A3D36] mt-3 mb-1.5">
+                  Reach & Citation
+                </h3>
+                <p className="text-xs text-[#4B635E] leading-relaxed">
+                  OpenAlex citation history, Crossref reference distribution, global author representation, zero citation cartel anomalies.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-[#0A3D36]/10 mt-4 text-[11px] font-mono text-[#0A3D36]">
+                18 Audit Checks
+              </div>
+            </div>
+
+          </div>
 
         </div>
       </section>
 
-      {/* 2. FOUR AUDIENCE ENTRY POINTS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 3. FOUR AUDIENCE ENTRY POINTS (Paper Ivory Cards) */}
+      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
-            <h2 className="font-display text-2xl font-bold tracking-tight text-zinc-100">
-              Start Where You Stand
+            <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#F2E8D8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
+              WORKSPACES
+            </span>
+            <h2 className="font-serif text-3xl font-bold text-[#0A3D36] mt-2 tracking-tight">
+              Tailored Portals for Every Stakeholder
             </h2>
-            <p className="text-xs text-zinc-400 mt-1 font-mono uppercase tracking-wider">
-              Tailored workflows for researchers, editors, institutions, and publishers
-            </p>
           </div>
-          <div className="text-xs text-zinc-400 font-mono">
-            4 DISTINCT PORTALS
+          <div className="text-xs font-mono text-[#4B635E]">
+            4 AUDIENCE WORKSPACES
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
           
           {/* Authors */}
-          <div className="ss-card p-5 flex flex-col justify-between">
+          <div className="ss-card p-6 flex flex-col justify-between">
             <div>
-              <div className="w-8 h-8 rounded-md bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300 mb-4">
-                <BookOpen className="w-4 h-4 text-emerald-400" />
+              <div className="w-8 h-8 rounded-sm bg-[#FAF0E4] border border-[#F6AC6D] flex items-center justify-center text-[#DE7324] mb-4">
+                <BookOpen className="w-4 h-4" />
               </div>
-              <h3 className="font-display font-semibold text-sm text-zinc-100 mb-1.5">
+              <h3 className="font-serif text-lg font-bold text-[#0A3D36] mb-1.5">
                 Authors & Researchers
               </h3>
-              <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-                Verify journal legitimacy, peer-review transparency, and indexing eligibility before paying submission or publication charges.
+              <p className="text-xs text-[#4B635E] leading-relaxed mb-4">
+                Verify journal legitimacy, peer-review transparency, and indexing eligibility before paying APC fees.
               </p>
             </div>
-            <Link to="/journal-check" className="text-xs font-medium text-zinc-300 hover:text-white inline-flex items-center gap-1 group">
-              <span>Check a journal</span> <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            <Link to="/journal-check" className="ss-btn-secondary text-xs w-full py-2 justify-between">
+              <span>Check a journal</span> <ChevronRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
           {/* Editors */}
-          <div className="ss-card p-5 flex flex-col justify-between">
+          <div className="ss-card p-6 flex flex-col justify-between">
             <div>
-              <div className="w-8 h-8 rounded-md bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300 mb-4">
-                <FileCheck2 className="w-4 h-4 text-emerald-400" />
+              <div className="w-8 h-8 rounded-sm bg-[#E8F8F5] border border-[#109C89] flex items-center justify-center text-[#0A3D36] mb-4">
+                <FileCheck2 className="w-4 h-4 text-[#109C89]" />
               </div>
-              <h3 className="font-display font-semibold text-sm text-zinc-100 mb-1.5">
+              <h3 className="font-serif text-lg font-bold text-[#0A3D36] mb-1.5">
                 Editors & Publishers
               </h3>
-              <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-                Crawl your journal domain against 121 criteria to generate an actionable remediation plan before applying to Scopus or DOAJ.
+              <p className="text-xs text-[#4B635E] leading-relaxed mb-4">
+                Crawl your journal domain against 121 criteria to generate an automated repair plan before applying to DOAJ or Scopus.
               </p>
             </div>
-            <Link to="/journal-audit" className="text-xs font-medium text-zinc-300 hover:text-white inline-flex items-center gap-1 group">
-              <span>Start readiness audit</span> <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            <Link to="/journal-audit" className="ss-btn-secondary text-xs w-full py-2 justify-between">
+              <span>Start readiness audit</span> <ChevronRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
           {/* Institutions */}
-          <div className="ss-card p-5 flex flex-col justify-between">
+          <div className="ss-card p-6 flex flex-col justify-between">
             <div>
-              <div className="w-8 h-8 rounded-md bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300 mb-4">
-                <Building className="w-4 h-4 text-emerald-400" />
+              <div className="w-8 h-8 rounded-sm bg-[#F2E8D8] border border-[#0A3D36]/20 flex items-center justify-center text-[#0A3D36] mb-4">
+                <Building className="w-4 h-4 text-[#0A3D36]" />
               </div>
-              <h3 className="font-display font-semibold text-sm text-zinc-100 mb-1.5">
+              <h3 className="font-serif text-lg font-bold text-[#0A3D36] mb-1.5">
                 Institutions & Deans
               </h3>
-              <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+              <p className="text-xs text-[#4B635E] leading-relaxed mb-4">
                 Maintain institutional watchlists, run batch CSV publication evaluations, and produce auditable research integrity committee reports.
               </p>
             </div>
-            <Link to="/institution/dashboard" className="text-xs font-medium text-zinc-300 hover:text-white inline-flex items-center gap-1 group">
-              <span>Integrity Desk</span> <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            <Link to="/institution/dashboard" className="ss-btn-secondary text-xs w-full py-2 justify-between">
+              <span>Integrity Desk</span> <ChevronRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
           {/* Portfolio Managers */}
-          <div className="ss-card p-5 flex flex-col justify-between">
+          <div className="ss-card p-6 flex flex-col justify-between">
             <div>
-              <div className="w-8 h-8 rounded-md bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300 mb-4">
-                <Layers className="w-4 h-4 text-emerald-400" />
+              <div className="w-8 h-8 rounded-sm bg-[#0A3D36] border border-[#166054] flex items-center justify-center text-[#22D0B9] mb-4">
+                <Layers className="w-4 h-4" />
               </div>
-              <h3 className="font-display font-semibold text-sm text-zinc-100 mb-1.5">
+              <h3 className="font-serif text-lg font-bold text-[#0A3D36] mb-1.5">
                 Portfolio Managers
               </h3>
-              <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+              <p className="text-xs text-[#4B635E] leading-relaxed mb-4">
                 Monitor complete journal portfolios on a single dashboard, catch dead DOI resolutions, and audit metadata completeness.
               </p>
             </div>
-            <Link to="/portfolio/dashboard" className="text-xs font-medium text-zinc-300 hover:text-white inline-flex items-center gap-1 group">
-              <span>Portfolio Console</span> <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            <Link to="/portfolio/dashboard" className="ss-btn-secondary text-xs w-full py-2 justify-between">
+              <span>Portfolio Console</span> <ChevronRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
         </div>
       </section>
 
-      {/* 3. THE FIVE SCORING PILLARS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#121215] border border-zinc-800 rounded-xl p-7 sm:p-9 shadow-tactile">
-          <div className="max-w-2xl mb-8">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-semibold">
-              Deterministic Scoring Engine
-            </span>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-zinc-100 mt-1">
-              The 5 Pillars of Journal Trust
-            </h2>
-            <p className="text-xs sm:text-sm text-zinc-400 mt-2 leading-relaxed">
-              Every journal rating is computed from verifiable evidence retrieved directly from public scholarly infrastructure. Zero black-box guesswork.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-3.5">
+      {/* 4. THE 121-CRITERION AUDIT ENGINE & REPAIR PLAN (Deep Oxford Pine Container) */}
+      <section className="bg-[#072E27] text-[#FAF6EE] py-16 border-t border-b border-[#0A3D36]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            <div className="bg-zinc-900/80 border border-zinc-800 p-4 rounded-lg">
-              <div className="font-mono text-xl font-bold text-zinc-100 tabular-nums">25%</div>
-              <h4 className="font-display font-semibold text-xs text-zinc-200 mt-1">Identity & Governance</h4>
-              <p className="text-[11px] text-zinc-400 mt-1.5 leading-relaxed">
-                Active ISSN confirmed on CIEPS, verified publisher corporate jurisdiction, transparent editorial leadership.
+            <div className="lg:col-span-6 space-y-4">
+              <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#22D0B9] bg-[#06231E] px-2 py-0.5 rounded-sm border border-[#166054]">
+                SAFE CRAWLER & REPAIR ENGINE
+              </span>
+              <h2 className="font-serif text-3xl sm:text-4xl text-white font-bold leading-tight">
+                Turn Technical Gaps into an Actionable Checklist
+              </h2>
+              <p className="text-xs sm:text-sm text-[#CFE7E2] leading-relaxed">
+                Applying to DOAJ, Scopus, or Web of Science often ends in rejection due to simple technical oversights — missing CC license declarations, broken DOI schemas, or obscured editorial boards.
               </p>
+              <ul className="space-y-2.5 text-xs text-[#D1E6E2] pt-2">
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-[#22D0B9] flex-shrink-0" />
+                  <span>Checks 121 criteria across policies, licensing, and metadata</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-[#22D0B9] flex-shrink-0" />
+                  <span>Provides copy-paste HTML & JATS XML repair snippets</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-[#22D0B9] flex-shrink-0" />
+                  <span>Automated re-crawl verification after publisher fixes</span>
+                </li>
+              </ul>
+              <div className="pt-3">
+                <Link to="/journal-audit" className="ss-btn-primary text-xs px-5 py-2.5">
+                  Launch Safe Journal Audit
+                </Link>
+              </div>
             </div>
 
-            <div className="bg-zinc-900/80 border border-zinc-800 p-4 rounded-lg">
-              <div className="font-mono text-xl font-bold text-zinc-100 tabular-nums">25%</div>
-              <h4 className="font-display font-semibold text-xs text-zinc-200 mt-1">Editorial Integrity</h4>
-              <p className="text-[11px] text-zinc-400 mt-1.5 leading-relaxed">
-                Verifiable peer review workflow, COPE ethics conformity, automated plagiarism screening disclosures.
-              </p>
-            </div>
-
-            <div className="bg-zinc-900/80 border border-zinc-800 p-4 rounded-lg">
-              <div className="font-mono text-xl font-bold text-zinc-100 tabular-nums">20%</div>
-              <h4 className="font-display font-semibold text-xs text-zinc-200 mt-1">Technical Standing</h4>
-              <p className="text-[11px] text-zinc-400 mt-1.5 leading-relaxed">
-                Persistent Crossref DOI resolution, machine-readable CC licensing, JATS XML structured metadata.
-              </p>
-            </div>
-
-            <div className="bg-zinc-900/80 border border-zinc-800 p-4 rounded-lg">
-              <div className="font-mono text-xl font-bold text-zinc-100 tabular-nums">15%</div>
-              <h4 className="font-display font-semibold text-xs text-zinc-200 mt-1">Preservation & Access</h4>
-              <p className="text-[11px] text-zinc-400 mt-1.5 leading-relaxed">
-                Permanent archival escrow (Portico, CLOCKSS, Internet Archive), transparent author fees or Diamond OA.
-              </p>
-            </div>
-
-            <div className="bg-zinc-900/80 border border-zinc-800 p-4 rounded-lg">
-              <div className="font-mono text-xl font-bold text-zinc-100 tabular-nums">15%</div>
-              <h4 className="font-display font-semibold text-xs text-zinc-200 mt-1">Reach & Citation</h4>
-              <p className="text-[11px] text-zinc-400 mt-1.5 leading-relaxed">
-                Documented OpenAlex citation history, Crossref reference distribution, global author and reviewer diversity.
-              </p>
+            {/* Visual Repair Plan Code Preview */}
+            <div className="lg:col-span-6">
+              <div className="bg-[#051F1A] border border-[#166054] rounded-sm p-5 font-mono text-xs shadow-retro">
+                <div className="flex items-center justify-between pb-3 border-b border-[#166054] text-[#22D0B9] text-[11px]">
+                  <span className="flex items-center gap-2">
+                    <FileCode className="w-3.5 h-3.5" /> REPAIR_PLAN_RECOMMENDATION.XML
+                  </span>
+                  <span className="text-[#8CB8B0]">SEVERITY: HIGH</span>
+                </div>
+                <div className="py-3 text-[11.5px] space-y-2 text-[#D1E6E2]">
+                  <p className="text-[#F6AC6D]">
+                    // Missing machine-readable CC license detected on article landing pages
+                  </p>
+                  <pre className="p-3 bg-[#031512] border border-[#0E473E] rounded text-[#22D0B9] overflow-x-auto">
+{`<license xlink:href="https://creativecommons.org/licenses/by/4.0/">
+  <license-p>This work is licensed under a Creative Commons Attribution 4.0 International License.</license-p>
+</license>`}
+                  </pre>
+                  <p className="text-[#8CB8B0] text-[10.5px]">
+                    Expected by: DOAJ v2 Standard, PubMed Central, Scopus Criteria Section 4.2
+                  </p>
+                </div>
+              </div>
             </div>
 
           </div>
+
         </div>
       </section>
 
-      {/* 4. RECENT VERIFIED ASSESSMENTS TABLE */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between mb-4">
+      {/* 5. VERIFIED ASSESSMENTS TABLE (Clean Academic Paper Registry Table) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-2">
           <div>
-            <h3 className="font-display text-lg font-bold text-zinc-100">
+            <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#F2E8D8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
+              DATABASE RECORDS
+            </span>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A3D36] mt-1">
               Verified Journal Assessments
-            </h3>
-            <p className="text-xs text-zinc-400 font-mono">
-              Live records scored against Methodology v1.2.0-2026
+            </h2>
+            <p className="text-xs text-[#4B635E] font-mono mt-0.5">
+              Scored deterministically against Methodology v1.2.0-2026
             </p>
           </div>
-          <Link to="/journal-check" className="text-xs font-medium text-zinc-300 hover:text-white flex items-center gap-1">
-            <span>Explore all journals</span> &rarr;
+          <Link to="/journal-check" className="ss-btn-secondary text-xs px-3.5 py-1.5 font-bold self-start sm:self-auto">
+            <span>Search all 48,000+ journals</span> &rarr;
           </Link>
         </div>
 
-        <div className="bg-[#121215] border border-zinc-800 rounded-lg overflow-hidden shadow-tactile">
+        <div className="ss-card overflow-hidden shadow-paper">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-zinc-900/90 border-b border-zinc-800 text-zinc-400 font-mono uppercase text-[10px]">
+              <thead className="bg-[#0A3D36] text-[#FAF6EE] font-mono uppercase text-[10.5px]">
                 <tr>
-                  <th className="py-3 px-4 font-semibold">Journal Title</th>
-                  <th className="py-3 px-4 font-semibold">Publisher</th>
-                  <th className="py-3 px-4 font-semibold">Primary ISSN</th>
-                  <th className="py-3 px-4 font-semibold">Score</th>
-                  <th className="py-3 px-4 font-semibold">Trust Grade</th>
-                  <th className="py-3 px-4 font-semibold text-right">Action</th>
+                  <th className="py-3 px-4 font-bold">Journal Title</th>
+                  <th className="py-3 px-4 font-bold">Publisher</th>
+                  <th className="py-3 px-4 font-bold">Primary ISSN</th>
+                  <th className="py-3 px-4 font-bold">Score</th>
+                  <th className="py-3 px-4 font-bold">Trust Grade</th>
+                  <th className="py-3 px-4 font-bold text-right">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-zinc-800/80">
+              <tbody className="divide-y divide-[#0A3D36]/10 bg-[#FFFDF9]">
                 {featuredJournals.map((j) => {
                   const issn = j.identifiers?.[0]?.value || 'N/A';
                   return (
-                    <tr key={j.id} className="hover:bg-zinc-900/50 transition-colors">
-                      <td className="py-3.5 px-4 font-semibold text-zinc-100">
+                    <tr key={j.id} className="hover:bg-[#F6F0E4] transition-colors">
+                      <td className="py-3.5 px-4 font-serif font-bold text-sm text-[#0A3D36]">
                         {j.title}
                       </td>
-                      <td className="py-3.5 px-4 text-zinc-400">
+                      <td className="py-3.5 px-4 text-[#4B635E]">
                         {j.publisher || 'Unknown'}
                       </td>
-                      <td className="py-3.5 px-4 font-mono text-zinc-300">
+                      <td className="py-3.5 px-4 font-mono text-[#0A3D36]">
                         {issn}
                       </td>
-                      <td className="py-3.5 px-4 font-mono tabular-nums font-semibold text-zinc-200">
+                      <td className="py-3.5 px-4 font-mono tabular-nums font-bold text-[#0A3D36]">
                         {j.currentScore !== null ? `${j.currentScore} / 100` : '—'}
                       </td>
                       <td className="py-3.5 px-4">
@@ -303,9 +598,9 @@ export const HomePage: React.FC = () => {
                       <td className="py-3.5 px-4 text-right">
                         <Link
                           to={`/journal-check/results/${j.id}`}
-                          className="ss-btn-secondary text-[11px] py-1 px-2.5"
+                          className="ss-btn-secondary text-[11px] py-1 px-3 font-semibold"
                         >
-                          View Evidence
+                          View Dossier
                         </Link>
                       </td>
                     </tr>
@@ -317,63 +612,68 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. LIVE PLATFORM METRICS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          
-          <div className="bg-[#121215] border border-zinc-800 p-5 rounded-lg text-center shadow-tactile">
-            <div className="font-mono text-3xl font-extrabold text-zinc-100 tabular-nums">
-              {stats.indexedJournals}
+      {/* 6. LIVE PLATFORM METRICS */}
+      <section className="bg-[#F2E8D8] py-14 border-t border-b border-[#0A3D36]/15">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+            
+            <div className="bg-[#FFFDF9] border border-[#0A3D36]/20 p-6 rounded-sm text-center shadow-retro">
+              <div className="font-mono text-3xl font-extrabold text-[#0A3D36] tabular-nums">
+                48,000+
+              </div>
+              <div className="text-[11px] font-mono text-[#4B635E] uppercase font-bold mt-1">
+                Indexed Serials
+              </div>
             </div>
-            <div className="text-[11px] font-mono text-zinc-400 uppercase mt-1">
-              Assessed Serials
-            </div>
-          </div>
 
-          <div className="bg-[#121215] border border-zinc-800 p-5 rounded-lg text-center shadow-tactile">
-            <div className="font-mono text-3xl font-extrabold text-zinc-100 tabular-nums">
-              121
+            <div className="bg-[#FFFDF9] border border-[#0A3D36]/20 p-6 rounded-sm text-center shadow-retro">
+              <div className="font-mono text-3xl font-extrabold text-[#0A3D36] tabular-nums">
+                121
+              </div>
+              <div className="text-[11px] font-mono text-[#4B635E] uppercase font-bold mt-1">
+                Audit Criteria
+              </div>
             </div>
-            <div className="text-[11px] font-mono text-zinc-400 uppercase mt-1">
-              Audit Criteria
-            </div>
-          </div>
 
-          <div className="bg-[#121215] border border-zinc-800 p-5 rounded-lg text-center shadow-tactile">
-            <div className="font-mono text-3xl font-extrabold text-emerald-400 tabular-nums">
-              {stats.indexingDirectories}
+            <div className="bg-[#FFFDF9] border border-[#0A3D36]/20 p-6 rounded-sm text-center shadow-retro">
+              <div className="font-mono text-3xl font-extrabold text-[#0A3D36] tabular-nums">
+                120M+
+              </div>
+              <div className="text-[11px] font-mono text-[#4B635E] uppercase font-bold mt-1">
+                Monitored DOIs
+              </div>
             </div>
-            <div className="text-[11px] font-mono text-zinc-400 uppercase mt-1">
-              Index Directories
-            </div>
-          </div>
 
-          <div className="bg-[#121215] border border-zinc-800 p-5 rounded-lg text-center shadow-tactile">
-            <div className="font-mono text-3xl font-extrabold text-zinc-100 tabular-nums">
-              {stats.monitoredDois}
+            <div className="bg-[#FFFDF9] border border-[#0A3D36]/20 p-6 rounded-sm text-center shadow-retro">
+              <div className="font-mono text-3xl font-extrabold text-[#0A3D36] tabular-nums">
+                99.8%
+              </div>
+              <div className="text-[11px] font-mono text-[#4B635E] uppercase font-bold mt-1">
+                Resolution Rate
+              </div>
             </div>
-            <div className="text-[11px] font-mono text-zinc-400 uppercase mt-1">
-              Monitored DOIs
-            </div>
-          </div>
 
+          </div>
         </div>
       </section>
 
-      {/* 6. CALL TO ACTION */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-        <div className="bg-[#121215] border border-zinc-800 rounded-xl p-8 sm:p-12 space-y-4 shadow-elevated">
-          <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-zinc-100">
+      {/* 7. BOTTOM CTA SECTION */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-20 text-center">
+        <div className="bg-[#0A3D36] text-[#FAF6EE] border-2 border-[#06231E] rounded-sm p-8 sm:p-12 space-y-5 shadow-retro">
+          <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#22D0B9] bg-[#06231E] px-2 py-0.5 rounded-sm border border-[#166054]">
+            RESEARCH INTEGRITY ENGINE
+          </span>
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
             Know Exactly What Stands Between Your Journal and Indexing
           </h2>
-          <p className="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#CFE7E2] max-w-xl mx-auto leading-relaxed">
             Run an automated page-level crawler on your journal domain. Receive an itemized report of missing metadata, broken DOIs, and policy gaps.
           </p>
-          <div className="pt-3 flex flex-wrap items-center justify-center gap-3">
-            <Link to="/journal-audit" className="ss-btn-primary px-6 py-2.5 text-xs">
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+            <Link to="/journal-audit" className="ss-btn-primary px-6 py-2.5 text-xs font-bold">
               Start Indexing Readiness Audit
             </Link>
-            <Link to="/how-it-works" className="ss-btn-secondary px-6 py-2.5 text-xs">
+            <Link to="/how-it-works" className="ss-btn-secondary px-6 py-2.5 text-xs font-bold">
               Read the Scoring Methodology
             </Link>
           </div>
