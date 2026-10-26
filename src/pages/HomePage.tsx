@@ -8,17 +8,17 @@ import {
   Building, 
   BookOpen, 
   Layers, 
-  ChevronRight,
-  Database,
-  FileCheck2,
-  Lock,
-  Compass,
-  ArrowUpRight,
-  ExternalLink,
-  Check,
-  FileCode,
-  Activity,
-  Globe2
+  ChevronRight, 
+  Database, 
+  FileCheck2, 
+  Lock, 
+  Compass, 
+  ArrowUpRight, 
+  ExternalLink, 
+  Check, 
+  FileCode, 
+  Activity, 
+  Globe2 
 } from 'lucide-react';
 import { GradeBadge } from '../components/Badge';
 import { apiRequest } from '../lib/api';
@@ -55,12 +55,12 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#FAF6EE] text-[#0A3D36]">
+    <div className="text-[#0A3D36] paper-grain">
       
-      {/* 1. HERO SECTION (Deep Oxford Pine with Ivory Dossier Card) */}
-      <section className="relative bg-[#0A3D36] text-[#FAF6EE] pt-16 pb-20 border-b border-[#072E27] overflow-hidden">
+      {/* 1. HERO SECTION (Deep Oxford Pine with Ivory Dossier Paper Card) */}
+      <section className="relative bg-[#0C4840] text-[#FAF6EE] pt-16 pb-20 border-b-2 border-[#0A3D36] paper-grain overflow-hidden">
         {/* Subtle architectural grid pattern */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#22D0B9_1px,transparent_1px)] [background-size:16px_16px]" />
+        <div className="absolute inset-0 opacity-[0.035] pointer-events-none bg-[radial-gradient(#22D0B9_1px,transparent_1px)] [background-size:16px_16px]" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -69,16 +69,16 @@ export const HomePage: React.FC = () => {
             <div className="lg:col-span-7 space-y-6">
               
               <div className="flex items-center gap-2">
-                <span className="font-mono text-[10px] uppercase tracking-wider bg-[#F6AC6D] text-[#0A3D36] font-bold px-2 py-0.5 rounded-sm">
+                <span className="font-mono text-[10px] uppercase tracking-wider bg-[#F6AC6D] text-[#0A3D36] font-bold px-2 py-0.5 rounded-sm shadow-retro-sm">
                   AUDIT STANDARD v1.2.0
                 </span>
-                <span className="text-xs font-mono text-[#22D0B9] tracking-tight">
+                <span className="text-xs font-mono text-[#22D0B9] font-bold tracking-tight">
                   121 CRITERIA · VERIFIED EVIDENCE
                 </span>
               </div>
 
               <h1 className="font-serif text-4xl sm:text-6xl text-white font-normal leading-[1.08] tracking-tight">
-                Which <span className="italic font-normal text-[#22D0B9]">journals</span> can be <span className="underline decoration-[#F6AC6D] decoration-2 underline-offset-8">trusted</span>?
+                Which <span className="italic font-normal text-[#29D5BF]">journals</span> can be <span className="underline decoration-[#F6AC6D] decoration-2 underline-offset-8">trusted</span>?
               </h1>
 
               <p className="text-sm sm:text-base text-[#D1E6E2] max-w-xl leading-relaxed">
@@ -87,18 +87,18 @@ export const HomePage: React.FC = () => {
 
               {/* Primary Search Form */}
               <form onSubmit={handleSearch} className="max-w-xl pt-2">
-                <div className="flex items-center bg-[#06231E] border border-[#166054] focus-within:border-[#22D0B9] rounded-sm p-1.5 shadow-retro transition-all">
-                  <Search className="w-4 h-4 text-[#22D0B9] ml-2.5" />
+                <div className="flex items-center bg-[#06231E] border-2 border-[#166054] focus-within:border-[#22D0B9] rounded-sm p-1.5 shadow-retro transition-all">
+                  <Search className="w-4 h-4 text-[#22D0B9] ml-2.5 flex-shrink-0" />
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={e => setSearchQuery(e.target.value)}
                     placeholder="Enter Journal Title, ISSN (e.g. 0028-0836), or DOI..."
-                    className="w-full bg-transparent px-3 py-2 text-xs sm:text-sm text-white placeholder-[#8CB8B0] focus:outline-none"
+                    className="w-full min-w-0 bg-transparent px-3 py-2 text-xs sm:text-sm text-white placeholder-[#8CB8B0] focus:outline-none"
                   />
                   <button
                     type="submit"
-                    className="ss-btn-primary text-xs px-5 py-2.5 whitespace-nowrap"
+                    className="ss-btn-primary text-xs px-4 sm:px-5 py-2.5 whitespace-nowrap flex-shrink-0 font-bold"
                   >
                     Check Journal
                   </button>
@@ -142,20 +142,20 @@ export const HomePage: React.FC = () => {
 
             </div>
 
-            {/* Right Col: The Interactive Ivory Audit Dossier Card */}
+            {/* Right Col: The Interactive Ivory Audit Dossier Card (Directly from Screenshot) */}
             <div className="lg:col-span-5">
-              <div className="bg-[#FFFDF9] border border-[#072E27] rounded-sm p-6 text-[#0A3D36] shadow-retro relative transform hover:-translate-y-1 transition-transform duration-200">
+              <div className="bg-[#FFFDF9] border-2 border-[#0A3D36] rounded-sm p-6 text-[#0A3D36] shadow-retro relative paper-grain transform hover:-translate-y-1 transition-transform duration-200">
                 
                 {/* Dossier Header */}
                 <div className="flex items-center justify-between pb-3 border-b border-[#0A3D36]/15">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[#22D0B9] border border-[#0A3D36]" />
+                    <span className="w-2.5 h-2.5 bg-[#22D0B9] border border-[#0A3D36]" />
                     <span className="font-mono text-[10px] uppercase font-bold tracking-wider text-[#0A3D36]">
                       LIVE AUDIT SPECIMEN #SS-2026
                     </span>
                   </div>
-                  <span className="font-mono text-[10px] text-[#4B635E] uppercase">
-                    REGISTRY REF: CR-0836
+                  <span className="font-mono text-[10px] text-[#4B635E] uppercase font-semibold">
+                    REF: CR-0836
                   </span>
                 </div>
 
@@ -188,7 +188,7 @@ export const HomePage: React.FC = () => {
                       <span className="text-[#0A3D36] font-medium">1. Identity & Governance</span>
                       <span className="font-bold">24 / 25</span>
                     </div>
-                    <div className="w-full bg-[#F2E8D8] h-1.5 rounded-sm overflow-hidden">
+                    <div className="w-full bg-[#FEDAB8] h-1.5 rounded-sm overflow-hidden">
                       <div className="bg-[#0A3D36] h-full rounded-sm" style={{ width: '96%' }} />
                     </div>
                   </div>
@@ -198,7 +198,7 @@ export const HomePage: React.FC = () => {
                       <span className="text-[#0A3D36] font-medium">2. Editorial Integrity</span>
                       <span className="font-bold">25 / 25</span>
                     </div>
-                    <div className="w-full bg-[#F2E8D8] h-1.5 rounded-sm overflow-hidden">
+                    <div className="w-full bg-[#FEDAB8] h-1.5 rounded-sm overflow-hidden">
                       <div className="bg-[#0A3D36] h-full rounded-sm" style={{ width: '100%' }} />
                     </div>
                   </div>
@@ -208,7 +208,7 @@ export const HomePage: React.FC = () => {
                       <span className="text-[#0A3D36] font-medium">3. Technical Standing</span>
                       <span className="font-bold">19 / 20</span>
                     </div>
-                    <div className="w-full bg-[#F2E8D8] h-1.5 rounded-sm overflow-hidden">
+                    <div className="w-full bg-[#FEDAB8] h-1.5 rounded-sm overflow-hidden">
                       <div className="bg-[#0A3D36] h-full rounded-sm" style={{ width: '95%' }} />
                     </div>
                   </div>
@@ -218,7 +218,7 @@ export const HomePage: React.FC = () => {
                       <span className="text-[#0A3D36] font-medium">4. Preservation & Access</span>
                       <span className="font-bold">14 / 15</span>
                     </div>
-                    <div className="w-full bg-[#F2E8D8] h-1.5 rounded-sm overflow-hidden">
+                    <div className="w-full bg-[#FEDAB8] h-1.5 rounded-sm overflow-hidden">
                       <div className="bg-[#0A3D36] h-full rounded-sm" style={{ width: '93%' }} />
                     </div>
                   </div>
@@ -228,7 +228,7 @@ export const HomePage: React.FC = () => {
                       <span className="text-[#0A3D36] font-medium">5. Reach & Citation</span>
                       <span className="font-bold">14 / 15</span>
                     </div>
-                    <div className="w-full bg-[#F2E8D8] h-1.5 rounded-sm overflow-hidden">
+                    <div className="w-full bg-[#FEDAB8] h-1.5 rounded-sm overflow-hidden">
                       <div className="bg-[#0A3D36] h-full rounded-sm" style={{ width: '93%' }} />
                     </div>
                   </div>
@@ -240,9 +240,9 @@ export const HomePage: React.FC = () => {
                     <Check className="w-3 h-3 text-[#109C89]" /> DOAJ INDEXED
                   </span>
                   <span className="px-2 py-0.5 rounded-sm bg-[#E8F8F5] border border-[#109C89] text-[#0A3D36] font-semibold flex items-center gap-1">
-                    <Check className="w-3 h-3 text-[#109C89]" /> CROSSREF DOI: RESOLVED
+                    <Check className="w-3 h-3 text-[#109C89]" /> CROSSREF DOI RESOLVED
                   </span>
-                  <span className="px-2 py-0.5 rounded-sm bg-[#FAF0E4] border border-[#F6AC6D] text-[#8C460C] font-semibold">
+                  <span className="px-2 py-0.5 rounded-sm bg-[#FEDAB8] border border-[#F6AC6D] text-[#8C460C] font-semibold">
                     CLOCKSS ESCROW
                   </span>
                 </div>
@@ -265,29 +265,29 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. THE FIVE SCORING PILLARS (Warm Parchment Strip from Reference Screenshot) */}
-      <section className="bg-[#F2E8D8] py-16 border-b border-[#0A3D36]/15">
+      {/* 2. THE FIVE SCORING PILLARS (Authentic Warm Apricot / Peach Sand Block from Reference Screenshot) */}
+      <section className="bg-[#FEDAB8] py-16 border-b-2 border-[#0A3D36] paper-grain">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-12">
-            <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FAF6EE] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
-              SCORING METHODOLOGY
+            <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FFFDF9] px-2 py-0.5 rounded-sm border border-[#0A3D36]/20 shadow-retro-sm">
+              EVALUATION PILLARS
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#0A3D36] font-bold mt-2 tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#0A3D36] font-bold mt-2.5 tracking-tight">
               What makes a journal trustworthy or predatory?
             </h2>
-            <p className="text-xs sm:text-sm text-[#4B635E] mt-2 leading-relaxed">
-              Every score on Smart Scholars is derived from 121 normalized criteria evaluated across five deterministic pillars. We query authoritative registries directly — no self-reported numbers.
+            <p className="text-xs sm:text-sm text-[#0C4840] mt-2 leading-relaxed font-medium">
+              Every score on Smart Scholars is derived from 121 normalized criteria evaluated across five deterministic pillars. We query authoritative registries directly — zero self-reported claims.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             
             {/* Pillar 1 */}
             <div className="ss-card p-5 flex flex-col justify-between">
               <div>
                 <div className="font-mono text-2xl font-bold text-[#0A3D36] tabular-nums">01 /</div>
-                <div className="font-mono text-[10.5px] uppercase font-bold text-[#22D0B9] bg-[#0A3D36] px-1.5 py-0.5 rounded-sm inline-block mt-2">
+                <div className="font-mono text-[10.5px] uppercase font-bold text-[#0A3D36] bg-[#FEDAB8] px-1.5 py-0.5 rounded-sm inline-block mt-2 border border-[#0A3D36]/20">
                   WEIGHT: 25%
                 </div>
                 <h3 className="font-serif text-base font-bold text-[#0A3D36] mt-3 mb-1.5">
@@ -297,7 +297,7 @@ export const HomePage: React.FC = () => {
                   Active ISSN confirmed via CIEPS, verified publisher corporate address, transparent editorial board identity.
                 </p>
               </div>
-              <div className="pt-4 border-t border-[#0A3D36]/10 mt-4 text-[11px] font-mono text-[#0A3D36]">
+              <div className="pt-4 border-t border-[#0A3D36]/10 mt-4 text-[11px] font-mono text-[#0A3D36] font-semibold">
                 32 Audit Checks
               </div>
             </div>
@@ -306,7 +306,7 @@ export const HomePage: React.FC = () => {
             <div className="ss-card p-5 flex flex-col justify-between">
               <div>
                 <div className="font-mono text-2xl font-bold text-[#0A3D36] tabular-nums">02 /</div>
-                <div className="font-mono text-[10.5px] uppercase font-bold text-[#22D0B9] bg-[#0A3D36] px-1.5 py-0.5 rounded-sm inline-block mt-2">
+                <div className="font-mono text-[10.5px] uppercase font-bold text-[#0A3D36] bg-[#FEDAB8] px-1.5 py-0.5 rounded-sm inline-block mt-2 border border-[#0A3D36]/20">
                   WEIGHT: 25%
                 </div>
                 <h3 className="font-serif text-base font-bold text-[#0A3D36] mt-3 mb-1.5">
@@ -316,7 +316,7 @@ export const HomePage: React.FC = () => {
                   Peer-review process disclosure, COPE ethics conformity, retraction policy, automated plagiarism screening.
                 </p>
               </div>
-              <div className="pt-4 border-t border-[#0A3D36]/10 mt-4 text-[11px] font-mono text-[#0A3D36]">
+              <div className="pt-4 border-t border-[#0A3D36]/10 mt-4 text-[11px] font-mono text-[#0A3D36] font-semibold">
                 28 Audit Checks
               </div>
             </div>
@@ -325,7 +325,7 @@ export const HomePage: React.FC = () => {
             <div className="ss-card p-5 flex flex-col justify-between">
               <div>
                 <div className="font-mono text-2xl font-bold text-[#0A3D36] tabular-nums">03 /</div>
-                <div className="font-mono text-[10.5px] uppercase font-bold text-[#22D0B9] bg-[#0A3D36] px-1.5 py-0.5 rounded-sm inline-block mt-2">
+                <div className="font-mono text-[10.5px] uppercase font-bold text-[#0A3D36] bg-[#FEDAB8] px-1.5 py-0.5 rounded-sm inline-block mt-2 border border-[#0A3D36]/20">
                   WEIGHT: 20%
                 </div>
                 <h3 className="font-serif text-base font-bold text-[#0A3D36] mt-3 mb-1.5">
@@ -335,7 +335,7 @@ export const HomePage: React.FC = () => {
                   Persistent Crossref DOI resolution, machine-readable CC licensing, JATS XML metadata, OAI-PMH endpoints.
                 </p>
               </div>
-              <div className="pt-4 border-t border-[#0A3D36]/10 mt-4 text-[11px] font-mono text-[#0A3D36]">
+              <div className="pt-4 border-t border-[#0A3D36]/10 mt-4 text-[11px] font-mono text-[#0A3D36] font-semibold">
                 24 Audit Checks
               </div>
             </div>
@@ -344,7 +344,7 @@ export const HomePage: React.FC = () => {
             <div className="ss-card p-5 flex flex-col justify-between">
               <div>
                 <div className="font-mono text-2xl font-bold text-[#0A3D36] tabular-nums">04 /</div>
-                <div className="font-mono text-[10.5px] uppercase font-bold text-[#22D0B9] bg-[#0A3D36] px-1.5 py-0.5 rounded-sm inline-block mt-2">
+                <div className="font-mono text-[10.5px] uppercase font-bold text-[#0A3D36] bg-[#FEDAB8] px-1.5 py-0.5 rounded-sm inline-block mt-2 border border-[#0A3D36]/20">
                   WEIGHT: 15%
                 </div>
                 <h3 className="font-serif text-base font-bold text-[#0A3D36] mt-3 mb-1.5">
@@ -354,7 +354,7 @@ export const HomePage: React.FC = () => {
                   Digital preservation escrow (Portico, CLOCKSS, Internet Archive), transparent author fees or Diamond OA status.
                 </p>
               </div>
-              <div className="pt-4 border-t border-[#0A3D36]/10 mt-4 text-[11px] font-mono text-[#0A3D36]">
+              <div className="pt-4 border-t border-[#0A3D36]/10 mt-4 text-[11px] font-mono text-[#0A3D36] font-semibold">
                 19 Audit Checks
               </div>
             </div>
@@ -363,7 +363,7 @@ export const HomePage: React.FC = () => {
             <div className="ss-card p-5 flex flex-col justify-between">
               <div>
                 <div className="font-mono text-2xl font-bold text-[#0A3D36] tabular-nums">05 /</div>
-                <div className="font-mono text-[10.5px] uppercase font-bold text-[#22D0B9] bg-[#0A3D36] px-1.5 py-0.5 rounded-sm inline-block mt-2">
+                <div className="font-mono text-[10.5px] uppercase font-bold text-[#0A3D36] bg-[#FEDAB8] px-1.5 py-0.5 rounded-sm inline-block mt-2 border border-[#0A3D36]/20">
                   WEIGHT: 15%
                 </div>
                 <h3 className="font-serif text-base font-bold text-[#0A3D36] mt-3 mb-1.5">
@@ -373,7 +373,7 @@ export const HomePage: React.FC = () => {
                   OpenAlex citation history, Crossref reference distribution, global author representation, zero citation cartel anomalies.
                 </p>
               </div>
-              <div className="pt-4 border-t border-[#0A3D36]/10 mt-4 text-[11px] font-mono text-[#0A3D36]">
+              <div className="pt-4 border-t border-[#0A3D36]/10 mt-4 text-[11px] font-mono text-[#0A3D36] font-semibold">
                 18 Audit Checks
               </div>
             </div>
@@ -383,19 +383,22 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. FOUR AUDIENCE ENTRY POINTS (Paper Ivory Cards) */}
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 3. FOUR AUDIENCE ENTRY POINTS (Clean Warm Cream Paper) */}
+      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#FBF6EE]">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
-            <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#F2E8D8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
+            <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
               WORKSPACES
             </span>
             <h2 className="font-serif text-3xl font-bold text-[#0A3D36] mt-2 tracking-tight">
-              Tailored Portals for Every Stakeholder
+              Start Where You Stand
             </h2>
+            <p className="text-xs font-mono uppercase tracking-wider text-[#4B635E] mt-1">
+              Dedicated portals for authors, editors, institutions, and publishers
+            </p>
           </div>
-          <div className="text-xs font-mono text-[#4B635E]">
-            4 AUDIENCE WORKSPACES
+          <div className="text-xs font-mono text-[#0A3D36] font-bold">
+            4 DISTINCT PORTALS
           </div>
         </div>
 
@@ -404,7 +407,7 @@ export const HomePage: React.FC = () => {
           {/* Authors */}
           <div className="ss-card p-6 flex flex-col justify-between">
             <div>
-              <div className="w-8 h-8 rounded-sm bg-[#FAF0E4] border border-[#F6AC6D] flex items-center justify-center text-[#DE7324] mb-4">
+              <div className="w-8 h-8 rounded-sm bg-[#FEDAB8] border border-[#F6AC6D] flex items-center justify-center text-[#0A3D36] mb-4">
                 <BookOpen className="w-4 h-4" />
               </div>
               <h3 className="font-serif text-lg font-bold text-[#0A3D36] mb-1.5">
@@ -440,7 +443,7 @@ export const HomePage: React.FC = () => {
           {/* Institutions */}
           <div className="ss-card p-6 flex flex-col justify-between">
             <div>
-              <div className="w-8 h-8 rounded-sm bg-[#F2E8D8] border border-[#0A3D36]/20 flex items-center justify-center text-[#0A3D36] mb-4">
+              <div className="w-8 h-8 rounded-sm bg-[#FEDAB8] border border-[#0A3D36]/20 flex items-center justify-center text-[#0A3D36] mb-4">
                 <Building className="w-4 h-4 text-[#0A3D36]" />
               </div>
               <h3 className="font-serif text-lg font-bold text-[#0A3D36] mb-1.5">
@@ -477,7 +480,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 4. THE 121-CRITERION AUDIT ENGINE & REPAIR PLAN (Deep Oxford Pine Container) */}
-      <section className="bg-[#072E27] text-[#FAF6EE] py-16 border-t border-b border-[#0A3D36]">
+      <section className="bg-[#0A3D36] text-[#FAF6EE] py-16 border-t-2 border-b-2 border-[#06231E] paper-grain">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -515,12 +518,12 @@ export const HomePage: React.FC = () => {
 
             {/* Visual Repair Plan Code Preview */}
             <div className="lg:col-span-6">
-              <div className="bg-[#051F1A] border border-[#166054] rounded-sm p-5 font-mono text-xs shadow-retro">
+              <div className="bg-[#051F1A] border-2 border-[#166054] rounded-sm p-5 font-mono text-xs shadow-retro paper-grain">
                 <div className="flex items-center justify-between pb-3 border-b border-[#166054] text-[#22D0B9] text-[11px]">
-                  <span className="flex items-center gap-2">
+                  <span className="flex items-center gap-2 font-bold">
                     <FileCode className="w-3.5 h-3.5" /> REPAIR_PLAN_RECOMMENDATION.XML
                   </span>
-                  <span className="text-[#8CB8B0]">SEVERITY: HIGH</span>
+                  <span className="text-[#F6AC6D] font-bold">SEVERITY: HIGH</span>
                 </div>
                 <div className="py-3 text-[11.5px] space-y-2 text-[#D1E6E2]">
                   <p className="text-[#F6AC6D]">
@@ -543,112 +546,114 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. VERIFIED ASSESSMENTS TABLE (Clean Academic Paper Registry Table) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-2">
-          <div>
-            <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#F2E8D8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
-              DATABASE RECORDS
-            </span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A3D36] mt-1">
-              Verified Journal Assessments
-            </h2>
-            <p className="text-xs text-[#4B635E] font-mono mt-0.5">
-              Scored deterministically against Methodology v1.2.0-2026
-            </p>
+      {/* 5. VERIFIED ASSESSMENTS TABLE (Warm Biscuit / Sand Paper Background) */}
+      <section className="bg-[#FEDAB8] py-16 border-b-2 border-[#0A3D36] paper-grain">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-2">
+            <div>
+              <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FFFDF9] px-2 py-0.5 rounded-sm border border-[#0A3D36]/20 shadow-retro-sm">
+                DATABASE RECORDS
+              </span>
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A3D36] mt-1.5">
+                Verified Journal Assessments
+              </h2>
+              <p className="text-xs text-[#0C4840] font-mono mt-0.5 font-medium">
+                Scored deterministically against Methodology v1.2.0-2026
+              </p>
+            </div>
+            <Link to="/journal-check" className="ss-btn-primary text-xs px-3.5 py-1.5 font-bold self-start sm:self-auto">
+              <span>Search all 48,000+ journals</span> &rarr;
+            </Link>
           </div>
-          <Link to="/journal-check" className="ss-btn-secondary text-xs px-3.5 py-1.5 font-bold self-start sm:self-auto">
-            <span>Search all 48,000+ journals</span> &rarr;
-          </Link>
-        </div>
 
-        <div className="ss-card overflow-hidden shadow-paper">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
-              <thead className="bg-[#0A3D36] text-[#FAF6EE] font-mono uppercase text-[10.5px]">
-                <tr>
-                  <th className="py-3 px-4 font-bold">Journal Title</th>
-                  <th className="py-3 px-4 font-bold">Publisher</th>
-                  <th className="py-3 px-4 font-bold">Primary ISSN</th>
-                  <th className="py-3 px-4 font-bold">Score</th>
-                  <th className="py-3 px-4 font-bold">Trust Grade</th>
-                  <th className="py-3 px-4 font-bold text-right">Action</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[#0A3D36]/10 bg-[#FFFDF9]">
-                {featuredJournals.map((j) => {
-                  const issn = j.identifiers?.[0]?.value || 'N/A';
-                  return (
-                    <tr key={j.id} className="hover:bg-[#F6F0E4] transition-colors">
-                      <td className="py-3.5 px-4 font-serif font-bold text-sm text-[#0A3D36]">
-                        {j.title}
-                      </td>
-                      <td className="py-3.5 px-4 text-[#4B635E]">
-                        {j.publisher || 'Unknown'}
-                      </td>
-                      <td className="py-3.5 px-4 font-mono text-[#0A3D36]">
-                        {issn}
-                      </td>
-                      <td className="py-3.5 px-4 font-mono tabular-nums font-bold text-[#0A3D36]">
-                        {j.currentScore !== null ? `${j.currentScore} / 100` : '—'}
-                      </td>
-                      <td className="py-3.5 px-4">
-                        <GradeBadge grade={j.currentGrade || 'UNVERIFIED'} size="sm" />
-                      </td>
-                      <td className="py-3.5 px-4 text-right">
-                        <Link
-                          to={`/journal-check/results/${j.id}`}
-                          className="ss-btn-secondary text-[11px] py-1 px-3 font-semibold"
-                        >
-                          View Dossier
-                        </Link>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+          <div className="ss-card overflow-hidden shadow-retro border-2 border-[#0A3D36]">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs">
+                <thead className="bg-[#0A3D36] text-[#FAF6EE] font-mono uppercase text-[10.5px]">
+                  <tr>
+                    <th className="py-3 px-4 font-bold">Journal Title</th>
+                    <th className="py-3 px-4 font-bold">Publisher</th>
+                    <th className="py-3 px-4 font-bold">Primary ISSN</th>
+                    <th className="py-3 px-4 font-bold">Score</th>
+                    <th className="py-3 px-4 font-bold">Trust Grade</th>
+                    <th className="py-3 px-4 font-bold text-right">Action</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-[#0A3D36]/10 bg-[#FFFDF9]">
+                  {featuredJournals.map((j) => {
+                    const issn = j.identifiers?.[0]?.value || 'N/A';
+                    return (
+                      <tr key={j.id} className="hover:bg-[#FEDAB8]/30 transition-colors">
+                        <td className="py-3.5 px-4 font-serif font-bold text-sm text-[#0A3D36]">
+                          {j.title}
+                        </td>
+                        <td className="py-3.5 px-4 text-[#4B635E]">
+                          {j.publisher || 'Unknown'}
+                        </td>
+                        <td className="py-3.5 px-4 font-mono text-[#0A3D36]">
+                          {issn}
+                        </td>
+                        <td className="py-3.5 px-4 font-mono tabular-nums font-bold text-[#0A3D36]">
+                          {j.currentScore !== null ? `${j.currentScore} / 100` : '—'}
+                        </td>
+                        <td className="py-3.5 px-4">
+                          <GradeBadge grade={j.currentGrade || 'UNVERIFIED'} size="sm" />
+                        </td>
+                        <td className="py-3.5 px-4 text-right">
+                          <Link
+                            to={`/journal-check/results/${j.id}`}
+                            className="ss-btn-secondary text-[11px] py-1 px-3 font-semibold"
+                          >
+                            View Dossier
+                          </Link>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
 
       {/* 6. LIVE PLATFORM METRICS */}
-      <section className="bg-[#F2E8D8] py-14 border-t border-b border-[#0A3D36]/15">
+      <section className="bg-[#FBF6EE] py-16 border-b-2 border-[#0A3D36] paper-grain">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             
-            <div className="bg-[#FFFDF9] border border-[#0A3D36]/20 p-6 rounded-sm text-center shadow-retro">
+            <div className="bg-[#FFFDF9] border-2 border-[#0A3D36] p-6 rounded-sm text-center shadow-retro paper-grain">
               <div className="font-mono text-3xl font-extrabold text-[#0A3D36] tabular-nums">
                 48,000+
               </div>
-              <div className="text-[11px] font-mono text-[#4B635E] uppercase font-bold mt-1">
+              <div className="text-[11px] font-mono text-[#0A3D36] uppercase font-bold mt-1">
                 Indexed Serials
               </div>
             </div>
 
-            <div className="bg-[#FFFDF9] border border-[#0A3D36]/20 p-6 rounded-sm text-center shadow-retro">
+            <div className="bg-[#FFFDF9] border-2 border-[#0A3D36] p-6 rounded-sm text-center shadow-retro paper-grain">
               <div className="font-mono text-3xl font-extrabold text-[#0A3D36] tabular-nums">
                 121
               </div>
-              <div className="text-[11px] font-mono text-[#4B635E] uppercase font-bold mt-1">
+              <div className="text-[11px] font-mono text-[#0A3D36] uppercase font-bold mt-1">
                 Audit Criteria
               </div>
             </div>
 
-            <div className="bg-[#FFFDF9] border border-[#0A3D36]/20 p-6 rounded-sm text-center shadow-retro">
+            <div className="bg-[#FFFDF9] border-2 border-[#0A3D36] p-6 rounded-sm text-center shadow-retro paper-grain">
               <div className="font-mono text-3xl font-extrabold text-[#0A3D36] tabular-nums">
                 120M+
               </div>
-              <div className="text-[11px] font-mono text-[#4B635E] uppercase font-bold mt-1">
+              <div className="text-[11px] font-mono text-[#0A3D36] uppercase font-bold mt-1">
                 Monitored DOIs
               </div>
             </div>
 
-            <div className="bg-[#FFFDF9] border border-[#0A3D36]/20 p-6 rounded-sm text-center shadow-retro">
+            <div className="bg-[#FFFDF9] border-2 border-[#0A3D36] p-6 rounded-sm text-center shadow-retro paper-grain">
               <div className="font-mono text-3xl font-extrabold text-[#0A3D36] tabular-nums">
                 99.8%
               </div>
-              <div className="text-[11px] font-mono text-[#4B635E] uppercase font-bold mt-1">
+              <div className="text-[11px] font-mono text-[#0A3D36] uppercase font-bold mt-1">
                 Resolution Rate
               </div>
             </div>
@@ -657,10 +662,10 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. BOTTOM CTA SECTION */}
+      {/* 7. BOTTOM CTA SECTION (Rich Apricot & Pine Card) */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-20 text-center">
-        <div className="bg-[#0A3D36] text-[#FAF6EE] border-2 border-[#06231E] rounded-sm p-8 sm:p-12 space-y-5 shadow-retro">
-          <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#22D0B9] bg-[#06231E] px-2 py-0.5 rounded-sm border border-[#166054]">
+        <div className="bg-[#0A3D36] text-[#FAF6EE] border-2 border-[#06231E] rounded-sm p-8 sm:p-12 space-y-5 shadow-retro paper-grain">
+          <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#F6AC6D] px-2 py-0.5 rounded-sm shadow-retro-sm">
             RESEARCH INTEGRITY ENGINE
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">

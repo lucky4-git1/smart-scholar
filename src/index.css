@@ -4,20 +4,23 @@
 
 @layer base {
   :root {
-    --bg-base: #F8F5EE;
+    --bg-base: #FBF6EE;
     --pine-hero: #0A3D36;
     --pine-deep: #072E27;
     --seafoam: #22D0B9;
-    --apricot: #F6AC6D;
-    --parchment: #F2E8D8;
+    --seafoam-bright: #29D5BF;
+    --apricot-warm: #FEDAB8;
+    --apricot-accent: #F6AC6D;
     --card-paper: #FFFDF9;
-    --ink-text: #0E2722;
-    --ink-muted: #4B635E;
-    --border-ink: rgba(10, 61, 54, 0.15);
+    --ink-text: #0A3D36;
+    --ink-muted: #3D5A53;
+    --border-ink: rgba(10, 61, 54, 0.16);
   }
 
   body {
     background-color: var(--bg-base);
+    background-image: url('/paper-texture.svg');
+    background-repeat: repeat;
     color: var(--ink-text);
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -35,33 +38,54 @@
   }
 }
 
+/* Paper Grain Overlay Helper */
+.paper-grain {
+  background-image: url('/paper-texture.svg');
+  background-repeat: repeat;
+}
+
 /* Tactile Y2K Academic Paper & Pine Craft Components */
 .ss-card {
   background-color: #FFFDF9;
-  border: 1px solid rgba(10, 61, 54, 0.15);
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(10, 61, 54, 0.04), 0 6px 16px -4px rgba(10, 61, 54, 0.06);
+  background-image: url('/paper-texture.svg');
+  background-repeat: repeat;
+  border: 1px solid rgba(10, 61, 54, 0.16);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(10, 61, 54, 0.05), 0 8px 20px -6px rgba(10, 61, 54, 0.07);
   transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .ss-card:hover {
-  border-color: rgba(10, 61, 54, 0.3);
-  box-shadow: 0 4px 12px rgba(10, 61, 54, 0.08), 0 16px 28px -6px rgba(10, 61, 54, 0.1);
+  border-color: rgba(10, 61, 54, 0.35);
+  box-shadow: 0 4px 14px rgba(10, 61, 54, 0.09), 0 16px 28px -6px rgba(10, 61, 54, 0.12);
   transform: translateY(-1px);
 }
 
 .ss-card-pine {
-  background-color: #072E27;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 6px;
+  background-color: #0A3D36;
+  background-image: url('/paper-texture.svg');
+  background-repeat: repeat;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
   color: #FAF6EE;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(4, 27, 23, 0.4);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(4, 27, 23, 0.35);
 }
 
 .ss-card-apricot {
-  background-color: #FAF0E4;
-  border: 1px solid rgba(246, 172, 109, 0.4);
-  border-radius: 6px;
+  background-color: #FEDAB8;
+  background-image: url('/paper-texture.svg');
+  background-repeat: repeat;
+  border: 1px solid rgba(10, 61, 54, 0.18);
+  border-radius: 4px;
+  color: #0A3D36;
+}
+
+.ss-card-seafoam {
+  background-color: #22D0B9;
+  background-image: url('/paper-texture.svg');
+  background-repeat: repeat;
+  border: 1px solid rgba(10, 61, 54, 0.2);
+  border-radius: 4px;
   color: #0A3D36;
 }
 
@@ -70,8 +94,8 @@
   color: #062923;
   font-weight: 700;
   border-radius: 4px;
-  border: 1px solid #169E8C;
-  padding: 0.5rem 1.1rem;
+  border: 1px solid #109C89;
+  padding: 0.5rem 1.15rem;
   box-shadow: 2px 2px 0px 0px #0A3D36;
   transition: all 0.12s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
@@ -121,10 +145,10 @@
 .ss-btn-pine {
   background-color: #0A3D36;
   color: #FAF6EE;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: 4px;
   border: 1px solid #06231E;
-  padding: 0.5rem 1.1rem;
+  padding: 0.5rem 1.15rem;
   box-shadow: 2px 2px 0px 0px #22D0B9;
   transition: all 0.12s ease;
   display: inline-flex;
@@ -139,9 +163,8 @@
   box-shadow: 3px 3px 0px 0px #22D0B9;
 }
 
-/* Architectural Paper Border & Rule */
 .ss-rule {
   height: 1px;
-  background-color: rgba(10, 61, 54, 0.12);
+  background-color: rgba(10, 61, 54, 0.14);
   width: 100%;
 }

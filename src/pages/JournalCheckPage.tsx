@@ -83,18 +83,18 @@ export const JournalCheckPage: React.FC = () => {
       {/* Search Input Box */}
       <form onSubmit={handleSearchSubmit} className="max-w-3xl">
         <div className="flex items-center bg-[#FFFDF9] border-2 border-[#0A3D36] focus-within:border-[#109C89] rounded-sm p-1.5 shadow-retro transition-all">
-          <Search className="w-4 h-4 text-[#0A3D36] ml-2.5" />
+          <Search className="w-4 h-4 text-[#0A3D36] ml-2.5 flex-shrink-0" />
           <input
             type="text"
             value={query}
             onChange={e => setQuery(e.target.value)}
             placeholder="Search by Journal Title, ISSN (e.g. 0028-0836), or Publisher..."
-            className="w-full bg-transparent px-3 py-2 text-xs sm:text-sm text-[#0A3D36] placeholder-[#7A9891] focus:outline-none font-medium"
+            className="w-full min-w-0 bg-transparent px-3 py-2 text-xs sm:text-sm text-[#0A3D36] placeholder-[#7A9891] focus:outline-none font-medium"
           />
           <button
             type="submit"
             disabled={loading}
-            className="ss-btn-primary px-5 py-2 text-xs whitespace-nowrap font-bold"
+            className="ss-btn-primary px-4 sm:px-5 py-2 text-xs whitespace-nowrap font-bold flex-shrink-0"
           >
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Search Registry'}
           </button>
