@@ -39,7 +39,7 @@ export const UserDashboardPage: React.FC = () => {
       {/* Header Profile Box */}
       <div className="bg-[#121215] border border-[#27272a] rounded-xl p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-tactile">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-full bg-[#1D1914] border border-[#3E342B] flex items-center justify-center text-xl font-bold font-mono text-emerald-400 shadow-tactile">
+          <div className="w-12 h-12 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-lg font-bold font-mono text-emerald-400">
             {user?.fullName?.charAt(0) || 'U'}
           </div>
           <div className="space-y-1">

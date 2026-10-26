@@ -186,9 +186,9 @@ export const JournalResultsPage: React.FC = () => {
                   {assessment.identityGovernanceScore} / 25
                 </span>
               </div>
-              <div className="w-full bg-zinc-950 h-1.5 rounded-full overflow-hidden">
+              <div className="w-full bg-zinc-950 h-1.5 rounded-sm overflow-hidden">
                 <div
-                  className="bg-emerald-400 h-full rounded-full"
+                  className="bg-emerald-400 h-full rounded-sm"
                   style={{ width: `${(assessment.identityGovernanceScore / 25) * 100}%` }}
                 ></div>
               </div>
@@ -201,9 +201,9 @@ export const JournalResultsPage: React.FC = () => {
                   {assessment.editorialIntegrityScore} / 25
                 </span>
               </div>
-              <div className="w-full bg-zinc-950 h-1.5 rounded-full overflow-hidden">
+              <div className="w-full bg-zinc-950 h-1.5 rounded-sm overflow-hidden">
                 <div
-                  className="bg-emerald-400 h-full rounded-full"
+                  className="bg-emerald-400 h-full rounded-sm"
                   style={{ width: `${(assessment.editorialIntegrityScore / 25) * 100}%` }}
                 ></div>
               </div>
@@ -216,9 +216,9 @@ export const JournalResultsPage: React.FC = () => {
                   {assessment.technicalStandingScore} / 20
                 </span>
               </div>
-              <div className="w-full bg-zinc-950 h-1.5 rounded-full overflow-hidden">
+              <div className="w-full bg-zinc-950 h-1.5 rounded-sm overflow-hidden">
                 <div
-                  className="bg-emerald-400 h-full rounded-full"
+                  className="bg-emerald-400 h-full rounded-sm"
                   style={{ width: `${(assessment.technicalStandingScore / 20) * 100}%` }}
                 ></div>
               </div>
@@ -231,9 +231,9 @@ export const JournalResultsPage: React.FC = () => {
                   {assessment.preservationAccessScore} / 15
                 </span>
               </div>
-              <div className="w-full bg-zinc-950 h-1.5 rounded-full overflow-hidden">
+              <div className="w-full bg-zinc-950 h-1.5 rounded-sm overflow-hidden">
                 <div
-                  className="bg-emerald-400 h-full rounded-full"
+                  className="bg-emerald-400 h-full rounded-sm"
                   style={{ width: `${(assessment.preservationAccessScore / 15) * 100}%` }}
                 ></div>
               </div>
@@ -246,9 +246,9 @@ export const JournalResultsPage: React.FC = () => {
                   {assessment.reachCitationScore} / 15
                 </span>
               </div>
-              <div className="w-full bg-zinc-950 h-1.5 rounded-full overflow-hidden">
+              <div className="w-full bg-zinc-950 h-1.5 rounded-sm overflow-hidden">
                 <div
-                  className="bg-emerald-400 h-full rounded-full"
+                  className="bg-emerald-400 h-full rounded-sm"
                   style={{ width: `${(assessment.reachCitationScore / 15) * 100}%` }}
                 ></div>
               </div>

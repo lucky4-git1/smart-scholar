@@ -23,12 +23,12 @@ export const Footer: React.FC = () => {
             <p className="text-xs text-zinc-400 leading-relaxed max-w-sm mb-4">
               Independent journal trust ratings, page-level indexing readiness audits, DOI resolution diagnostics, and institutional publication verification. Powered by verified evidence from Crossref, DOAJ, and OpenAlex.
             </p>
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[10px]">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <div className="flex items-center gap-3">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400">
                 ALL REGISTRIES OPERATIONAL
               </span>
-              <Link to="/status" className="text-zinc-300 hover:text-white inline-flex items-center gap-0.5 ml-2 font-mono text-[11px]">
+              <span className="text-zinc-600">/</span>
+              <Link to="/status" className="text-zinc-400 hover:text-white inline-flex items-center gap-0.5 font-mono text-[11px]">
                 Status <ArrowUpRight className="w-3 h-3" />
               </Link>
             </div>

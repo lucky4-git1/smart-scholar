@@ -54,16 +54,16 @@ export const StatusPage: React.FC = () => {
       </div>
 
       {/* Main Status Card */}
-      <div className="bg-[#121215] border border-emerald-500/40 rounded-xl p-6 flex items-center justify-between">
+      <div className="bg-[#121215] border border-emerald-500/40 rounded-lg p-6 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-emerald-950 border border-emerald-500/50 flex items-center justify-center text-emerald-400">
-            <CheckCircle2 className="w-6 h-6" />
+          <div className="w-10 h-10 rounded-md bg-emerald-950 border border-emerald-500/50 flex items-center justify-center text-emerald-400">
+            <CheckCircle2 className="w-5 h-5" />
           </div>
           <div>
             <h2 className="font-display font-bold text-lg text-zinc-100">
               All Core Systems & Adapters Operational
             </h2>
-            <p className="text-xs text-[#8C8375] font-mono">
+            <p className="text-xs text-zinc-400 font-mono">
               Last checked: {health?.timestamp || new Date().toISOString()}
             </p>
           </div>
@@ -76,17 +76,16 @@ export const StatusPage: React.FC = () => {
           External Bibliographic Registry Adapters
         </h3>
 
-        <div className="divide-y divide-[#201B17] bg-[#121215] border border-[#27272a] rounded-xl overflow-hidden">
+        <div className="divide-y divide-zinc-800 bg-[#121215] border border-zinc-800 rounded-lg overflow-hidden">
           {adapters.map((a, i) => (
             <div key={i} className="p-4 flex items-center justify-between text-xs">
               <div>
                 <span className="font-semibold text-zinc-100 block">{a.name}</span>
-                <span className="font-mono text-[11px] text-[#7A7165]">{a.endpoint}</span>
+                <span className="font-mono text-[11px] text-zinc-500">{a.endpoint}</span>
               </div>
               <div className="flex items-center gap-3">
-                <span className="font-mono text-[10px] text-[#8C8375]">{a.latency}</span>
-                <span className="inline-flex items-center gap-1 font-mono text-[10px] uppercase px-2 py-0.5 rounded bg-emerald-950 border border-emerald-500/40 text-emerald-400 font-bold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span className="font-mono text-[10px] text-zinc-400">{a.latency}</span>
+                <span className="font-mono text-[10px] uppercase px-2 py-0.5 rounded bg-emerald-950 border border-emerald-500/40 text-emerald-400 font-semibold">
                   {a.status}
                 </span>
               </div>

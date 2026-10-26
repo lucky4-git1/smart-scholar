@@ -155,9 +155,9 @@ export const JournalAuditPage: React.FC = () => {
               <span>Scanning editorial pages and policy declarations...</span>
               <span>{activeJob.progressPercent}%</span>
             </div>
-            <div className="w-full bg-zinc-900 h-2 rounded-full overflow-hidden">
+            <div className="w-full bg-zinc-900 h-2 rounded-sm overflow-hidden">
               <div
-                className="bg-emerald-400 h-full rounded-full transition-all duration-300"
+                className="bg-emerald-400 h-full rounded-sm transition-all duration-300"
                 style={{ width: `${activeJob.progressPercent}%` }}
               ></div>
             </div>

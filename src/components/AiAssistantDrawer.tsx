@@ -70,10 +70,10 @@ export const AiAssistantDrawer: React.FC = () => {
       {/* Floating Trigger Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 bg-zinc-900 border border-zinc-700/80 text-zinc-100 py-2.5 px-4 rounded-full shadow-elevated flex items-center gap-2 hover:border-zinc-500 hover:bg-zinc-800 transition-all text-xs font-semibold"
+        className="fixed bottom-6 right-6 z-40 bg-zinc-900 border border-zinc-700/80 text-zinc-100 py-2 px-3.5 rounded-md shadow-elevated flex items-center gap-2 hover:border-zinc-500 hover:bg-zinc-800 transition-all text-xs font-semibold"
         aria-label="Ask Research Integrity Assistant"
       >
-        <Sparkles className="w-4 h-4 text-emerald-400" />
+        <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
         <span>Ask Integrity Assistant</span>
       </button>
 
@@ -92,8 +92,7 @@ export const AiAssistantDrawer: React.FC = () => {
                   <h3 className="font-display font-semibold text-sm text-zinc-100">
                     Research Integrity Assistant
                   </h3>
-                  <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  <span className="text-[10px] font-mono text-zinc-400">
                     Grounded in 5-Pillar Methodology
                   </span>
                 </div>
@@ -114,7 +113,7 @@ export const AiAssistantDrawer: React.FC = () => {
                   className={`flex gap-2.5 ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   {m.role === 'assistant' && (
-                    <div className="w-6 h-6 rounded-full bg-zinc-800 border border-zinc-700 flex-shrink-0 flex items-center justify-center text-emerald-400 mt-1">
+                    <div className="w-6 h-6 rounded bg-zinc-800 border border-zinc-700 flex-shrink-0 flex items-center justify-center text-emerald-400 mt-1">
                       <Bot className="w-3.5 h-3.5" />
                     </div>
                   )}
@@ -135,7 +134,7 @@ export const AiAssistantDrawer: React.FC = () => {
                   </div>
 
                   {m.role === 'user' && (
-                    <div className="w-6 h-6 rounded-full bg-zinc-800 border border-zinc-700 flex-shrink-0 flex items-center justify-center text-zinc-300 mt-1 text-[10px] font-mono">
+                    <div className="w-6 h-6 rounded bg-zinc-800 border border-zinc-700 flex-shrink-0 flex items-center justify-center text-zinc-300 mt-1 text-[10px] font-mono">
                       U
                     </div>
                   )}

@@ -56,9 +56,8 @@ export const HomePage: React.FC = () => {
       <section className="relative pt-20 pb-16 border-b border-zinc-800/80 bg-gradient-to-b from-[#0e0e12] via-[#09090b] to-[#09090b]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
           
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-[11px] font-mono text-zinc-300">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-            <span>STANDARD 5-PILLAR RESEARCH INTEGRITY METHODOLOGY</span>
+          <div className="text-[11px] font-mono tracking-wider uppercase text-zinc-400">
+            Standard 5-Pillar Research Integrity Methodology &bull; v1.2
           </div>
 
           <h1 className="font-display text-4xl sm:text-6xl font-extrabold text-zinc-50 tracking-[-0.03em] leading-[1.08]">

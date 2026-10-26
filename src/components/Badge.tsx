@@ -25,14 +25,13 @@ export const GradeBadge: React.FC<GradeBadgeProps> = ({ grade = 'UNVERIFIED', si
   };
 
   const sizeClass = {
-    sm: 'text-[11px] px-2 py-0.5',
-    md: 'text-xs px-2.5 py-1',
-    lg: 'text-sm px-3.5 py-1.5 font-bold',
+    sm: 'text-[11px] px-1.5 py-0.5',
+    md: 'text-xs px-2 py-0.5',
+    lg: 'text-sm px-2.5 py-1 font-bold',
   }[size];
 
   return (
-    <span className={`inline-flex items-center gap-1.5 border font-mono rounded ${sizeClass} ${getStyle()}`}>
-      <span className="w-1.5 h-1.5 rounded-full bg-current"></span>
+    <span className={`inline-block border font-mono rounded ${sizeClass} ${getStyle()}`}>
       {grade === 'RED_FLAG' ? 'RED FLAG' : `GRADE ${grade}`}
     </span>
   );
@@ -42,22 +41,19 @@ export const SeverityBadge: React.FC<{ severity: 'CRITICAL' | 'WARNING' | 'INFO'
   switch (severity) {
     case 'CRITICAL':
       return (
-        <span className="inline-flex items-center gap-1 text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-rose-500/10 border border-rose-500/30 text-rose-300">
-          <span className="w-1 h-1 rounded-full bg-rose-400"></span>
+        <span className="inline-block text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-rose-500/10 border border-rose-500/30 text-rose-300">
           Critical Defect
         </span>
       );
     case 'WARNING':
       return (
-        <span className="inline-flex items-center gap-1 text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300">
-          <span className="w-1 h-1 rounded-full bg-amber-400"></span>
+        <span className="inline-block text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300">
           Warning
         </span>
       );
     default:
       return (
-        <span className="inline-flex items-center gap-1 text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-zinc-800/60 border border-zinc-700/60 text-zinc-400">
-          <span className="w-1 h-1 rounded-full bg-zinc-400"></span>
+        <span className="inline-block text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-zinc-800/60 border border-zinc-700/60 text-zinc-400">
           Informational
         </span>
       );
