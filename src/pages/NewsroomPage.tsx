@@ -28,10 +28,10 @@ export const NewsroomPage: React.FC = () => {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
       
       <div>
-        <span className="text-[11px] font-mono uppercase tracking-wider text-[#E3BC9A]">
+        <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400">
           Smart Scholars Newsroom
         </span>
-        <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-[#FAF7F2] mt-1">
+        <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-zinc-100 mt-1">
           Research Integrity & Indexing Updates
         </h1>
         <p className="text-xs sm:text-sm text-[#A3998B] mt-2 leading-relaxed">
@@ -43,17 +43,17 @@ export const NewsroomPage: React.FC = () => {
         {articles.map((a, i) => (
           <article key={i} className="ss-card p-6 space-y-2.5">
             <div className="flex items-center gap-3 text-[11px] font-mono text-[#8C8375]">
-              <span className="text-[#E3BC9A] uppercase px-2 py-0.5 rounded bg-[#1C1814] border border-[#2D2620]">
+              <span className="text-emerald-400 uppercase px-2 py-0.5 rounded bg-[#1C1814] border border-[#27272a]">
                 {a.category}
               </span>
               <span>{a.date}</span>
             </div>
 
-            <h2 className="font-display font-bold text-lg text-[#FAF7F2]">
+            <h2 className="font-display font-bold text-lg text-zinc-100">
               {a.title}
             </h2>
 
-            <p className="text-xs text-[#A89F91] leading-relaxed">
+            <p className="text-xs text-zinc-400 leading-relaxed">
               {a.summary}
             </p>
           </article>

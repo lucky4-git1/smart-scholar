@@ -48,7 +48,7 @@ export const AuditRepairPlanPage: React.FC = () => {
       
       {/* Navigation */}
       <div className="flex items-center justify-between">
-        <Link to={`/journal-audit/${id}/findings`} className="text-xs font-mono text-[#A89F91] hover:text-[#FAF7F2] inline-flex items-center gap-1.5">
+        <Link to={`/journal-audit/${id}/findings`} className="text-xs font-mono text-zinc-400 hover:text-zinc-100 inline-flex items-center gap-1.5">
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Findings
         </Link>
         <Link to={`/indexing/applications`} className="ss-btn-primary text-xs py-1.5 px-3">
@@ -57,11 +57,11 @@ export const AuditRepairPlanPage: React.FC = () => {
       </div>
 
       {/* Header */}
-      <div className="bg-[#14120F] border border-[#27211B] rounded-xl p-6">
-        <span className="text-[10px] font-mono uppercase text-[#E3BC9A] block">
+      <div className="bg-[#121215] border border-[#27272a] rounded-xl p-6">
+        <span className="text-[10px] font-mono uppercase text-emerald-400 block">
           Remediation Blueprint · Audit #{id?.substring(0, 8).toUpperCase()}
         </span>
-        <h1 className="font-display text-2xl font-extrabold text-[#FAF7F2] mt-1">
+        <h1 className="font-display text-2xl font-extrabold text-zinc-100 mt-1">
           Actionable Repair Plan ({plans.length} Tasks)
         </h1>
         <p className="text-xs text-[#8A8173] mt-1">
@@ -104,7 +104,7 @@ export const AuditRepairPlanPage: React.FC = () => {
                     className={`text-xs font-mono px-3 py-1 rounded border flex items-center gap-1.5 transition-colors ${
                       isResolved
                         ? 'bg-emerald-950 border-emerald-500 text-emerald-300'
-                        : 'bg-[#1C1814] border-[#312B24] text-[#A89F91] hover:text-[#FAF7F2]'
+                        : 'bg-[#1C1814] border-[#312B24] text-zinc-400 hover:text-zinc-100'
                     }`}
                   >
                     <Check className="w-3.5 h-3.5" />
@@ -112,11 +112,11 @@ export const AuditRepairPlanPage: React.FC = () => {
                   </button>
                 </div>
 
-                <h3 className={`font-display font-bold text-base text-[#FAF7F2] ${isResolved ? 'line-through text-[#8A8174]' : ''}`}>
+                <h3 className={`font-display font-bold text-base text-zinc-100 ${isResolved ? 'line-through text-[#8A8174]' : ''}`}>
                   {p.title}
                 </h3>
 
-                <p className="text-xs text-[#A89F91] leading-relaxed">
+                <p className="text-xs text-zinc-400 leading-relaxed">
                   {p.actionPlan}
                 </p>
 
@@ -125,16 +125,16 @@ export const AuditRepairPlanPage: React.FC = () => {
                   <div className="space-y-1.5 pt-2">
                     <div className="flex items-center justify-between text-[11px] font-mono text-[#8C8375]">
                       <span className="flex items-center gap-1">
-                        <Code2 className="w-3.5 h-3.5 text-[#E3BC9A]" /> Recommended HTML Structure:
+                        <Code2 className="w-3.5 h-3.5 text-emerald-400" /> Recommended HTML Structure:
                       </span>
                       <button
                         onClick={() => handleCopyCode(p.codeTemplate!, p.id)}
-                        className="text-[#E3BC9A] hover:underline flex items-center gap-1"
+                        className="text-emerald-400 hover:underline flex items-center gap-1"
                       >
                         {copiedId === p.id ? '✓ Copied' : <><Copy className="w-3 h-3" /> Copy Snippet</>}
                       </button>
                     </div>
-                    <pre className="bg-[#0B0A08] border border-[#25201A] p-3 rounded text-[11px] font-mono text-[#E3BC9A] overflow-x-auto">
+                    <pre className="bg-[#09090b] border border-[#27272a] p-3 rounded text-[11px] font-mono text-emerald-400 overflow-x-auto">
                       {p.codeTemplate}
                     </pre>
                   </div>

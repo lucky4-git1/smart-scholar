@@ -35,10 +35,10 @@ export const FaqPage: React.FC = () => {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
       
       <div>
-        <span className="text-[11px] font-mono uppercase tracking-wider text-[#E3BC9A]">
+        <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400">
           FAQ & Knowledge Base
         </span>
-        <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-[#FAF7F2] mt-1">
+        <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-zinc-100 mt-1">
           Frequently Asked Questions
         </h1>
         <p className="text-xs sm:text-sm text-[#A3998B] mt-2 leading-relaxed">
@@ -55,18 +55,18 @@ export const FaqPage: React.FC = () => {
                 onClick={() => setOpenIdx(isOpen ? null : i)}
                 className="w-full p-5 text-left flex items-center justify-between gap-4"
               >
-                <span className="font-display font-bold text-sm text-[#FAF7F2]">
+                <span className="font-display font-bold text-sm text-zinc-100">
                   {f.q}
                 </span>
                 {isOpen ? (
-                  <ChevronUp className="w-4 h-4 text-[#E3BC9A] flex-shrink-0" />
+                  <ChevronUp className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 ) : (
                   <ChevronDown className="w-4 h-4 text-[#8C8275] flex-shrink-0" />
                 )}
               </button>
 
               {isOpen && (
-                <div className="px-5 pb-5 text-xs text-[#A89F91] leading-relaxed border-t border-[#221D18] pt-3">
+                <div className="px-5 pb-5 text-xs text-zinc-400 leading-relaxed border-t border-[#221D18] pt-3">
                   {f.a}
                 </div>
               )}

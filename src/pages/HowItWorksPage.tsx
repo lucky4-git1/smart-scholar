@@ -7,10 +7,10 @@ export const HowItWorksPage: React.FC = () => {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       
       <div>
-        <span className="text-[11px] font-mono uppercase tracking-wider text-[#E3BC9A]">
+        <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400">
           Methodology v1.2.0-2026 · Standard of Evidence
         </span>
-        <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-[#FAF7F2] mt-1">
+        <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-zinc-100 mt-1">
           How the Journal Trust Rating Engine Works
         </h1>
         <p className="text-xs sm:text-sm text-[#A3998B] mt-2 leading-relaxed">
@@ -20,40 +20,40 @@ export const HowItWorksPage: React.FC = () => {
 
       {/* 4-Step Process */}
       <div className="space-y-6">
-        <h2 className="font-display font-bold text-xl text-[#FAF7F2]">
+        <h2 className="font-display font-bold text-xl text-zinc-100">
           From Query to Action Plan in Four Steps
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
           
           <div className="ss-card p-5 space-y-2">
-            <span className="font-mono text-[#E3BC9A] text-lg font-bold">01</span>
-            <h3 className="font-display font-bold text-base text-[#FAF7F2]">Federated Registry Query</h3>
-            <p className="text-[#A89F91] leading-relaxed">
+            <span className="font-mono text-emerald-400 text-lg font-bold">01</span>
+            <h3 className="font-display font-bold text-base text-zinc-100">Federated Registry Query</h3>
+            <p className="text-zinc-400 leading-relaxed">
               When a journal title, ISSN, or DOI prefix is submitted, our federated adapters query Crossref, OpenAlex, and DOAJ with strict timeouts and response schema validation.
             </p>
           </div>
 
           <div className="ss-card p-5 space-y-2">
-            <span className="font-mono text-[#E3BC9A] text-lg font-bold">02</span>
-            <h3 className="font-display font-bold text-base text-[#FAF7F2]">SSRF-Guarded Technical Crawl</h3>
-            <p className="text-[#A89F91] leading-relaxed">
+            <span className="font-mono text-emerald-400 text-lg font-bold">02</span>
+            <h3 className="font-display font-bold text-base text-zinc-100">SSRF-Guarded Technical Crawl</h3>
+            <p className="text-zinc-400 leading-relaxed">
               For readiness audits, our crawler safely inspects the journal domain, preventing private address probing (RFC 1918) while testing policy disclosures, editorial board names, APC clarity, and licensing schemas.
             </p>
           </div>
 
           <div className="ss-card p-5 space-y-2">
-            <span className="font-mono text-[#E3BC9A] text-lg font-bold">03</span>
-            <h3 className="font-display font-bold text-base text-[#FAF7F2]">Deterministic 5-Pillar Scoring</h3>
-            <p className="text-[#A89F91] leading-relaxed">
+            <span className="font-mono text-emerald-400 text-lg font-bold">03</span>
+            <h3 className="font-display font-bold text-base text-zinc-100">Deterministic 5-Pillar Scoring</h3>
+            <p className="text-zinc-400 leading-relaxed">
               Points are awarded according to explicit weights across Identity (25%), Editorial (25%), Technical (20%), Preservation (15%), and Reach (15%). Red flags deduct points and cap letter grades.
             </p>
           </div>
 
           <div className="ss-card p-5 space-y-2">
-            <span className="font-mono text-[#E3BC9A] text-lg font-bold">04</span>
-            <h3 className="font-display font-bold text-base text-[#FAF7F2]">Verifiable Provenance & Repair Plan</h3>
-            <p className="text-[#A89F91] leading-relaxed">
+            <span className="font-mono text-emerald-400 text-lg font-bold">04</span>
+            <h3 className="font-display font-bold text-base text-zinc-100">Verifiable Provenance & Repair Plan</h3>
+            <p className="text-zinc-400 leading-relaxed">
               Every score breakdown records the exact endpoint, HTTP status, and timestamp. A prioritized repair checklist with code snippets helps editors resolve deficiencies.
             </p>
           </div>
@@ -62,8 +62,8 @@ export const HowItWorksPage: React.FC = () => {
       </div>
 
       {/* Grade Thresholds Table */}
-      <div className="bg-[#14120F] border border-[#27211B] rounded-xl p-6 space-y-4">
-        <h2 className="font-display font-bold text-lg text-[#FAF7F2]">
+      <div className="bg-[#121215] border border-[#27272a] rounded-xl p-6 space-y-4">
+        <h2 className="font-display font-bold text-lg text-zinc-100">
           Documented Letter Grade Mapping
         </h2>
         <div className="overflow-x-auto">

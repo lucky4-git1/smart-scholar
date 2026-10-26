@@ -61,16 +61,16 @@ Study on Synthetic Materials in Tropical Environments,International Journal of A
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       
       <div className="flex items-center justify-between">
-        <Link to="/institution/dashboard" className="text-xs font-mono text-[#A89F91] hover:text-[#FAF7F2] inline-flex items-center gap-1.5">
+        <Link to="/institution/dashboard" className="text-xs font-mono text-zinc-400 hover:text-zinc-100 inline-flex items-center gap-1.5">
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Integrity Desk
         </Link>
       </div>
 
       <div>
-        <span className="text-[11px] font-mono uppercase tracking-wider text-[#E3BC9A]">
+        <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400">
           Research Integrity Desk · Batch Faculty Publication Screening
         </span>
-        <h1 className="font-display text-3xl font-extrabold text-[#FAF7F2] mt-1">
+        <h1 className="font-display text-3xl font-extrabold text-zinc-100 mt-1">
           Batch Publication Compliance Screening
         </h1>
         <p className="text-xs sm:text-sm text-[#A3998B] mt-1 max-w-2xl leading-relaxed">
@@ -79,17 +79,17 @@ Study on Synthetic Materials in Tropical Environments,International Journal of A
       </div>
 
       {/* CSV Input Form */}
-      <div className="bg-[#14120F] border border-[#27211B] rounded-xl p-6 shadow-tactile max-w-3xl">
+      <div className="bg-[#121215] border border-[#27272a] rounded-xl p-6 shadow-tactile max-w-3xl">
         <form onSubmit={handleEvaluate} className="space-y-4">
           <div>
-            <label className="block text-xs font-mono uppercase tracking-wider text-[#FAF7F2] mb-1.5">
+            <label className="block text-xs font-mono uppercase tracking-wider text-zinc-100 mb-1.5">
               Paste Faculty Publications CSV (articleTitle, journalTitle, issn, publisher)
             </label>
             <textarea
               rows={6}
               value={csvText}
               onChange={e => setCsvText(e.target.value)}
-              className="w-full bg-[#0E0C0A] border border-[#2B241D] rounded-md p-3 text-xs font-mono text-[#FAF7F2] focus:outline-none focus:border-[#E3BC9A]"
+              className="w-full bg-[#09090b] border border-[#2B241D] rounded-md p-3 text-xs font-mono text-zinc-100 focus:outline-none focus:border-emerald-500/40"
             />
           </div>
 
@@ -115,33 +115,33 @@ Study on Synthetic Materials in Tropical Environments,International Journal of A
         <div className="space-y-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             
-            <div className="bg-[#14120F] border border-[#26201A] p-4 rounded-lg">
+            <div className="bg-[#121215] border border-[#26201A] p-4 rounded-lg">
               <span className="text-[10px] font-mono uppercase text-[#8A8174] block">Screened Articles</span>
-              <span className="font-mono text-2xl font-bold text-[#FAF7F2]">{results.totalEvaluated}</span>
+              <span className="font-mono text-2xl font-bold text-zinc-100">{results.totalEvaluated}</span>
             </div>
 
-            <div className="bg-[#14120F] border border-[#26201A] p-4 rounded-lg">
+            <div className="bg-[#121215] border border-[#26201A] p-4 rounded-lg">
               <span className="text-[10px] font-mono uppercase text-emerald-400 block">Compliant Venues</span>
               <span className="font-mono text-2xl font-bold text-emerald-400">{results.compliantCount}</span>
             </div>
 
-            <div className="bg-[#14120F] border border-[#26201A] p-4 rounded-lg">
+            <div className="bg-[#121215] border border-[#26201A] p-4 rounded-lg">
               <span className="text-[10px] font-mono uppercase text-rose-400 block">Flagged Venues</span>
               <span className="font-mono text-2xl font-bold text-rose-400">{results.flaggedCount}</span>
             </div>
 
-            <div className="bg-[#14120F] border border-[#26201A] p-4 rounded-lg">
-              <span className="text-[10px] font-mono uppercase text-[#E3BC9A] block">Faculty Compliance Rate</span>
-              <span className="font-mono text-2xl font-bold text-[#E3BC9A]">{results.complianceRate}%</span>
+            <div className="bg-[#121215] border border-[#26201A] p-4 rounded-lg">
+              <span className="text-[10px] font-mono uppercase text-emerald-400 block">Faculty Compliance Rate</span>
+              <span className="font-mono text-2xl font-bold text-emerald-400">{results.complianceRate}%</span>
             </div>
 
           </div>
 
           {/* Results Table */}
-          <div className="bg-[#14120F] border border-[#26201A] rounded-xl overflow-hidden">
+          <div className="bg-[#121215] border border-[#26201A] rounded-xl overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-[#181512] border-b border-[#26201A] text-[#9E9486] font-mono uppercase text-[10px]">
+                <thead className="bg-[#18181b] border-b border-[#26201A] text-[#9E9486] font-mono uppercase text-[10px]">
                   <tr>
                     <th className="py-3 px-4">Publication Title</th>
                     <th className="py-3 px-4">Journal</th>
@@ -153,14 +153,14 @@ Study on Synthetic Materials in Tropical Environments,International Journal of A
                 </thead>
                 <tbody className="divide-y divide-[#201B17]">
                   {results.results?.map((r: any, idx: number) => (
-                    <tr key={idx} className="hover:bg-[#181512] transition-colors">
-                      <td className="py-3 px-4 font-semibold text-[#FAF7F2] max-w-xs truncate">
+                    <tr key={idx} className="hover:bg-[#18181b] transition-colors">
+                      <td className="py-3 px-4 font-semibold text-zinc-100 max-w-xs truncate">
                         {r.articleTitle}
                       </td>
-                      <td className="py-3 px-4 text-[#A89F91]">
+                      <td className="py-3 px-4 text-zinc-400">
                         {r.journalTitle}
                       </td>
-                      <td className="py-3 px-4 font-mono text-[#E3BC9A]">
+                      <td className="py-3 px-4 font-mono text-emerald-400">
                         {r.issn || '—'}
                       </td>
                       <td className="py-3 px-4 font-mono font-bold">

@@ -38,13 +38,13 @@ export const RegisterPage: React.FC = () => {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md space-y-6 bg-[#14120F] border border-[#27211B] rounded-xl p-8 shadow-tactile">
+      <div className="w-full max-w-md space-y-6 bg-[#121215] border border-[#27272a] rounded-xl p-8 shadow-tactile">
         
         <div className="text-center space-y-2">
-          <div className="w-10 h-10 rounded-md bg-[#1D1914] border border-[#3E342B] flex items-center justify-center text-[#E3BC9A] mx-auto shadow-tactile">
+          <div className="w-10 h-10 rounded-md bg-[#1D1914] border border-[#3E342B] flex items-center justify-center text-emerald-400 mx-auto shadow-tactile">
             <ShieldCheck className="w-6 h-6" />
           </div>
-          <h1 className="font-display font-extrabold text-2xl text-[#FAF7F2]">
+          <h1 className="font-display font-extrabold text-2xl text-zinc-100">
             Create an Account
           </h1>
           <p className="text-xs text-[#8C8275]">
@@ -69,7 +69,7 @@ export const RegisterPage: React.FC = () => {
               value={fullName}
               onChange={e => setFullName(e.target.value)}
               placeholder="Dr. Jordan Smith"
-              className="w-full bg-[#0E0C0A] border border-[#2D2620] rounded-md px-3 py-2 text-sm text-[#FAF7F2] focus:outline-none focus:border-[#E3BC9A]"
+              className="w-full bg-[#09090b] border border-[#27272a] rounded-md px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:border-emerald-500/40"
             />
           </div>
 
@@ -83,7 +83,7 @@ export const RegisterPage: React.FC = () => {
               value={email}
               onChange={e => setEmail(e.target.value)}
               placeholder="jordan.smith@university.edu"
-              className="w-full bg-[#0E0C0A] border border-[#2D2620] rounded-md px-3 py-2 text-sm text-[#FAF7F2] focus:outline-none focus:border-[#E3BC9A]"
+              className="w-full bg-[#09090b] border border-[#27272a] rounded-md px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:border-emerald-500/40"
             />
           </div>
 
@@ -96,7 +96,7 @@ export const RegisterPage: React.FC = () => {
               value={institution}
               onChange={e => setInstitution(e.target.value)}
               placeholder="e.g. Stanford University or Independent Scholar"
-              className="w-full bg-[#0E0C0A] border border-[#2D2620] rounded-md px-3 py-2 text-sm text-[#FAF7F2] focus:outline-none focus:border-[#E3BC9A]"
+              className="w-full bg-[#09090b] border border-[#27272a] rounded-md px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:border-emerald-500/40"
             />
           </div>
 
@@ -107,7 +107,7 @@ export const RegisterPage: React.FC = () => {
             <select
               value={role}
               onChange={e => setRole(e.target.value)}
-              className="w-full bg-[#0E0C0A] border border-[#2D2620] rounded-md px-3 py-2 text-sm text-[#FAF7F2] focus:outline-none focus:border-[#E3BC9A]"
+              className="w-full bg-[#09090b] border border-[#27272a] rounded-md px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:border-emerald-500/40"
             >
               <option value="RESEARCHER">Researcher / Author</option>
               <option value="EDITOR">Journal Editor / Publisher</option>
@@ -126,7 +126,7 @@ export const RegisterPage: React.FC = () => {
               minLength={8}
               value={password}
               onChange={e => setPassword(e.target.value)}
-              className="w-full bg-[#0E0C0A] border border-[#2D2620] rounded-md px-3 py-2 text-sm text-[#FAF7F2] focus:outline-none focus:border-[#E3BC9A]"
+              className="w-full bg-[#09090b] border border-[#27272a] rounded-md px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:border-emerald-500/40"
             />
           </div>
 
@@ -141,7 +141,7 @@ export const RegisterPage: React.FC = () => {
 
         <div className="text-center text-xs text-[#8C8275]">
           Already have an account?{' '}
-          <Link to="/auth/login" className="text-[#E3BC9A] hover:underline font-semibold">
+          <Link to="/auth/login" className="text-emerald-400 hover:underline font-semibold">
             Sign In
           </Link>
         </div>

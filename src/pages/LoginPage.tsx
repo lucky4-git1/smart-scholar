@@ -39,13 +39,13 @@ export const LoginPage: React.FC = () => {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md space-y-6 bg-[#14120F] border border-[#27211B] rounded-xl p-8 shadow-tactile">
+      <div className="w-full max-w-md space-y-6 bg-[#121215] border border-[#27272a] rounded-xl p-8 shadow-tactile">
         
         <div className="text-center space-y-2">
-          <div className="w-10 h-10 rounded-md bg-[#1D1914] border border-[#3E342B] flex items-center justify-center text-[#E3BC9A] mx-auto shadow-tactile">
+          <div className="w-10 h-10 rounded-md bg-[#1D1914] border border-[#3E342B] flex items-center justify-center text-emerald-400 mx-auto shadow-tactile">
             <ShieldCheck className="w-6 h-6" />
           </div>
-          <h1 className="font-display font-extrabold text-2xl text-[#FAF7F2]">
+          <h1 className="font-display font-extrabold text-2xl text-zinc-100">
             Sign in to Smart Scholars
           </h1>
           <p className="text-xs text-[#8C8275]">
@@ -69,7 +69,7 @@ export const LoginPage: React.FC = () => {
               required
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className="w-full bg-[#0E0C0A] border border-[#2D2620] rounded-md px-3 py-2 text-sm text-[#FAF7F2] focus:outline-none focus:border-[#E3BC9A]"
+              className="w-full bg-[#09090b] border border-[#27272a] rounded-md px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:border-emerald-500/40"
             />
           </div>
 
@@ -82,7 +82,7 @@ export const LoginPage: React.FC = () => {
               required
               value={password}
               onChange={e => setPassword(e.target.value)}
-              className="w-full bg-[#0E0C0A] border border-[#2D2620] rounded-md px-3 py-2 text-sm text-[#FAF7F2] focus:outline-none focus:border-[#E3BC9A]"
+              className="w-full bg-[#09090b] border border-[#27272a] rounded-md px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:border-emerald-500/40"
             />
           </div>
 
@@ -104,14 +104,14 @@ export const LoginPage: React.FC = () => {
             <button
               type="button"
               onClick={setDemoAdmin}
-              className="flex-1 py-1 px-2 rounded bg-[#1A1713] border border-[#2E2822] text-[11px] font-mono text-[#E3BC9A] hover:border-[#E3BC9A]"
+              className="flex-1 py-1 px-2 rounded bg-[#1A1713] border border-[#2E2822] text-[11px] font-mono text-emerald-400 hover:border-emerald-500/40"
             >
               Fill Admin
             </button>
             <button
               type="button"
               onClick={setDemoAuditor}
-              className="flex-1 py-1 px-2 rounded bg-[#1A1713] border border-[#2E2822] text-[11px] font-mono text-[#E3BC9A] hover:border-[#E3BC9A]"
+              className="flex-1 py-1 px-2 rounded bg-[#1A1713] border border-[#2E2822] text-[11px] font-mono text-emerald-400 hover:border-emerald-500/40"
             >
               Fill Auditor
             </button>
@@ -120,7 +120,7 @@ export const LoginPage: React.FC = () => {
 
         <div className="text-center text-xs text-[#8C8275]">
           Don't have an account?{' '}
-          <Link to="/auth/register" className="text-[#E3BC9A] hover:underline font-semibold">
+          <Link to="/auth/register" className="text-emerald-400 hover:underline font-semibold">
             Create an Account
           </Link>
         </div>

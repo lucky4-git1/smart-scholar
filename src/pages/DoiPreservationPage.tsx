@@ -34,16 +34,16 @@ export const DoiPreservationPage: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       
       <div className="flex items-center justify-between">
-        <Link to="/doi-doctor" className="text-xs font-mono text-[#A89F91] hover:text-[#FAF7F2] inline-flex items-center gap-1.5">
+        <Link to="/doi-doctor" className="text-xs font-mono text-zinc-400 hover:text-zinc-100 inline-flex items-center gap-1.5">
           <ArrowLeft className="w-3.5 h-3.5" /> Back to DOI Doctor
         </Link>
       </div>
 
       <div>
-        <span className="text-[11px] font-mono uppercase tracking-wider text-[#E3BC9A]">
+        <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400">
           DOI Doctor · Digital Preservation Registry Ping
         </span>
-        <h1 className="font-display text-3xl font-extrabold text-[#FAF7F2] mt-1">
+        <h1 className="font-display text-3xl font-extrabold text-zinc-100 mt-1">
           Digital Archival Preservation Verifier
         </h1>
         <p className="text-xs sm:text-sm text-[#A3998B] mt-1 max-w-2xl leading-relaxed">
@@ -51,20 +51,20 @@ export const DoiPreservationPage: React.FC = () => {
         </p>
       </div>
 
-      <div className="bg-[#14120F] border border-[#27211B] rounded-xl p-6 shadow-tactile max-w-3xl">
+      <div className="bg-[#121215] border border-[#27272a] rounded-xl p-6 shadow-tactile max-w-3xl">
         <form onSubmit={handleCheck} className="space-y-4">
           <div>
-            <label className="block text-xs font-mono uppercase tracking-wider text-[#FAF7F2] mb-1.5">
+            <label className="block text-xs font-mono uppercase tracking-wider text-zinc-100 mb-1.5">
               Journal or Article Landing URL
             </label>
-            <div className="flex items-center bg-[#0E0C0A] border border-[#2D2620] focus-within:border-[#E3BC9A] rounded-lg p-1.5">
+            <div className="flex items-center bg-[#09090b] border border-[#27272a] focus-within:border-emerald-500/40 rounded-lg p-1.5">
               <input
                 type="url"
                 required
                 value={urlInput}
                 onChange={e => setUrlInput(e.target.value)}
                 placeholder="https://your-journal.org/article/123"
-                className="w-full bg-transparent px-3 py-2 text-sm text-[#FAF7F2] placeholder-[#665D50] focus:outline-none"
+                className="w-full bg-transparent px-3 py-2 text-sm text-zinc-100 placeholder-[#665D50] focus:outline-none"
               />
               <button
                 type="submit"
@@ -85,7 +85,7 @@ export const DoiPreservationPage: React.FC = () => {
       </div>
 
       {result && (
-        <div className="bg-[#14120F] border border-[#27211B] rounded-xl p-6 max-w-3xl space-y-4 shadow-tactile">
+        <div className="bg-[#121215] border border-[#27272a] rounded-xl p-6 max-w-3xl space-y-4 shadow-tactile">
           <div className="flex items-center justify-between">
             <span className={`inline-flex items-center gap-1.5 font-mono text-xs font-bold px-2.5 py-0.5 rounded border uppercase ${
               result.isArchived
@@ -103,7 +103,7 @@ export const DoiPreservationPage: React.FC = () => {
           <div className="text-xs space-y-2">
             <div>
               <span className="text-[10px] font-mono uppercase text-[#7A7165] block">Target URL</span>
-              <span className="font-mono text-[#FAF7F2] break-all">{result.url}</span>
+              <span className="font-mono text-zinc-100 break-all">{result.url}</span>
             </div>
 
             {result.archiveUrl && (
@@ -113,7 +113,7 @@ export const DoiPreservationPage: React.FC = () => {
                   href={result.archiveUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="font-mono text-[#E3BC9A] hover:underline inline-flex items-center gap-1 break-all"
+                  className="font-mono text-emerald-400 hover:underline inline-flex items-center gap-1 break-all"
                 >
                   {result.archiveUrl} <ExternalLink className="w-3.5 h-3.5 flex-shrink-0" />
                 </a>

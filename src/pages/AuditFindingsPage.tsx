@@ -38,7 +38,7 @@ export const AuditFindingsPage: React.FC = () => {
       
       {/* Breadcrumb & Navigation */}
       <div className="flex items-center justify-between">
-        <Link to={`/journal-audit?url=${encodeURIComponent(job?.targetUrl || '')}`} className="text-xs font-mono text-[#A89F91] hover:text-[#FAF7F2] inline-flex items-center gap-1.5">
+        <Link to={`/journal-audit?url=${encodeURIComponent(job?.targetUrl || '')}`} className="text-xs font-mono text-zinc-400 hover:text-zinc-100 inline-flex items-center gap-1.5">
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Audit Overview
         </Link>
         <Link to={`/journal-audit/${id}/repair-plan`} className="ss-btn-primary text-xs py-1.5 px-3">
@@ -48,11 +48,11 @@ export const AuditFindingsPage: React.FC = () => {
       </div>
 
       {/* Header */}
-      <div className="bg-[#14120F] border border-[#27211B] rounded-xl p-6">
-        <span className="text-[10px] font-mono uppercase text-[#E3BC9A] block">
+      <div className="bg-[#121215] border border-[#27272a] rounded-xl p-6">
+        <span className="text-[10px] font-mono uppercase text-emerald-400 block">
           Audited Target: {job?.targetUrl || id}
         </span>
-        <h1 className="font-display text-2xl font-extrabold text-[#FAF7F2] mt-1">
+        <h1 className="font-display text-2xl font-extrabold text-zinc-100 mt-1">
           Itemized Audit Findings ({findings.length})
         </h1>
         <p className="text-xs text-[#8A8173] mt-1">
@@ -65,8 +65,8 @@ export const AuditFindingsPage: React.FC = () => {
             onClick={() => setSeverityFilter('ALL')}
             className={`text-xs font-mono px-3 py-1 rounded border transition-colors ${
               severityFilter === 'ALL'
-                ? 'bg-[#E3BC9A] text-[#0A0908] border-[#E3BC9A] font-bold'
-                : 'bg-[#181512] text-[#9E9486] border-[#2C251F]'
+                ? 'bg-white text-zinc-950 font-semibold border-emerald-500/40 font-bold'
+                : 'bg-[#18181b] text-[#9E9486] border-[#2C251F]'
             }`}
           >
             ALL ({findings.length})
@@ -76,7 +76,7 @@ export const AuditFindingsPage: React.FC = () => {
             className={`text-xs font-mono px-3 py-1 rounded border transition-colors ${
               severityFilter === 'CRITICAL'
                 ? 'bg-rose-900 border-rose-600 text-rose-200 font-bold'
-                : 'bg-[#181512] text-rose-400 border-[#2C251F]'
+                : 'bg-[#18181b] text-rose-400 border-[#2C251F]'
             }`}
           >
             CRITICAL ({findings.filter(f => f.severity === 'CRITICAL').length})
@@ -86,7 +86,7 @@ export const AuditFindingsPage: React.FC = () => {
             className={`text-xs font-mono px-3 py-1 rounded border transition-colors ${
               severityFilter === 'WARNING'
                 ? 'bg-amber-900 border-amber-600 text-amber-200 font-bold'
-                : 'bg-[#181512] text-amber-400 border-[#2C251F]'
+                : 'bg-[#18181b] text-amber-400 border-[#2C251F]'
             }`}
           >
             WARNINGS ({findings.filter(f => f.severity === 'WARNING').length})
@@ -96,7 +96,7 @@ export const AuditFindingsPage: React.FC = () => {
             className={`text-xs font-mono px-3 py-1 rounded border transition-colors ${
               severityFilter === 'INFO'
                 ? 'bg-zinc-800 border-zinc-600 text-zinc-200 font-bold'
-                : 'bg-[#181512] text-zinc-400 border-[#2C251F]'
+                : 'bg-[#18181b] text-zinc-400 border-[#2C251F]'
             }`}
           >
             PASSED / INFO ({findings.filter(f => f.severity === 'INFO').length})
@@ -116,7 +116,7 @@ export const AuditFindingsPage: React.FC = () => {
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
                   <SeverityBadge severity={f.severity} />
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#8A8174] px-1.5 py-0.5 rounded bg-[#1B1814] border border-[#2D2620]">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#8A8174] px-1.5 py-0.5 rounded bg-[#1B1814] border border-[#27272a]">
                     {f.category}
                   </span>
                 </div>
@@ -125,17 +125,17 @@ export const AuditFindingsPage: React.FC = () => {
                 </span>
               </div>
 
-              <h3 className="font-display font-bold text-base text-[#FAF7F2]">
+              <h3 className="font-display font-bold text-base text-zinc-100">
                 {f.title}
               </h3>
 
-              <p className="text-xs text-[#A89F91] leading-relaxed">
+              <p className="text-xs text-zinc-400 leading-relaxed">
                 {f.description}
               </p>
 
               {f.affectedUrl && (
                 <div className="text-[11px] font-mono text-[#8C8274] pt-2 border-t border-[#201B17]">
-                  Target Page: <span className="text-[#E3BC9A]">{f.affectedUrl}</span>
+                  Target Page: <span className="text-emerald-400">{f.affectedUrl}</span>
                 </div>
               )}
             </div>

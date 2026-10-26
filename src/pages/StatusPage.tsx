@@ -35,10 +35,10 @@ export const StatusPage: React.FC = () => {
       
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-[11px] font-mono uppercase tracking-wider text-[#E3BC9A]">
+          <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400">
             Real-Time Infrastructure Health
           </span>
-          <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-[#FAF7F2] mt-1">
+          <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-zinc-100 mt-1">
             System & Adapter Status
           </h1>
         </div>
@@ -54,13 +54,13 @@ export const StatusPage: React.FC = () => {
       </div>
 
       {/* Main Status Card */}
-      <div className="bg-[#14120F] border border-emerald-500/40 rounded-xl p-6 flex items-center justify-between">
+      <div className="bg-[#121215] border border-emerald-500/40 rounded-xl p-6 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-emerald-950 border border-emerald-500/50 flex items-center justify-center text-emerald-400">
             <CheckCircle2 className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="font-display font-bold text-lg text-[#FAF7F2]">
+            <h2 className="font-display font-bold text-lg text-zinc-100">
               All Core Systems & Adapters Operational
             </h2>
             <p className="text-xs text-[#8C8375] font-mono">
@@ -72,15 +72,15 @@ export const StatusPage: React.FC = () => {
 
       {/* Adapters List */}
       <div className="space-y-3">
-        <h3 className="font-display font-bold text-base text-[#FAF7F2]">
+        <h3 className="font-display font-bold text-base text-zinc-100">
           External Bibliographic Registry Adapters
         </h3>
 
-        <div className="divide-y divide-[#201B17] bg-[#14120F] border border-[#27211B] rounded-xl overflow-hidden">
+        <div className="divide-y divide-[#201B17] bg-[#121215] border border-[#27272a] rounded-xl overflow-hidden">
           {adapters.map((a, i) => (
             <div key={i} className="p-4 flex items-center justify-between text-xs">
               <div>
-                <span className="font-semibold text-[#FAF7F2] block">{a.name}</span>
+                <span className="font-semibold text-zinc-100 block">{a.name}</span>
                 <span className="font-mono text-[11px] text-[#7A7165]">{a.endpoint}</span>
               </div>
               <div className="flex items-center gap-3">

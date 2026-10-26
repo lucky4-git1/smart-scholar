@@ -37,20 +37,20 @@ export const UserDashboardPage: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       
       {/* Header Profile Box */}
-      <div className="bg-[#14120F] border border-[#27211B] rounded-xl p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-tactile">
+      <div className="bg-[#121215] border border-[#27272a] rounded-xl p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-tactile">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-full bg-[#1D1914] border border-[#3E342B] flex items-center justify-center text-xl font-bold font-mono text-[#E3BC9A] shadow-tactile">
+          <div className="w-14 h-14 rounded-full bg-[#1D1914] border border-[#3E342B] flex items-center justify-center text-xl font-bold font-mono text-emerald-400 shadow-tactile">
             {user?.fullName?.charAt(0) || 'U'}
           </div>
           <div className="space-y-1">
-            <h1 className="font-display font-extrabold text-2xl text-[#FAF7F2]">
+            <h1 className="font-display font-extrabold text-2xl text-zinc-100">
               {user?.fullName}
             </h1>
             <p className="text-xs text-[#9E9486] font-mono">
               {user?.email} · {user?.institution || 'Independent Research Affiliation'}
             </p>
             <div className="flex items-center gap-2 pt-1">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-[#E3BC9A] bg-[#201B16] px-2 py-0.5 rounded border border-[#3A3026]">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 bg-[#201B16] px-2 py-0.5 rounded border border-[#3A3026]">
                 Role: {user?.role}
               </span>
               {user?.role === 'ADMIN' && (
@@ -75,11 +75,11 @@ export const UserDashboardPage: React.FC = () => {
       {/* Primary Workspace Shortcuts */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         
-        <Link to="/journal-check" className="ss-card p-5 group hover:border-[#E3BC9A]/60">
-          <div className="w-8 h-8 rounded bg-[#1D1914] border border-[#3A3026] flex items-center justify-center text-[#E3BC9A] mb-3 group-hover:border-[#E3BC9A]">
+        <Link to="/journal-check" className="ss-card p-5 group hover:border-emerald-500/40/60">
+          <div className="w-8 h-8 rounded bg-[#1D1914] border border-[#3A3026] flex items-center justify-center text-emerald-400 mb-3 group-hover:border-emerald-500/40">
             <ShieldCheck className="w-4 h-4" />
           </div>
-          <h3 className="font-display font-bold text-base text-[#FAF7F2] mb-1">
+          <h3 className="font-display font-bold text-base text-zinc-100 mb-1">
             Journal Check
           </h3>
           <p className="text-xs text-[#8C8275]">
@@ -87,11 +87,11 @@ export const UserDashboardPage: React.FC = () => {
           </p>
         </Link>
 
-        <Link to="/journal-audit" className="ss-card p-5 group hover:border-[#E3BC9A]/60">
-          <div className="w-8 h-8 rounded bg-[#1D1914] border border-[#3A3026] flex items-center justify-center text-[#E3BC9A] mb-3 group-hover:border-[#E3BC9A]">
+        <Link to="/journal-audit" className="ss-card p-5 group hover:border-emerald-500/40/60">
+          <div className="w-8 h-8 rounded bg-[#1D1914] border border-[#3A3026] flex items-center justify-center text-emerald-400 mb-3 group-hover:border-emerald-500/40">
             <FileCheck className="w-4 h-4" />
           </div>
-          <h3 className="font-display font-bold text-base text-[#FAF7F2] mb-1">
+          <h3 className="font-display font-bold text-base text-zinc-100 mb-1">
             Indexing Readiness
           </h3>
           <p className="text-xs text-[#8C8275]">
@@ -99,11 +99,11 @@ export const UserDashboardPage: React.FC = () => {
           </p>
         </Link>
 
-        <Link to="/doi-doctor" className="ss-card p-5 group hover:border-[#E3BC9A]/60">
-          <div className="w-8 h-8 rounded bg-[#1D1914] border border-[#3A3026] flex items-center justify-center text-[#E3BC9A] mb-3 group-hover:border-[#E3BC9A]">
+        <Link to="/doi-doctor" className="ss-card p-5 group hover:border-emerald-500/40/60">
+          <div className="w-8 h-8 rounded bg-[#1D1914] border border-[#3A3026] flex items-center justify-center text-emerald-400 mb-3 group-hover:border-emerald-500/40">
             <Stethoscope className="w-4 h-4" />
           </div>
-          <h3 className="font-display font-bold text-base text-[#FAF7F2] mb-1">
+          <h3 className="font-display font-bold text-base text-zinc-100 mb-1">
             DOI Doctor
           </h3>
           <p className="text-xs text-[#8C8275]">
@@ -111,11 +111,11 @@ export const UserDashboardPage: React.FC = () => {
           </p>
         </Link>
 
-        <Link to="/institution/watchlist" className="ss-card p-5 group hover:border-[#E3BC9A]/60">
-          <div className="w-8 h-8 rounded bg-[#1D1914] border border-[#3A3026] flex items-center justify-center text-[#E3BC9A] mb-3 group-hover:border-[#E3BC9A]">
+        <Link to="/institution/watchlist" className="ss-card p-5 group hover:border-emerald-500/40/60">
+          <div className="w-8 h-8 rounded bg-[#1D1914] border border-[#3A3026] flex items-center justify-center text-emerald-400 mb-3 group-hover:border-emerald-500/40">
             <BookmarkCheck className="w-4 h-4" />
           </div>
-          <h3 className="font-display font-bold text-base text-[#FAF7F2] mb-1">
+          <h3 className="font-display font-bold text-base text-zinc-100 mb-1">
             Institutional Watchlist
           </h3>
           <p className="text-xs text-[#8C8275]">
@@ -129,12 +129,12 @@ export const UserDashboardPage: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         
         {/* Active Indexing Applications */}
-        <div className="bg-[#14120F] border border-[#27211B] rounded-xl p-5 space-y-4">
+        <div className="bg-[#121215] border border-[#27272a] rounded-xl p-5 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="font-display font-bold text-base text-[#FAF7F2]">
+            <h3 className="font-display font-bold text-base text-zinc-100">
               Tracked Indexing Applications
             </h3>
-            <Link to="/indexing/applications" className="text-xs font-semibold text-[#E3BC9A] hover:underline">
+            <Link to="/indexing/applications" className="text-xs font-semibold text-emerald-400 hover:underline">
               View All &rarr;
             </Link>
           </div>
@@ -144,12 +144,12 @@ export const UserDashboardPage: React.FC = () => {
           ) : (
             <div className="space-y-2">
               {applications.map(a => (
-                <div key={a.id} className="p-3 bg-[#181512] border border-[#27201A] rounded flex items-center justify-between text-xs">
+                <div key={a.id} className="p-3 bg-[#18181b] border border-[#27201A] rounded flex items-center justify-between text-xs">
                   <div>
-                    <div className="font-semibold text-[#FAF7F2]">{a.journal.title}</div>
-                    <div className="text-[11px] font-mono text-[#E3BC9A]">{a.indexingService.name}</div>
+                    <div className="font-semibold text-zinc-100">{a.journal.title}</div>
+                    <div className="text-[11px] font-mono text-emerald-400">{a.indexingService.name}</div>
                   </div>
-                  <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-[#201B16] text-[#FAF7F2] border border-[#352C23]">
+                  <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-[#201B16] text-zinc-100 border border-[#352C23]">
                     {a.status}
                   </span>
                 </div>
@@ -159,12 +159,12 @@ export const UserDashboardPage: React.FC = () => {
         </div>
 
         {/* Watchlist Quick Summary */}
-        <div className="bg-[#14120F] border border-[#27211B] rounded-xl p-5 space-y-4">
+        <div className="bg-[#121215] border border-[#27272a] rounded-xl p-5 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="font-display font-bold text-base text-[#FAF7F2]">
+            <h3 className="font-display font-bold text-base text-zinc-100">
               Institutional Watchlist Preview
             </h3>
-            <Link to="/institution/watchlist" className="text-xs font-semibold text-[#E3BC9A] hover:underline">
+            <Link to="/institution/watchlist" className="text-xs font-semibold text-emerald-400 hover:underline">
               Full List &rarr;
             </Link>
           </div>
@@ -174,9 +174,9 @@ export const UserDashboardPage: React.FC = () => {
           ) : (
             <div className="space-y-2">
               {watchlist.map(w => (
-                <div key={w.id} className="p-3 bg-[#181512] border border-[#27201A] rounded flex items-center justify-between text-xs">
+                <div key={w.id} className="p-3 bg-[#18181b] border border-[#27201A] rounded flex items-center justify-between text-xs">
                   <div>
-                    <div className="font-semibold text-[#FAF7F2]">{w.journal.title}</div>
+                    <div className="font-semibold text-zinc-100">{w.journal.title}</div>
                     <div className="text-[11px] font-mono text-[#8C8375]">{w.journal.publisher}</div>
                   </div>
                   <span className={`font-mono text-[10px] px-2 py-0.5 rounded border uppercase ${

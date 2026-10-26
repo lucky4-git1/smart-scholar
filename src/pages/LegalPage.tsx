@@ -103,10 +103,10 @@ export const LegalPage: React.FC = () => {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
       
       <div>
-        <span className="text-[11px] font-mono uppercase tracking-wider text-[#E3BC9A]">
+        <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400">
           Compliance & Transparency
         </span>
-        <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-[#FAF7F2] mt-1">
+        <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-zinc-100 mt-1">
           {content.title}
         </h1>
         <p className="text-xs text-[#8C8375] font-mono mt-1">
@@ -117,10 +117,10 @@ export const LegalPage: React.FC = () => {
       <div className="space-y-6">
         {content.sections.map((sec, idx) => (
           <div key={idx} className="ss-card p-6 space-y-2">
-            <h2 className="font-display font-bold text-base text-[#FAF7F2]">
+            <h2 className="font-display font-bold text-base text-zinc-100">
               {sec.heading}
             </h2>
-            <p className="text-xs text-[#A89F91] leading-relaxed whitespace-pre-line">
+            <p className="text-xs text-zinc-400 leading-relaxed whitespace-pre-line">
               {sec.text}
             </p>
           </div>

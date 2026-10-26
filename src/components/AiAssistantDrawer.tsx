@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, X, Send, Bot, User as UserIcon, Loader2 } from 'lucide-react';
+import { Sparkles, X, Send, Bot, Loader2 } from 'lucide-react';
 import { apiRequest } from '../lib/api';
 
 interface Message {
@@ -70,37 +70,37 @@ export const AiAssistantDrawer: React.FC = () => {
       {/* Floating Trigger Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 ss-btn-primary py-2.5 px-4 rounded-full shadow-2xl flex items-center gap-2 border border-[#FFF3E6]/30 text-xs font-semibold"
+        className="fixed bottom-6 right-6 z-40 bg-zinc-900 border border-zinc-700/80 text-zinc-100 py-2.5 px-4 rounded-full shadow-elevated flex items-center gap-2 hover:border-zinc-500 hover:bg-zinc-800 transition-all text-xs font-semibold"
         aria-label="Ask Research Integrity Assistant"
       >
-        <Sparkles className="w-4 h-4 text-[#0A0908]" />
+        <Sparkles className="w-4 h-4 text-emerald-400" />
         <span>Ask Integrity Assistant</span>
       </button>
 
       {/* Slide-over Modal / Drawer */}
       {isOpen && (
         <div className="fixed inset-0 z-50 overflow-hidden flex justify-end bg-black/60 backdrop-blur-sm transition-opacity">
-          <div className="w-full max-w-md bg-[#12100E] border-l border-[#2B2520] shadow-2xl flex flex-col h-full animate-in slide-in-from-right duration-200">
+          <div className="w-full max-w-md bg-[#0e0e11] border-l border-zinc-800 shadow-2xl flex flex-col h-full animate-in slide-in-from-right duration-200">
             
             {/* Header */}
-            <div className="p-4 border-b border-[#25201A] flex items-center justify-between bg-[#161310]">
+            <div className="p-4 border-b border-zinc-800/80 flex items-center justify-between bg-zinc-900/60">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded bg-[#201B16] border border-[#3E342B] flex items-center justify-center text-[#E3BC9A]">
+                <div className="w-8 h-8 rounded bg-zinc-800 border border-zinc-700 flex items-center justify-center text-emerald-400">
                   <Bot className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-sm text-[#FAF7F2]">
+                  <h3 className="font-display font-semibold text-sm text-zinc-100">
                     Research Integrity Assistant
                   </h3>
-                  <span className="text-[10px] font-mono text-[#14B8A6] flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#14B8A6]"></span>
+                  <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                     Grounded in 5-Pillar Methodology
                   </span>
                 </div>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1 rounded text-[#9E9486] hover:text-[#FAF7F2] hover:bg-[#201C17]"
+                className="p-1 rounded text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -114,7 +114,7 @@ export const AiAssistantDrawer: React.FC = () => {
                   className={`flex gap-2.5 ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   {m.role === 'assistant' && (
-                    <div className="w-6 h-6 rounded-full bg-[#201B16] border border-[#3E342B] flex-shrink-0 flex items-center justify-center text-[#E3BC9A] mt-1">
+                    <div className="w-6 h-6 rounded-full bg-zinc-800 border border-zinc-700 flex-shrink-0 flex items-center justify-center text-emerald-400 mt-1">
                       <Bot className="w-3.5 h-3.5" />
                     </div>
                   )}
@@ -122,20 +122,20 @@ export const AiAssistantDrawer: React.FC = () => {
                   <div
                     className={`max-w-[85%] rounded-lg p-3 text-xs leading-relaxed whitespace-pre-line ${
                       m.role === 'user'
-                        ? 'bg-[#E3BC9A] text-[#0A0908] font-medium'
-                        : 'bg-[#191613] text-[#FAF7F2] border border-[#2B2520]'
+                        ? 'bg-zinc-100 text-zinc-950 font-medium'
+                        : 'bg-zinc-900 text-zinc-200 border border-zinc-800'
                     }`}
                   >
                     {m.content}
                     {m.source && (
-                      <div className="mt-2 pt-2 border-t border-[#26201A] text-[9px] font-mono text-[#8C8377]">
+                      <div className="mt-2 pt-2 border-t border-zinc-800/80 text-[9px] font-mono text-zinc-400">
                         Source: {m.source}
                       </div>
                     )}
                   </div>
 
                   {m.role === 'user' && (
-                    <div className="w-6 h-6 rounded-full bg-[#E3BC9A]/20 border border-[#E3BC9A]/40 flex-shrink-0 flex items-center justify-center text-[#E3BC9A] mt-1 text-[10px] font-mono">
+                    <div className="w-6 h-6 rounded-full bg-zinc-800 border border-zinc-700 flex-shrink-0 flex items-center justify-center text-zinc-300 mt-1 text-[10px] font-mono">
                       U
                     </div>
                   )}
@@ -143,16 +143,16 @@ export const AiAssistantDrawer: React.FC = () => {
               ))}
 
               {loading && (
-                <div className="flex items-center gap-2 text-xs text-[#9E9486] p-2 bg-[#191613] rounded border border-[#2B2520] max-w-[200px]">
-                  <Loader2 className="w-3.5 h-3.5 animate-spin text-[#E3BC9A]" />
+                <div className="flex items-center gap-2 text-xs text-zinc-400 p-2 bg-zinc-900 rounded border border-zinc-800 max-w-[200px]">
+                  <Loader2 className="w-3.5 h-3.5 animate-spin text-emerald-400" />
                   <span>Consulting registries...</span>
                 </div>
               )}
             </div>
 
             {/* Quick Prompts */}
-            <div className="px-4 py-2 border-t border-[#25201A] bg-[#14120F]">
-              <p className="text-[10px] font-mono uppercase tracking-wider text-[#8A8173] mb-1.5">
+            <div className="px-4 py-2 border-t border-zinc-800 bg-zinc-950/80">
+              <p className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 mb-1.5">
                 Suggested Questions
               </p>
               <div className="flex flex-wrap gap-1.5">
@@ -160,7 +160,7 @@ export const AiAssistantDrawer: React.FC = () => {
                   <button
                     key={i}
                     onClick={() => handleSend(p)}
-                    className="text-[11px] px-2 py-1 rounded bg-[#1C1814] border border-[#2C2620] text-[#C7BFB3] hover:border-[#E3BC9A]/60 hover:text-[#FAF7F2] transition-colors text-left"
+                    className="text-[11px] px-2 py-1 rounded bg-zinc-900 border border-zinc-800 text-zinc-300 hover:border-zinc-600 hover:text-white transition-colors text-left"
                   >
                     {p}
                   </button>
@@ -169,7 +169,7 @@ export const AiAssistantDrawer: React.FC = () => {
             </div>
 
             {/* Input Bar */}
-            <div className="p-3 border-t border-[#25201A] bg-[#161310]">
+            <div className="p-3 border-t border-zinc-800 bg-zinc-900/60">
               <form
                 onSubmit={e => {
                   e.preventDefault();
@@ -182,7 +182,7 @@ export const AiAssistantDrawer: React.FC = () => {
                   value={input}
                   onChange={e => setInput(e.target.value)}
                   placeholder="Ask about journal criteria, DOAJ, or DOIs..."
-                  className="flex-1 bg-[#0E0C0A] border border-[#2B2520] rounded-md px-3 py-2 text-xs text-[#FAF7F2] placeholder-[#6E6457] focus:outline-none focus:border-[#E3BC9A]"
+                  className="flex-1 bg-zinc-950 border border-zinc-800 rounded-md px-3 py-2 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-zinc-600"
                 />
                 <button
                   type="submit"

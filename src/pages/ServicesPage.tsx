@@ -58,10 +58,10 @@ export const ServicesPage: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
       
       <div className="max-w-2xl">
-        <span className="text-[11px] font-mono uppercase tracking-wider text-[#E3BC9A]">
+        <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400">
           Smart Scholars · Product Ecosystem
         </span>
-        <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-[#FAF7F2] mt-1">
+        <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-zinc-100 mt-1">
           Complete Research Integrity & Indexing Services
         </h1>
         <p className="text-xs sm:text-sm text-[#A3998B] mt-2 leading-relaxed">
@@ -76,19 +76,19 @@ export const ServicesPage: React.FC = () => {
             <div key={idx} className="ss-card p-6 flex flex-col justify-between space-y-4">
               <div>
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-lg bg-[#1C1814] border border-[#3A3026] flex items-center justify-center text-[#E3BC9A]">
+                  <div className="w-10 h-10 rounded-lg bg-[#1C1814] border border-[#3A3026] flex items-center justify-center text-emerald-400">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#E3BC9A] px-2 py-0.5 rounded bg-[#1F1A15] border border-[#3A3026]">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 px-2 py-0.5 rounded bg-[#1F1A15] border border-[#3A3026]">
                     {s.badge}
                   </span>
                 </div>
 
-                <h3 className="font-display font-bold text-lg text-[#FAF7F2] mt-4">
+                <h3 className="font-display font-bold text-lg text-zinc-100 mt-4">
                   {s.title}
                 </h3>
 
-                <p className="text-xs text-[#A89F91] leading-relaxed mt-2">
+                <p className="text-xs text-zinc-400 leading-relaxed mt-2">
                   {s.description}
                 </p>
               </div>
