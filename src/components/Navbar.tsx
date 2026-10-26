@@ -10,7 +10,6 @@ import {
   LayoutDashboard,
   ChevronDown,
   Building2,
-  Stethoscope,
   FolderKanban,
   ExternalLink
 } from 'lucide-react';
@@ -23,7 +22,6 @@ export const Navbar: React.FC = () => {
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -49,57 +47,37 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#09090b]/85 backdrop-blur-xl border-b border-white/[0.08] transition-all">
-      {/* Micro-top hairline illumination */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-emerald-500/25 to-transparent pointer-events-none" />
-
+    <header className="sticky top-0 z-50 bg-[#09090b]/90 backdrop-blur-md border-b border-zinc-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[62px]">
+        <div className="flex items-center justify-between h-16">
           
-          {/* Left: Brand Identity & Micro-Status */}
-          <div className="flex items-center gap-7 lg:gap-8">
-            <Link to="/" className="flex items-center gap-3 group select-none">
-              <div className="relative w-8 h-8 rounded-lg bg-gradient-to-b from-zinc-800 to-zinc-950 border border-zinc-700/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_2px_4px_rgba(0,0,0,0.4)] flex items-center justify-center group-hover:border-zinc-500 transition-all duration-200">
-                <ShieldCheck className="w-4 h-4 text-emerald-400 transition-transform duration-200 group-hover:scale-105" />
-                {/* Heartbeat pulse beacon */}
-                <span className="absolute -top-1 -right-1 flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 ring-2 ring-[#09090b]" />
-                </span>
+          {/* Left: Brand & Desktop Nav Links */}
+          <div className="flex items-center gap-8 lg:gap-10">
+            {/* Clean Logo without live tag or tagline */}
+            <Link to="/" className="flex items-center gap-2.5 group select-none">
+              <div className="w-8 h-8 rounded-md bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-zinc-700 transition-colors">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
               </div>
-              <div className="flex flex-col">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-[14px] font-semibold tracking-[-0.015em] text-zinc-100 group-hover:text-white transition-colors leading-none">
-                    Smart Scholars
-                  </span>
-                  <span className="hidden sm:inline-flex items-center px-1.5 py-[2px] rounded text-[9px] font-mono tracking-wider font-semibold uppercase text-emerald-400/90 bg-emerald-950/40 border border-emerald-800/40">
-                    LIVE
-                  </span>
-                </div>
-                <span className="text-[10px] font-mono uppercase tracking-[0.06em] text-zinc-400 leading-tight mt-1">
-                  Research Integrity OS
-                </span>
-              </div>
+              <span className="text-[15px] font-semibold tracking-[-0.015em] text-zinc-100 group-hover:text-white transition-colors">
+                Smart Scholars
+              </span>
             </Link>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-1 text-[13px] font-medium tracking-[-0.01em]">
+            {/* Desktop Navigation Links - Clean, Typographic, No Pills */}
+            <nav className="hidden lg:flex items-center gap-7 text-[13.5px] font-medium tracking-tight">
               {navLinks.map((link) => {
                 const active = isActive(link.path);
                 return (
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`relative px-3.5 py-1.5 rounded-md transition-all duration-150 ease-out ${
+                    className={`relative py-1 transition-colors ${
                       active
-                        ? 'text-zinc-100 bg-zinc-800/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_1px_2px_rgba(0,0,0,0.3)] border border-zinc-700/50'
-                        : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-850/60 border border-transparent'
+                        ? 'text-white font-medium after:absolute after:bottom-[-20px] after:left-0 after:right-0 after:h-[2px] after:bg-emerald-400'
+                        : 'text-zinc-400 hover:text-zinc-100'
                     }`}
                   >
                     {link.label}
-                    {active && (
-                      <span className="absolute bottom-[-1px] left-3 right-3 h-[2px] bg-emerald-400 rounded-full" />
-                    )}
                   </Link>
                 );
               })}
@@ -107,26 +85,23 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Right Header Controls */}
-          <div className="flex items-center gap-3">
-            {/* Quick Command Search Trigger */}
+          <div className="flex items-center gap-5">
+            {/* Clean Text-based Search */}
             <Link
               to="/journal-check"
-              className="hidden md:flex items-center gap-2.5 text-xs font-mono px-3 py-1.5 rounded-lg bg-zinc-900/90 hover:bg-zinc-850 border border-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-zinc-200 transition-all duration-150 shadow-xs group"
-              title="Quick Search Journal Registry"
+              className="hidden md:flex items-center gap-2 text-[13px] text-zinc-400 hover:text-zinc-100 transition-colors"
+              title="Search Journal Registry"
             >
-              <Search className="w-3.5 h-3.5 text-zinc-400 group-hover:text-emerald-400 transition-colors" />
-              <span className="text-[12px] tracking-tight">Search ISSN / DOI</span>
-              <kbd className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700/60 shadow-xs">
-                ⌘K
-              </kbd>
+              <Search className="w-3.5 h-3.5 text-zinc-400" />
+              <span>Search</span>
             </Link>
 
             {/* Audit Journal CTA */}
             <Link
               to="/journal-audit"
-              className="ss-btn-primary text-xs font-medium py-1.5 px-3.5 tracking-tight flex items-center gap-1.5 shadow-[0_1px_2px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]"
+              className="ss-btn-primary text-xs font-medium py-1.5 px-3.5 tracking-tight"
             >
-              <span>Audit Journal</span>
+              Audit Journal
             </Link>
 
             {/* User Dropdown / Auth Menu */}
@@ -134,33 +109,33 @@ export const Navbar: React.FC = () => {
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-zinc-900/90 border border-zinc-800 text-sm text-zinc-200 hover:border-zinc-700 hover:bg-zinc-850 transition-all"
+                  className="flex items-center gap-2 text-xs font-medium text-zinc-200 hover:text-white transition-colors"
                   aria-expanded={userDropdownOpen}
                 >
-                  <div className="w-5 h-5 rounded-md bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-[10px] font-mono text-emerald-400 font-bold">
+                  <div className="w-6 h-6 rounded bg-zinc-800 border border-zinc-700 flex items-center justify-center text-[10px] font-mono text-emerald-400 font-semibold">
                     {user.fullName.charAt(0)}
                   </div>
-                  <span className="hidden md:inline text-xs font-medium max-w-[120px] truncate">
+                  <span className="hidden md:inline max-w-[120px] truncate">
                     {user.fullName}
                   </span>
                   <ChevronDown className={`w-3.5 h-3.5 text-zinc-400 transition-transform duration-200 ${userDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
 
                 {userDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-60 bg-[#121215]/95 backdrop-blur-xl border border-zinc-800/90 rounded-xl shadow-[0_10px_38px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.06)] py-1.5 text-xs z-50 ring-1 ring-white/5 animate-in fade-in zoom-in-95 duration-100">
-                    <div className="px-4 py-2.5 border-b border-zinc-800/80">
+                  <div className="absolute right-0 mt-2 w-56 bg-[#121215] border border-zinc-800 rounded-lg shadow-xl py-1 text-xs z-50">
+                    <div className="px-4 py-2.5 border-b border-zinc-800">
                       <p className="font-semibold text-zinc-100 truncate">{user.fullName}</p>
                       <p className="text-[11px] font-mono text-zinc-400 truncate mt-0.5">{user.email}</p>
-                      <span className="inline-block mt-1.5 text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800/90 text-emerald-400 border border-zinc-700/60 font-medium">
-                        {user.role}
-                      </span>
+                      <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider mt-1">
+                        Role: {user.role}
+                      </p>
                     </div>
 
                     <div className="py-1">
                       <Link
                         to="/dashboard"
                         onClick={() => setUserDropdownOpen(false)}
-                        className="flex items-center gap-2.5 px-4 py-2 text-zinc-300 hover:text-zinc-100 hover:bg-zinc-800/60 transition-colors"
+                        className="flex items-center gap-2.5 px-4 py-2 text-zinc-300 hover:text-zinc-100 hover:bg-zinc-800/50 transition-colors"
                       >
                         <LayoutDashboard className="w-3.5 h-3.5 text-zinc-400" />
                         <span>Research Workspace</span>
@@ -169,7 +144,7 @@ export const Navbar: React.FC = () => {
                       <Link
                         to="/institution/dashboard"
                         onClick={() => setUserDropdownOpen(false)}
-                        className="flex items-center gap-2.5 px-4 py-2 text-zinc-300 hover:text-zinc-100 hover:bg-zinc-800/60 transition-colors"
+                        className="flex items-center gap-2.5 px-4 py-2 text-zinc-300 hover:text-zinc-100 hover:bg-zinc-800/50 transition-colors"
                       >
                         <Building2 className="w-3.5 h-3.5 text-zinc-400" />
                         <span>Institution Watchlist</span>
@@ -178,7 +153,7 @@ export const Navbar: React.FC = () => {
                       <Link
                         to="/portfolio/dashboard"
                         onClick={() => setUserDropdownOpen(false)}
-                        className="flex items-center gap-2.5 px-4 py-2 text-zinc-300 hover:text-zinc-100 hover:bg-zinc-800/60 transition-colors"
+                        className="flex items-center gap-2.5 px-4 py-2 text-zinc-300 hover:text-zinc-100 hover:bg-zinc-800/50 transition-colors"
                       >
                         <FolderKanban className="w-3.5 h-3.5 text-zinc-400" />
                         <span>Portfolio Manager</span>
@@ -188,7 +163,7 @@ export const Navbar: React.FC = () => {
                         <Link
                           to="/admin"
                           onClick={() => setUserDropdownOpen(false)}
-                          className="flex items-center gap-2.5 px-4 py-2 text-emerald-400 hover:bg-zinc-800/60 font-medium transition-colors"
+                          className="flex items-center gap-2.5 px-4 py-2 text-emerald-400 hover:bg-zinc-800/50 font-medium transition-colors"
                         >
                           <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
                           <span>Admin Console</span>
@@ -196,14 +171,14 @@ export const Navbar: React.FC = () => {
                       )}
                     </div>
 
-                    <div className="pt-1 border-t border-zinc-800/80">
+                    <div className="pt-1 border-t border-zinc-800">
                       <button
                         onClick={() => {
                           setUserDropdownOpen(false);
                           logout();
                           navigate('/');
                         }}
-                        className="w-full flex items-center gap-2.5 px-4 py-2 text-rose-400 hover:bg-rose-950/20 transition-colors text-left font-medium"
+                        className="w-full flex items-center gap-2.5 px-4 py-2 text-rose-400 hover:bg-zinc-800/50 transition-colors text-left font-medium"
                       >
                         <LogOut className="w-3.5 h-3.5" />
                         <span>Sign Out</span>
@@ -213,26 +188,26 @@ export const Navbar: React.FC = () => {
                 )}
               </div>
             ) : (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <Link
                   to="/auth/login"
-                  className="text-xs font-medium px-3 py-1.5 text-zinc-300 hover:text-white transition-colors tracking-tight"
+                  className="text-xs font-medium text-zinc-400 hover:text-white transition-colors"
                 >
                   Sign In
                 </Link>
                 <Link
                   to="/auth/register"
-                  className="ss-btn-secondary text-xs py-1.5 px-3 tracking-tight"
+                  className="ss-btn-secondary text-xs py-1.5 px-3"
                 >
                   Register
                 </Link>
               </div>
             )}
 
-            {/* Mobile Menu Toggle Button */}
+            {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-1.5 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900 border border-zinc-800 transition-colors"
+              className="lg:hidden p-1 text-zinc-400 hover:text-zinc-100 transition-colors"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -242,30 +217,27 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-zinc-800/80 py-3.5 space-y-1.5 animate-in slide-in-from-top-2 duration-150">
+          <div className="lg:hidden border-t border-zinc-800 py-3 space-y-2">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center justify-between px-3.5 py-2 rounded-lg text-sm transition-colors ${
+                className={`block py-1.5 text-sm transition-colors ${
                   isActive(link.path)
-                    ? 'text-zinc-100 bg-zinc-800/80 font-medium'
-                    : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900'
+                    ? 'text-white font-medium'
+                    : 'text-zinc-400 hover:text-zinc-100'
                 }`}
               >
-                <span>{link.label}</span>
-                {isActive(link.path) && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                )}
+                {link.label}
               </Link>
             ))}
 
-            <div className="pt-2 border-t border-zinc-800/80 mt-2">
+            <div className="pt-2 border-t border-zinc-800 mt-2">
               <Link
                 to="/services"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between px-3.5 py-2 rounded-lg text-sm text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900"
+                className="flex items-center justify-between py-1.5 text-sm text-zinc-400 hover:text-zinc-100"
               >
                 <span>Services Directory</span>
                 <ExternalLink className="w-3.5 h-3.5 text-zinc-500" />
