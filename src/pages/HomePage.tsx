@@ -144,7 +144,7 @@ export const HomePage: React.FC = () => {
 
             {/* Right Col: The Interactive Ivory Audit Dossier Card (Directly from Screenshot) */}
             <div className="lg:col-span-5">
-              <div className="bg-[#FFFDF9] border-2 border-[#0A3D36] rounded-sm p-6 text-[#0A3D36] shadow-retro relative paper-grain transform hover:-translate-y-1 transition-transform duration-200">
+              <div className="bg-[#FFFDF9] border-2 border-[#0A3D36] rounded-sm p-6 text-[#0A3D36] shadow-retro relative transform hover:-translate-y-1 transition-transform duration-200">
                 
                 {/* Dossier Header */}
                 <div className="flex items-center justify-between pb-3 border-b border-[#0A3D36]/15">
@@ -518,7 +518,7 @@ export const HomePage: React.FC = () => {
 
             {/* Visual Repair Plan Code Preview */}
             <div className="lg:col-span-6">
-              <div className="bg-[#051F1A] border-2 border-[#166054] rounded-sm p-5 font-mono text-xs shadow-retro paper-grain">
+              <div className="bg-[#051F1A] border-2 border-[#166054] rounded-sm p-5 font-mono text-xs shadow-retro">
                 <div className="flex items-center justify-between pb-3 border-b border-[#166054] text-[#22D0B9] text-[11px]">
                   <span className="flex items-center gap-2 font-bold">
                     <FileCode className="w-3.5 h-3.5" /> REPAIR_PLAN_RECOMMENDATION.XML
@@ -622,7 +622,7 @@ export const HomePage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             
-            <div className="bg-[#FFFDF9] border-2 border-[#0A3D36] p-6 rounded-sm text-center shadow-retro paper-grain">
+            <div className="bg-[#FFFDF9] border-2 border-[#0A3D36] p-6 rounded-sm text-center shadow-retro">
               <div className="font-mono text-3xl font-extrabold text-[#0A3D36] tabular-nums">
                 48,000+
               </div>
@@ -631,7 +631,7 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-[#FFFDF9] border-2 border-[#0A3D36] p-6 rounded-sm text-center shadow-retro paper-grain">
+            <div className="bg-[#FFFDF9] border-2 border-[#0A3D36] p-6 rounded-sm text-center shadow-retro">
               <div className="font-mono text-3xl font-extrabold text-[#0A3D36] tabular-nums">
                 121
               </div>
@@ -640,7 +640,7 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-[#FFFDF9] border-2 border-[#0A3D36] p-6 rounded-sm text-center shadow-retro paper-grain">
+            <div className="bg-[#FFFDF9] border-2 border-[#0A3D36] p-6 rounded-sm text-center shadow-retro">
               <div className="font-mono text-3xl font-extrabold text-[#0A3D36] tabular-nums">
                 120M+
               </div>
@@ -649,7 +649,7 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-[#FFFDF9] border-2 border-[#0A3D36] p-6 rounded-sm text-center shadow-retro paper-grain">
+            <div className="bg-[#FFFDF9] border-2 border-[#0A3D36] p-6 rounded-sm text-center shadow-retro">
               <div className="font-mono text-3xl font-extrabold text-[#0A3D36] tabular-nums">
                 99.8%
               </div>
@@ -664,7 +664,7 @@ export const HomePage: React.FC = () => {
 
       {/* 7. BOTTOM CTA SECTION (Rich Apricot & Pine Card) */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-20 text-center">
-        <div className="bg-[#0A3D36] text-[#FAF6EE] border-2 border-[#06231E] rounded-sm p-8 sm:p-12 space-y-5 shadow-retro paper-grain">
+        <div className="bg-[#0A3D36] text-[#FAF6EE] border-2 border-[#06231E] rounded-sm p-8 sm:p-12 space-y-5 shadow-retro">
           <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#F6AC6D] px-2 py-0.5 rounded-sm shadow-retro-sm">
             RESEARCH INTEGRITY ENGINE
           </span>
