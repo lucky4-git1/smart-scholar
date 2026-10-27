@@ -103,6 +103,14 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   });
 });
 
+process.on('uncaughtException', (err) => {
+  console.error('[FATAL] Uncaught Exception:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('[WARN] Unhandled Promise Rejection at:', promise, 'reason:', reason);
+});
+
 if (process.env.NODE_ENV !== 'test') {
   app.listen(config.port, () => {
     console.log(`\n======================================================`);
