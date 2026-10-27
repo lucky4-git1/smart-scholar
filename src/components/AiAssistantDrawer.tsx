@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Sparkles, X, Send, Bot, AlertCircle } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Sparkles, X, Send, Bot, RotateCcw } from 'lucide-react';
 import { apiRequest } from '../lib/api';
 
 interface Message {
@@ -8,62 +8,105 @@ interface Message {
   source?: string;
 }
 
+const QUICK_PROMPTS = [
+  'Explain 5-Pillar Methodology',
+  'What triggers a Red Flag?',
+  'DOAJ & Scopus criteria',
+  'Check Nature (0028-0836)',
+  'How does DOI Doctor work?',
+];
+
 export const AiAssistantDrawer: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: 'Welcome to the Smart Scholars Research Integrity Assistant. I can clarify journal evaluation criteria, explain predatory indicators, review indexing readiness rules, or assess DOI resolution integrity.',
+      content:
+        'Welcome to the Smart Scholars Research Integrity Assistant. I can clarify journal evaluation criteria, explain predatory indicators, review indexing readiness rules, or assess DOI resolution integrity.',
+      source: 'DETERMINISTIC_ENGINE',
     },
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const handleSend = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || loading) return;
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
-    const userMessage: Message = { role: 'user', content: input };
+  useEffect(() => {
+    if (isOpen) {
+      scrollToBottom();
+    }
+  }, [messages, loading, isOpen]);
+
+  const sendQuery = async (queryText: string) => {
+    if (!queryText.trim() || loading) return;
+
+    const userMessage: Message = { role: 'user', content: queryText.trim() };
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setLoading(true);
 
-  try {
-    const res = await apiRequest('/api/v1/assistant/chat', {
-      method: 'POST',
-      body: JSON.stringify({ message: userMessage.content }),
-    });
+    try {
+      const res = await apiRequest('/api/v1/assistant/chat', {
+        method: 'POST',
+        body: JSON.stringify({
+          message: userMessage.content,
+          context: typeof window !== 'undefined' ? window.location.pathname : '',
+        }),
+      });
 
-    if (res.answer) {
+      const replyText = res.answer || res.reply;
+
+      if (replyText) {
+        setMessages(prev => [
+          ...prev,
+          {
+            role: 'assistant',
+            content: replyText,
+            source: res.source || 'INTEGRITY_ENGINE',
+          },
+        ]);
+      } else {
+        setMessages(prev => [
+          ...prev,
+          {
+            role: 'assistant',
+            content: 'I could not retrieve an answer at this time. Please try searching directly in the journal check registry.',
+            source: 'SYSTEM',
+          },
+        ]);
+      }
+    } catch (err: any) {
       setMessages(prev => [
         ...prev,
         {
           role: 'assistant',
-          content: res.answer,
-          source: res.source,
+          content: 'The assistant service encountered a communication error with the integrity knowledge base. Please try again.',
+          source: 'ERROR',
         },
       ]);
-    } else {
-      setMessages(prev => [
-        ...prev,
-        {
-          role: 'assistant',
-          content: 'I could not retrieve an answer at this time. Please try searching directly in the journal check registry.',
-        },
-      ]);
+    } finally {
+      setLoading(false);
     }
-  } catch (err: any) {
-    setMessages(prev => [
-      ...prev,
+  };
+
+  const handleSend = (e: React.FormEvent) => {
+    e.preventDefault();
+    sendQuery(input);
+  };
+
+  const handleReset = () => {
+    setMessages([
       {
         role: 'assistant',
-        content: 'The assistant service encountered a communication error with the integrity knowledge base. Please check back shortly.',
+        content:
+          'Welcome to the Smart Scholars Research Integrity Assistant. I can clarify journal evaluation criteria, explain predatory indicators, review indexing readiness rules, or assess DOI resolution integrity.',
+        source: 'DETERMINISTIC_ENGINE',
       },
     ]);
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   return (
     <>
@@ -97,12 +140,40 @@ export const AiAssistantDrawer: React.FC = () => {
                   </span>
                 </div>
               </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-1 rounded text-[#A0B3C6] hover:text-white hover:bg-[#162E4D]"
-              >
-                <X className="w-5 h-5" />
-              </button>
+              
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={handleReset}
+                  title="Reset conversation"
+                  className="p-1.5 rounded text-[#A0B3C6] hover:text-white hover:bg-[#162E4D] transition-colors"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  title="Close assistant"
+                  className="p-1.5 rounded text-[#A0B3C6] hover:text-white hover:bg-[#162E4D] transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Prompt Suggestions */}
+            <div className="px-3 py-2 bg-[#081320] border-b border-[#162E4D] flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+              <span className="text-[10px] font-mono text-[#71869E] uppercase font-bold whitespace-nowrap pl-1">
+                Quick:
+              </span>
+              {QUICK_PROMPTS.map((prompt, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => sendQuery(prompt)}
+                  disabled={loading}
+                  className="text-[11px] font-mono whitespace-nowrap px-2.5 py-1 rounded-sm bg-[#10243E] border border-[#162E4D] text-[#D8E3EE] hover:border-[#E06B43] hover:text-[#E06B43] transition-colors flex-shrink-0 disabled:opacity-50"
+                >
+                  {prompt}
+                </button>
+              ))}
             </div>
 
             {/* Message Stream */}
@@ -127,8 +198,8 @@ export const AiAssistantDrawer: React.FC = () => {
                   >
                     {m.content}
                     {m.source && (
-                      <div className="mt-2 pt-2 border-t border-[#1E3E62] text-[9.5px] font-mono text-[#E06B43]">
-                        Reference: {m.source}
+                      <div className="mt-2 pt-2 border-t border-[#1E3E62] text-[9.5px] font-mono text-[#E06B43] flex items-center justify-between">
+                        <span>Source: {m.source}</span>
                       </div>
                     )}
                   </div>
@@ -147,10 +218,12 @@ export const AiAssistantDrawer: React.FC = () => {
                     <Bot className="w-3.5 h-3.5" />
                   </div>
                   <div className="bg-[#10243E] border border-[#1E3E62] rounded-sm p-3 text-xs text-[#A0B3C6] font-mono">
-                    Verifying integrity knowledge base...
+                    Consulting 5-pillar integrity standards...
                   </div>
                 </div>
               )}
+
+              <div ref={messagesEndRef} />
             </div>
 
             {/* Input Bar */}
@@ -159,7 +232,7 @@ export const AiAssistantDrawer: React.FC = () => {
                 type="text"
                 value={input}
                 onChange={e => setInput(e.target.value)}
-                placeholder="Ask about DOAJ criteria, predatory risks..."
+                placeholder="Ask about DOAJ criteria, predatory risks, or check a journal..."
                 className="flex-1 bg-[#050C16] border border-[#162E4D] focus:border-[#E06B43] rounded-sm px-3 py-2 text-xs text-white placeholder-[#71869E] focus:outline-none"
               />
               <button
