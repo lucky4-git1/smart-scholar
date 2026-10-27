@@ -197,11 +197,6 @@ export const AiAssistantDrawer: React.FC = () => {
                     }`}
                   >
                     {m.content}
-                    {m.source && (
-                      <div className="mt-2 pt-2 border-t border-[#1E3E62] text-[9.5px] font-mono text-[#E06B43] flex items-center justify-between">
-                        <span>Source: {m.source}</span>
-                      </div>
-                    )}
                   </div>
 
                   {m.role === 'user' && (
