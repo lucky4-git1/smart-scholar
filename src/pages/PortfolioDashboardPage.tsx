@@ -18,18 +18,18 @@ export const PortfolioDashboardPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#0A3D36]">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#0B192C]">
       
       {/* Top Banner */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#0A3D36]/15 pb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#0B192C]/15 pb-6">
         <div>
-          <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
+          <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0B192C] bg-[#EBDDCD] px-2 py-0.5 rounded-sm border border-[#0B192C]/15">
             PORTFOLIO CONSOLE · MULTI-JOURNAL SURVEILLANCE
           </span>
-          <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A3D36] tracking-tight mt-2">
+          <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0B192C] tracking-tight mt-2">
             Every Journal You are Responsible For, On One Screen
           </h1>
-          <p className="text-xs sm:text-sm text-[#4B635E] mt-1.5 max-w-2xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#475E79] mt-1.5 max-w-2xl leading-relaxed">
             Designed for society publishers, university presses, and portfolio managers. Monitor ratings, track dead article URLs, and reconcile metadata across all active titles.
           </p>
         </div>
@@ -45,23 +45,23 @@ export const PortfolioDashboardPage: React.FC = () => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         
         <div className="ss-card p-5 shadow-paper">
-          <span className="text-[10px] font-mono text-[#4B635E] uppercase font-bold block">Monitored Journals</span>
-          <span className="font-mono text-3xl font-extrabold text-[#0A3D36] mt-1 block tabular-nums">
+          <span className="text-[10px] font-mono text-[#475E79] uppercase font-bold block">Monitored Journals</span>
+          <span className="font-mono text-3xl font-extrabold text-[#0B192C] mt-1 block tabular-nums">
             {data?.metrics?.totalJournals ?? 0}
           </span>
         </div>
 
         <div className="ss-card p-5 shadow-paper">
-          <span className="text-[10px] font-mono text-[#4B635E] uppercase font-bold block">Average Trust Score</span>
-          <span className="font-mono text-3xl font-extrabold text-[#0A3D36] mt-1 block tabular-nums">
+          <span className="text-[10px] font-mono text-[#475E79] uppercase font-bold block">Average Trust Score</span>
+          <span className="font-mono text-3xl font-extrabold text-[#0B192C] mt-1 block tabular-nums">
             {data?.metrics?.averageTrustScore ?? 0}
-            <span className="text-xs font-mono text-[#4B635E]"> / 100</span>
+            <span className="text-xs font-mono text-[#475E79]"> / 100</span>
           </span>
         </div>
 
         <div className="ss-card p-5 shadow-paper">
-          <span className="text-[10px] font-mono text-[#0A3D36] uppercase font-bold block">DOI Resolution Health</span>
-          <span className="font-mono text-3xl font-extrabold text-[#109C89] mt-1 block tabular-nums">
+          <span className="text-[10px] font-mono text-[#0B192C] uppercase font-bold block">DOI Resolution Health</span>
+          <span className="font-mono text-3xl font-extrabold text-[#167C6B] mt-1 block tabular-nums">
             {data?.metrics?.resolutionHealthRate ?? 100}%
           </span>
         </div>
@@ -77,23 +77,23 @@ export const PortfolioDashboardPage: React.FC = () => {
 
       {/* Monitored Journals Table (Paper Style with Oxford Pine Header) */}
       <div className="ss-card overflow-hidden shadow-paper">
-        <div className="p-5 border-b border-[#0A3D36]/15 bg-[#FAF6EE] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div className="p-5 border-b border-[#0B192C]/15 bg-[#FAF7F2] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <h3 className="font-serif font-bold text-lg text-[#0A3D36]">
+            <h3 className="font-serif font-bold text-lg text-[#0B192C]">
               Active Portfolio Serials
             </h3>
-            <p className="text-xs text-[#4B635E]">
+            <p className="text-xs text-[#475E79]">
               Continuous surveillance of indexing readiness, DOI persistence, and editorial integrity.
             </p>
           </div>
-          <span className="text-xs font-mono text-[#0A3D36] font-bold">
+          <span className="text-xs font-mono text-[#0B192C] font-bold">
             {data?.journals?.length ?? 0} TITLES MONITORED
           </span>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#0A3D36] text-[#FAF6EE] font-mono uppercase text-[10.5px]">
+            <thead className="bg-[#0B192C] text-[#FAF7F2] font-mono uppercase text-[10.5px]">
               <tr>
                 <th className="py-3.5 px-4 font-bold">Journal Title</th>
                 <th className="py-3.5 px-4 font-bold">Publisher</th>
@@ -104,25 +104,25 @@ export const PortfolioDashboardPage: React.FC = () => {
                 <th className="py-3.5 px-4 font-bold text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#0A3D36]/10 bg-[#FFFDF9]">
+            <tbody className="divide-y divide-[#0B192C]/10 bg-[#FFFFFF]">
               {data?.journals?.map((j: any) => (
-                <tr key={j.id} className="hover:bg-[#FAF6EE] transition-colors">
-                  <td className="py-3.5 px-4 font-serif font-bold text-sm text-[#0A3D36]">
+                <tr key={j.id} className="hover:bg-[#FAF7F2] transition-colors">
+                  <td className="py-3.5 px-4 font-serif font-bold text-sm text-[#0B192C]">
                     {j.title}
                   </td>
-                  <td className="py-3.5 px-4 text-[#4B635E]">
+                  <td className="py-3.5 px-4 text-[#475E79]">
                     {j.publisher || 'Unknown'}
                   </td>
-                  <td className="py-3.5 px-4 font-mono text-[#0A3D36]">
+                  <td className="py-3.5 px-4 font-mono text-[#0B192C]">
                     {j.identifiers?.[0]?.value || '—'}
                   </td>
-                  <td className="py-3.5 px-4 font-mono tabular-nums font-bold text-[#0A3D36]">
+                  <td className="py-3.5 px-4 font-mono tabular-nums font-bold text-[#0B192C]">
                     {j.currentScore !== null ? `${j.currentScore} / 100` : '—'}
                   </td>
                   <td className="py-3.5 px-4">
                     <GradeBadge grade={j.currentGrade || 'UNVERIFIED'} size="sm" />
                   </td>
-                  <td className="py-3.5 px-4 font-mono text-[#4B635E]">
+                  <td className="py-3.5 px-4 font-mono text-[#475E79]">
                     {j.lastAssessedAt ? new Date(j.lastAssessedAt).toLocaleDateString() : 'Pending'}
                   </td>
                   <td className="py-3.5 px-4 text-right">

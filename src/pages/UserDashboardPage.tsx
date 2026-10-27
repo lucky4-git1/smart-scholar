@@ -34,27 +34,27 @@ export const UserDashboardPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#0A3D36]">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#0B192C]">
       
       {/* Header Profile Box */}
       <div className="ss-card p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-paper">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-sm bg-[#0A3D36] border border-[#06231E] flex items-center justify-center text-lg font-bold font-mono text-[#22D0B9]">
+          <div className="w-12 h-12 rounded-sm bg-[#0B192C] border border-[#070F1A] flex items-center justify-center text-lg font-bold font-mono text-[#E06B43]">
             {user?.fullName?.charAt(0) || 'U'}
           </div>
           <div className="space-y-1">
-            <h1 className="font-serif font-bold text-2xl sm:text-3xl text-[#0A3D36] tracking-tight">
+            <h1 className="font-serif font-bold text-2xl sm:text-3xl text-[#0B192C] tracking-tight">
               {user?.fullName}
             </h1>
-            <p className="text-xs text-[#4B635E] font-mono">
+            <p className="text-xs text-[#475E79] font-mono">
               {user?.email} · {user?.institution || 'Independent Research Affiliation'}
             </p>
             <div className="flex items-center gap-2 pt-1">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15 font-bold">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-[#0B192C] bg-[#EBDDCD] px-2 py-0.5 rounded-sm border border-[#0B192C]/15 font-bold">
                 Role: {user?.role}
               </span>
               {user?.role === 'ADMIN' && (
-                <Link to="/admin" className="text-[10px] font-mono uppercase tracking-wider text-[#0A3D36] bg-[#E8F8F5] px-2 py-0.5 rounded-sm border border-[#109C89] font-bold hover:underline">
+                <Link to="/admin" className="text-[10px] font-mono uppercase tracking-wider text-[#0B192C] bg-[#EAF5F2] px-2 py-0.5 rounded-sm border border-[#167C6B] font-bold hover:underline">
                   Open Admin Console &rarr;
                 </Link>
               )}
@@ -75,50 +75,50 @@ export const UserDashboardPage: React.FC = () => {
       {/* Primary Workspace Shortcuts */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         
-        <Link to="/journal-check" className="ss-card p-5 group hover:border-[#0A3D36] shadow-paper">
-          <div className="w-8 h-8 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/20 flex items-center justify-center text-[#0A3D36] mb-3 group-hover:bg-[#0A3D36] group-hover:text-[#FAF6EE] transition-colors">
+        <Link to="/journal-check" className="ss-card p-5 group hover:border-[#0B192C] shadow-paper">
+          <div className="w-8 h-8 rounded-sm bg-[#FAF7F2] border border-[#0B192C]/20 flex items-center justify-center text-[#0B192C] mb-3 group-hover:bg-[#0B192C] group-hover:text-[#FAF7F2] transition-colors">
             <ShieldCheck className="w-4 h-4" />
           </div>
-          <h3 className="font-serif font-bold text-base text-[#0A3D36] mb-1">
+          <h3 className="font-serif font-bold text-base text-[#0B192C] mb-1">
             Journal Check
           </h3>
-          <p className="text-xs text-[#4B635E] leading-relaxed">
+          <p className="text-xs text-[#475E79] leading-relaxed">
             Search journals across Crossref, OpenAlex, and DOAJ with 5-pillar scoring.
           </p>
         </Link>
 
-        <Link to="/journal-audit" className="ss-card p-5 group hover:border-[#0A3D36] shadow-paper">
-          <div className="w-8 h-8 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/20 flex items-center justify-center text-[#0A3D36] mb-3 group-hover:bg-[#0A3D36] group-hover:text-[#FAF6EE] transition-colors">
+        <Link to="/journal-audit" className="ss-card p-5 group hover:border-[#0B192C] shadow-paper">
+          <div className="w-8 h-8 rounded-sm bg-[#FAF7F2] border border-[#0B192C]/20 flex items-center justify-center text-[#0B192C] mb-3 group-hover:bg-[#0B192C] group-hover:text-[#FAF7F2] transition-colors">
             <FileCheck className="w-4 h-4" />
           </div>
-          <h3 className="font-serif font-bold text-base text-[#0A3D36] mb-1">
+          <h3 className="font-serif font-bold text-base text-[#0B192C] mb-1">
             Indexing Readiness
           </h3>
-          <p className="text-xs text-[#4B635E] leading-relaxed">
+          <p className="text-xs text-[#475E79] leading-relaxed">
             Run page-level technical scans against Scopus and DOAJ requirements.
           </p>
         </Link>
 
-        <Link to="/doi-doctor" className="ss-card p-5 group hover:border-[#0A3D36] shadow-paper">
-          <div className="w-8 h-8 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/20 flex items-center justify-center text-[#0A3D36] mb-3 group-hover:bg-[#0A3D36] group-hover:text-[#FAF6EE] transition-colors">
+        <Link to="/doi-doctor" className="ss-card p-5 group hover:border-[#0B192C] shadow-paper">
+          <div className="w-8 h-8 rounded-sm bg-[#FAF7F2] border border-[#0B192C]/20 flex items-center justify-center text-[#0B192C] mb-3 group-hover:bg-[#0B192C] group-hover:text-[#FAF7F2] transition-colors">
             <Stethoscope className="w-4 h-4" />
           </div>
-          <h3 className="font-serif font-bold text-base text-[#0A3D36] mb-1">
+          <h3 className="font-serif font-bold text-base text-[#0B192C] mb-1">
             DOI Doctor
           </h3>
-          <p className="text-xs text-[#4B635E] leading-relaxed">
+          <p className="text-xs text-[#475E79] leading-relaxed">
             Inspect handle resolution, detect broken links, and reconcile metadata.
           </p>
         </Link>
 
-        <Link to="/institution/watchlist" className="ss-card p-5 group hover:border-[#0A3D36] shadow-paper">
-          <div className="w-8 h-8 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/20 flex items-center justify-center text-[#0A3D36] mb-3 group-hover:bg-[#0A3D36] group-hover:text-[#FAF6EE] transition-colors">
+        <Link to="/institution/watchlist" className="ss-card p-5 group hover:border-[#0B192C] shadow-paper">
+          <div className="w-8 h-8 rounded-sm bg-[#FAF7F2] border border-[#0B192C]/20 flex items-center justify-center text-[#0B192C] mb-3 group-hover:bg-[#0B192C] group-hover:text-[#FAF7F2] transition-colors">
             <BookmarkCheck className="w-4 h-4" />
           </div>
-          <h3 className="font-serif font-bold text-base text-[#0A3D36] mb-1">
+          <h3 className="font-serif font-bold text-base text-[#0B192C] mb-1">
             Institutional Watchlist
           </h3>
-          <p className="text-xs text-[#4B635E] leading-relaxed">
+          <p className="text-xs text-[#475E79] leading-relaxed">
             Maintain approved publication lists and monitor high-risk serials.
           </p>
         </Link>
@@ -130,26 +130,26 @@ export const UserDashboardPage: React.FC = () => {
         
         {/* Active Indexing Applications */}
         <div className="ss-card p-5 space-y-4 shadow-paper">
-          <div className="flex items-center justify-between border-b border-[#0A3D36]/10 pb-3">
-            <h3 className="font-serif font-bold text-base text-[#0A3D36]">
+          <div className="flex items-center justify-between border-b border-[#0B192C]/10 pb-3">
+            <h3 className="font-serif font-bold text-base text-[#0B192C]">
               Tracked Indexing Applications
             </h3>
-            <Link to="/indexing/applications" className="text-xs font-bold text-[#0A3D36] hover:underline">
+            <Link to="/indexing/applications" className="text-xs font-bold text-[#0B192C] hover:underline">
               View All &rarr;
             </Link>
           </div>
 
           {applications.length === 0 ? (
-            <p className="text-xs text-[#4B635E]">No active indexing application dossiers.</p>
+            <p className="text-xs text-[#475E79]">No active indexing application dossiers.</p>
           ) : (
             <div className="space-y-2">
               {applications.map(a => (
-                <div key={a.id} className="p-3 bg-[#FAF6EE] border border-[#0A3D36]/10 rounded-sm flex items-center justify-between text-xs">
+                <div key={a.id} className="p-3 bg-[#FAF7F2] border border-[#0B192C]/10 rounded-sm flex items-center justify-between text-xs">
                   <div>
-                    <div className="font-serif font-bold text-sm text-[#0A3D36]">{a.journal.title}</div>
-                    <div className="text-[11px] font-mono text-[#109C89] font-semibold">{a.indexingService.name}</div>
+                    <div className="font-serif font-bold text-sm text-[#0B192C]">{a.journal.title}</div>
+                    <div className="text-[11px] font-mono text-[#167C6B] font-semibold">{a.indexingService.name}</div>
                   </div>
-                  <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded-sm bg-[#FFFDF9] text-[#0A3D36] border border-[#0A3D36]/20">
+                  <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded-sm bg-[#FFFFFF] text-[#0B192C] border border-[#0B192C]/20">
                     {a.status}
                   </span>
                 </div>
@@ -160,27 +160,27 @@ export const UserDashboardPage: React.FC = () => {
 
         {/* Watchlist Quick Summary */}
         <div className="ss-card p-5 space-y-4 shadow-paper">
-          <div className="flex items-center justify-between border-b border-[#0A3D36]/10 pb-3">
-            <h3 className="font-serif font-bold text-base text-[#0A3D36]">
+          <div className="flex items-center justify-between border-b border-[#0B192C]/10 pb-3">
+            <h3 className="font-serif font-bold text-base text-[#0B192C]">
               Institutional Watchlist Preview
             </h3>
-            <Link to="/institution/watchlist" className="text-xs font-bold text-[#0A3D36] hover:underline">
+            <Link to="/institution/watchlist" className="text-xs font-bold text-[#0B192C] hover:underline">
               Full List &rarr;
             </Link>
           </div>
 
           {watchlist.length === 0 ? (
-            <p className="text-xs text-[#4B635E]">No journals added to watchlist yet.</p>
+            <p className="text-xs text-[#475E79]">No journals added to watchlist yet.</p>
           ) : (
             <div className="space-y-2">
               {watchlist.map(w => (
-                <div key={w.id} className="p-3 bg-[#FAF6EE] border border-[#0A3D36]/10 rounded-sm flex items-center justify-between text-xs">
+                <div key={w.id} className="p-3 bg-[#FAF7F2] border border-[#0B192C]/10 rounded-sm flex items-center justify-between text-xs">
                   <div>
-                    <div className="font-serif font-bold text-sm text-[#0A3D36]">{w.journal.title}</div>
-                    <div className="text-[11px] font-mono text-[#4B635E]">{w.journal.publisher}</div>
+                    <div className="font-serif font-bold text-sm text-[#0B192C]">{w.journal.title}</div>
+                    <div className="text-[11px] font-mono text-[#475E79]">{w.journal.publisher}</div>
                   </div>
                   <span className={`font-mono text-[10.5px] font-bold px-2 py-0.5 rounded-sm border uppercase ${
-                    w.category === 'APPROVED' ? 'bg-[#E8F8F5] text-[#0A3D36] border-[#109C89]' : 'bg-[#FDF2F2] text-[#A81B1B] border-[#E05252]'
+                    w.category === 'APPROVED' ? 'bg-[#EAF5F2] text-[#0B192C] border-[#167C6B]' : 'bg-[#FDF2F2] text-[#A81B1B] border-[#E05252]'
                   }`}>
                     {w.category}
                   </span>

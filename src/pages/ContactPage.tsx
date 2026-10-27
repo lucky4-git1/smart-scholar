@@ -37,16 +37,16 @@ export const ContactPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10 text-[#0A3D36]">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10 text-[#0B192C]">
       
       <div>
-        <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
+        <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0B192C] bg-[#EBDDCD] px-2 py-0.5 rounded-sm border border-[#0B192C]/15">
           Get in Touch · Integrity Desk Support
         </span>
-        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A3D36] tracking-tight mt-2">
+        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0B192C] tracking-tight mt-2">
           Contact Research Integrity Desk
         </h1>
-        <p className="text-xs sm:text-sm text-[#4B635E] mt-1.5 leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#475E79] mt-1.5 leading-relaxed">
           Inquiries regarding journal evaluations, methodology clarifications, or institutional partnership onboarding.
         </p>
       </div>
@@ -54,18 +54,18 @@ export const ContactPage: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         
         {/* Contact info */}
-        <div className="space-y-4 text-xs text-[#4B635E]">
+        <div className="space-y-4 text-xs text-[#475E79]">
           <div className="ss-card p-5 space-y-3 shadow-paper">
-            <h3 className="font-serif font-bold text-sm text-[#0A3D36]">Platform Integrity Office</h3>
+            <h3 className="font-serif font-bold text-sm text-[#0B192C]">Platform Integrity Office</h3>
             <p>Smart Scholars Research Integrity Desk</p>
-            <div className="pt-2 border-t border-[#0A3D36]/10 space-y-1 font-mono text-[11px]">
-              <div>Email: <span className="text-[#0A3D36] font-bold">support@smartscholars.in</span></div>
-              <div>Crossref Mailto: <span className="text-[#0A3D36] font-bold">integrity@smartscholars.in</span></div>
+            <div className="pt-2 border-t border-[#0B192C]/10 space-y-1 font-mono text-[11px]">
+              <div>Email: <span className="text-[#0B192C] font-bold">support@smartscholars.in</span></div>
+              <div>Crossref Mailto: <span className="text-[#0B192C] font-bold">integrity@smartscholars.in</span></div>
             </div>
           </div>
 
           <div className="ss-card p-5 space-y-2 shadow-paper">
-            <h4 className="font-serif font-bold text-xs text-[#0A3D36]">Response Standards</h4>
+            <h4 className="font-serif font-bold text-xs text-[#0B192C]">Response Standards</h4>
             <p className="text-[11px] leading-relaxed">
               Inquiries regarding score re-assessments or disputed metadata findings are typically acknowledged within 1–2 business days.
             </p>
@@ -76,12 +76,12 @@ export const ContactPage: React.FC = () => {
         <div className="md:col-span-2 ss-card p-6 shadow-paper">
           {successTicket ? (
             <div className="p-6 text-center space-y-3">
-              <CheckCircle2 className="w-10 h-10 text-[#109C89] mx-auto" />
-              <h3 className="font-serif font-bold text-xl text-[#0A3D36]">Message Received</h3>
-              <p className="text-xs text-[#4B635E]">
+              <CheckCircle2 className="w-10 h-10 text-[#167C6B] mx-auto" />
+              <h3 className="font-serif font-bold text-xl text-[#0B192C]">Message Received</h3>
+              <p className="text-xs text-[#475E79]">
                 Your message has been logged in our administrative tracking system.
               </p>
-              <div className="p-3 bg-[#FAF6EE] rounded-sm border border-[#0A3D36]/15 font-mono text-xs text-[#0A3D36] font-bold">
+              <div className="p-3 bg-[#FAF7F2] rounded-sm border border-[#0B192C]/15 font-mono text-xs text-[#0B192C] font-bold">
                 Reference Ticket ID: {successTicket}
               </div>
               <button
@@ -95,48 +95,48 @@ export const ContactPage: React.FC = () => {
             <form onSubmit={handleSubmit} className="space-y-4 text-xs">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-mono text-[#0A3D36] font-bold uppercase mb-1">Your Name</label>
+                  <label className="block font-mono text-[#0B192C] font-bold uppercase mb-1">Your Name</label>
                   <input
                     type="text"
                     required
                     value={name}
                     onChange={e => setName(e.target.value)}
-                    className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm px-3 py-2 text-sm text-[#0A3D36] placeholder-[#4B635E]/60 focus:outline-none focus:border-[#0A3D36] focus:ring-1 focus:ring-[#0A3D36]"
+                    className="w-full bg-[#FFFFFF] border border-[#0B192C]/25 rounded-sm px-3 py-2 text-sm text-[#0B192C] placeholder-[#475E79]/60 focus:outline-none focus:border-[#0B192C] focus:ring-1 focus:ring-[#0B192C]"
                   />
                 </div>
                 <div>
-                  <label className="block font-mono text-[#0A3D36] font-bold uppercase mb-1">Academic Email</label>
+                  <label className="block font-mono text-[#0B192C] font-bold uppercase mb-1">Academic Email</label>
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={e => setEmail(e.target.value)}
-                    className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm px-3 py-2 text-sm text-[#0A3D36] placeholder-[#4B635E]/60 focus:outline-none focus:border-[#0A3D36] focus:ring-1 focus:ring-[#0A3D36]"
+                    className="w-full bg-[#FFFFFF] border border-[#0B192C]/25 rounded-sm px-3 py-2 text-sm text-[#0B192C] placeholder-[#475E79]/60 focus:outline-none focus:border-[#0B192C] focus:ring-1 focus:ring-[#0B192C]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-mono text-[#0A3D36] font-bold uppercase mb-1">Subject</label>
+                <label className="block font-mono text-[#0B192C] font-bold uppercase mb-1">Subject</label>
                 <input
                   type="text"
                   required
                   value={subject}
                   onChange={e => setSubject(e.target.value)}
                   placeholder="e.g. Journal Re-evaluation Request for ISSN 1234-5678"
-                  className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm px-3 py-2 text-sm text-[#0A3D36] placeholder-[#4B635E]/60 focus:outline-none focus:border-[#0A3D36] focus:ring-1 focus:ring-[#0A3D36]"
+                  className="w-full bg-[#FFFFFF] border border-[#0B192C]/25 rounded-sm px-3 py-2 text-sm text-[#0B192C] placeholder-[#475E79]/60 focus:outline-none focus:border-[#0B192C] focus:ring-1 focus:ring-[#0B192C]"
                 />
               </div>
 
               <div>
-                <label className="block font-mono text-[#0A3D36] font-bold uppercase mb-1">Message Details</label>
+                <label className="block font-mono text-[#0B192C] font-bold uppercase mb-1">Message Details</label>
                 <textarea
                   rows={5}
                   required
                   value={message}
                   onChange={e => setMessage(e.target.value)}
                   placeholder="Please describe your inquiry, including relevant journal URLs, ISSNs, or audit job IDs."
-                  className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm px-3 py-2 text-sm text-[#0A3D36] placeholder-[#4B635E]/60 focus:outline-none focus:border-[#0A3D36] focus:ring-1 focus:ring-[#0A3D36]"
+                  className="w-full bg-[#FFFFFF] border border-[#0B192C]/25 rounded-sm px-3 py-2 text-sm text-[#0B192C] placeholder-[#475E79]/60 focus:outline-none focus:border-[#0B192C] focus:ring-1 focus:ring-[#0B192C]"
                 />
               </div>
 

@@ -55,16 +55,16 @@ export const ServicesPage: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10 text-[#0A3D36]">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10 text-[#0B192C]">
       
       <div className="max-w-2xl">
-        <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
+        <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0B192C] bg-[#EBDDCD] px-2 py-0.5 rounded-sm border border-[#0B192C]/15">
           Smart Scholars · Product Ecosystem
         </span>
-        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A3D36] tracking-tight mt-2">
+        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0B192C] tracking-tight mt-2">
           Complete Research Integrity & Indexing Services
         </h1>
-        <p className="text-xs sm:text-sm text-[#4B635E] mt-1.5 leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#475E79] mt-1.5 leading-relaxed">
           Six interconnected tools providing deterministic journal trustworthiness ratings, technical website readiness scans, DOI resolution maintenance, and institutional governance.
         </p>
       </div>
@@ -76,24 +76,24 @@ export const ServicesPage: React.FC = () => {
             <div key={idx} className="ss-card p-6 flex flex-col justify-between space-y-4 shadow-paper">
               <div>
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/20 flex items-center justify-center text-[#0A3D36]">
+                  <div className="w-10 h-10 rounded-sm bg-[#FAF7F2] border border-[#0B192C]/20 flex items-center justify-center text-[#0B192C]">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#0A3D36] font-bold px-2 py-0.5 rounded-sm bg-[#FEDAB8] border border-[#0A3D36]/15">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#0B192C] font-bold px-2 py-0.5 rounded-sm bg-[#EBDDCD] border border-[#0B192C]/15">
                     {s.badge}
                   </span>
                 </div>
 
-                <h3 className="font-serif font-bold text-xl text-[#0A3D36] mt-4">
+                <h3 className="font-serif font-bold text-xl text-[#0B192C] mt-4">
                   {s.title}
                 </h3>
 
-                <p className="text-xs text-[#4B635E] leading-relaxed mt-2">
+                <p className="text-xs text-[#475E79] leading-relaxed mt-2">
                   {s.description}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#0A3D36]/10">
+              <div className="pt-4 border-t border-[#0B192C]/10">
                 <Link to={s.link} className="ss-btn-primary text-xs py-2 px-4 w-full text-center block font-bold">
                   <span>{s.action} &rarr;</span>
                 </Link>

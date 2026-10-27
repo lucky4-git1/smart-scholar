@@ -71,7 +71,7 @@ export const JournalResultsPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="py-24 text-center text-xs font-mono text-[#0A3D36]">
+      <div className="py-24 text-center text-xs font-mono text-[#0B192C]">
         Retrieving verified evidence and computing 5-pillar scores...
       </div>
     );
@@ -81,30 +81,30 @@ export const JournalResultsPage: React.FC = () => {
     return (
       <div className="max-w-2xl mx-auto py-16 px-4 text-center space-y-4">
         <h2 className="font-serif text-2xl font-bold text-[#A81B1B]">Journal Assessment Not Found</h2>
-        <p className="text-xs text-[#4B635E]">{error || 'The requested journal record could not be located in the registry.'}</p>
+        <p className="text-xs text-[#475E79]">{error || 'The requested journal record could not be located in the registry.'}</p>
         <Link to="/journal-check" className="ss-btn-primary text-xs">Return to Journal Check</Link>
       </div>
     );
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#0A3D36]">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#0B192C]">
       
       {/* Back button */}
       <div>
-        <Link to="/journal-check" className="inline-flex items-center gap-1.5 text-xs font-mono text-[#4B635E] hover:text-[#0A3D36]">
+        <Link to="/journal-check" className="inline-flex items-center gap-1.5 text-xs font-mono text-[#475E79] hover:text-[#0B192C]">
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Journal Check
         </Link>
       </div>
 
       {/* Top Banner & Title (Oxford Pine Card with Retro Shadow) */}
-      <div className="bg-[#0A3D36] text-[#FAF6EE] border-2 border-[#06231E] rounded-sm p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-retro">
+      <div className="bg-[#0B192C] text-[#FAF7F2] border-2 border-[#070F1A] rounded-sm p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-retro">
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[10px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#F6AC6D] px-2 py-0.5 rounded-sm">
+            <span className="font-mono text-[10px] uppercase font-bold tracking-wider text-[#0B192C] bg-[#E06B43] px-2 py-0.5 rounded-sm">
               METHODOLOGY v1.2.0-2026
             </span>
-            <span className="text-xs text-[#22D0B9] font-mono">
+            <span className="text-xs text-[#E06B43] font-mono">
               Evaluated: {assessment?.createdAt ? new Date(assessment.createdAt).toLocaleDateString() : 'Recent'}
             </span>
           </div>
@@ -113,11 +113,11 @@ export const JournalResultsPage: React.FC = () => {
             {journal.title}
           </h1>
 
-          <div className="flex flex-wrap items-center gap-4 text-xs text-[#D1E6E2]">
+          <div className="flex flex-wrap items-center gap-4 text-xs text-[#D8E3EE]">
             <span>Publisher: <strong className="text-white">{journal.publisher || 'Not Declared'}</strong></span>
-            <span>ISSN: <strong className="font-mono text-[#22D0B9]">{journal.identifiers?.[0]?.value || '—'}</strong></span>
+            <span>ISSN: <strong className="font-mono text-[#E06B43]">{journal.identifiers?.[0]?.value || '—'}</strong></span>
             {journal.websiteUrl && (
-              <a href={journal.websiteUrl} target="_blank" rel="noreferrer" className="text-[#22D0B9] hover:underline inline-flex items-center gap-1">
+              <a href={journal.websiteUrl} target="_blank" rel="noreferrer" className="text-[#E06B43] hover:underline inline-flex items-center gap-1">
                 Website <ExternalLink className="w-3 h-3" />
               </a>
             )}
@@ -125,34 +125,34 @@ export const JournalResultsPage: React.FC = () => {
         </div>
 
         {/* Big Score Card */}
-        <div className="flex items-center gap-4 bg-[#06231E] border border-[#166054] p-4 rounded-sm self-start md:self-auto shadow-retro-sm">
+        <div className="flex items-center gap-4 bg-[#070F1A] border border-[#162E4D] p-4 rounded-sm self-start md:self-auto shadow-retro-sm">
           <div className="text-right">
-            <span className="text-[10px] font-mono uppercase text-[#8CB8B0] block font-semibold">Trust Rating</span>
+            <span className="text-[10px] font-mono uppercase text-[#71869E] block font-semibold">Trust Rating</span>
             <span className="font-mono text-3xl font-extrabold text-white tabular-nums">
               {assessment?.totalScore ?? journal.currentScore ?? '—'}
             </span>
-            <span className="text-xs font-mono text-[#8CB8B0]"> / 100</span>
+            <span className="text-xs font-mono text-[#71869E]"> / 100</span>
           </div>
-          <div className="h-10 w-px bg-[#166054]" />
+          <div className="h-10 w-px bg-[#162E4D]" />
           <GradeBadge grade={assessment?.letterGrade || journal.currentGrade || 'UNVERIFIED'} size="lg" />
         </div>
       </div>
 
       {/* Action Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-[#0A3D36]/15">
+      <div className="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-[#0B192C]/15">
         <div className="flex items-center gap-2">
           <button
             onClick={handleAddToWatchlist}
             className="ss-btn-secondary text-xs py-1.5 px-3"
           >
-            <BookmarkPlus className="w-3.5 h-3.5 text-[#0A3D36]" />
+            <BookmarkPlus className="w-3.5 h-3.5 text-[#0B192C]" />
             <span>{watchlistSuccess ? '✓ Added to Watchlist' : 'Add to Watchlist'}</span>
           </button>
           <button
             onClick={handlePrint}
             className="ss-btn-secondary text-xs py-1.5 px-3"
           >
-            <Printer className="w-3.5 h-3.5 text-[#0A3D36]" />
+            <Printer className="w-3.5 h-3.5 text-[#0B192C]" />
             <span>Print Dossier</span>
           </button>
         </div>
@@ -181,87 +181,87 @@ export const JournalResultsPage: React.FC = () => {
       {/* 5-Pillar Score Breakdown (Ivory Paper with Pine Accents) */}
       {assessment && (
         <div className="ss-card p-6 space-y-4 shadow-paper">
-          <div className="flex items-center justify-between border-b border-[#0A3D36]/10 pb-3">
-            <h2 className="font-serif font-bold text-xl text-[#0A3D36]">
+          <div className="flex items-center justify-between border-b border-[#0B192C]/10 pb-3">
+            <h2 className="font-serif font-bold text-xl text-[#0B192C]">
               Five Pillars Scoring Breakdown
             </h2>
-            <span className="font-mono text-xs text-[#4B635E]">
+            <span className="font-mono text-xs text-[#475E79]">
               TOTAL: {assessment.totalScore} / 100
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4 pt-1">
             
-            <div className="bg-[#FAF6EE] border border-[#0A3D36]/15 p-4 rounded-sm">
+            <div className="bg-[#FAF7F2] border border-[#0B192C]/15 p-4 rounded-sm">
               <div className="flex items-center justify-between text-xs mb-2">
-                <span className="font-serif font-bold text-[#0A3D36]">Identity</span>
-                <span className="font-mono text-[#0A3D36] font-bold tabular-nums">
+                <span className="font-serif font-bold text-[#0B192C]">Identity</span>
+                <span className="font-mono text-[#0B192C] font-bold tabular-nums">
                   {assessment.identityGovernanceScore} / 25
                 </span>
               </div>
-              <div className="w-full bg-[#EADBC6] h-1.5 rounded-sm overflow-hidden">
+              <div className="w-full bg-[#D8C4B0] h-1.5 rounded-sm overflow-hidden">
                 <div
-                  className="bg-[#0A3D36] h-full rounded-sm"
+                  className="bg-[#0B192C] h-full rounded-sm"
                   style={{ width: `${(assessment.identityGovernanceScore / 25) * 100}%` }}
                 />
               </div>
             </div>
 
-            <div className="bg-[#FAF6EE] border border-[#0A3D36]/15 p-4 rounded-sm">
+            <div className="bg-[#FAF7F2] border border-[#0B192C]/15 p-4 rounded-sm">
               <div className="flex items-center justify-between text-xs mb-2">
-                <span className="font-serif font-bold text-[#0A3D36]">Editorial</span>
-                <span className="font-mono text-[#0A3D36] font-bold tabular-nums">
+                <span className="font-serif font-bold text-[#0B192C]">Editorial</span>
+                <span className="font-mono text-[#0B192C] font-bold tabular-nums">
                   {assessment.editorialIntegrityScore} / 25
                 </span>
               </div>
-              <div className="w-full bg-[#EADBC6] h-1.5 rounded-sm overflow-hidden">
+              <div className="w-full bg-[#D8C4B0] h-1.5 rounded-sm overflow-hidden">
                 <div
-                  className="bg-[#0A3D36] h-full rounded-sm"
+                  className="bg-[#0B192C] h-full rounded-sm"
                   style={{ width: `${(assessment.editorialIntegrityScore / 25) * 100}%` }}
                 />
               </div>
             </div>
 
-            <div className="bg-[#FAF6EE] border border-[#0A3D36]/15 p-4 rounded-sm">
+            <div className="bg-[#FAF7F2] border border-[#0B192C]/15 p-4 rounded-sm">
               <div className="flex items-center justify-between text-xs mb-2">
-                <span className="font-serif font-bold text-[#0A3D36]">Technical</span>
-                <span className="font-mono text-[#0A3D36] font-bold tabular-nums">
+                <span className="font-serif font-bold text-[#0B192C]">Technical</span>
+                <span className="font-mono text-[#0B192C] font-bold tabular-nums">
                   {assessment.technicalStandingScore} / 20
                 </span>
               </div>
-              <div className="w-full bg-[#EADBC6] h-1.5 rounded-sm overflow-hidden">
+              <div className="w-full bg-[#D8C4B0] h-1.5 rounded-sm overflow-hidden">
                 <div
-                  className="bg-[#0A3D36] h-full rounded-sm"
+                  className="bg-[#0B192C] h-full rounded-sm"
                   style={{ width: `${(assessment.technicalStandingScore / 20) * 100}%` }}
                 />
               </div>
             </div>
 
-            <div className="bg-[#FAF6EE] border border-[#0A3D36]/15 p-4 rounded-sm">
+            <div className="bg-[#FAF7F2] border border-[#0B192C]/15 p-4 rounded-sm">
               <div className="flex items-center justify-between text-xs mb-2">
-                <span className="font-serif font-bold text-[#0A3D36]">Preservation</span>
-                <span className="font-mono text-[#0A3D36] font-bold tabular-nums">
+                <span className="font-serif font-bold text-[#0B192C]">Preservation</span>
+                <span className="font-mono text-[#0B192C] font-bold tabular-nums">
                   {assessment.preservationAccessScore} / 15
                 </span>
               </div>
-              <div className="w-full bg-[#EADBC6] h-1.5 rounded-sm overflow-hidden">
+              <div className="w-full bg-[#D8C4B0] h-1.5 rounded-sm overflow-hidden">
                 <div
-                  className="bg-[#0A3D36] h-full rounded-sm"
+                  className="bg-[#0B192C] h-full rounded-sm"
                   style={{ width: `${(assessment.preservationAccessScore / 15) * 100}%` }}
                 />
               </div>
             </div>
 
-            <div className="bg-[#FAF6EE] border border-[#0A3D36]/15 p-4 rounded-sm">
+            <div className="bg-[#FAF7F2] border border-[#0B192C]/15 p-4 rounded-sm">
               <div className="flex items-center justify-between text-xs mb-2">
-                <span className="font-serif font-bold text-[#0A3D36]">Reach & Cite</span>
-                <span className="font-mono text-[#0A3D36] font-bold tabular-nums">
+                <span className="font-serif font-bold text-[#0B192C]">Reach & Cite</span>
+                <span className="font-mono text-[#0B192C] font-bold tabular-nums">
                   {assessment.reachCitationScore} / 15
                 </span>
               </div>
-              <div className="w-full bg-[#EADBC6] h-1.5 rounded-sm overflow-hidden">
+              <div className="w-full bg-[#D8C4B0] h-1.5 rounded-sm overflow-hidden">
                 <div
-                  className="bg-[#0A3D36] h-full rounded-sm"
+                  className="bg-[#0B192C] h-full rounded-sm"
                   style={{ width: `${(assessment.reachCitationScore / 15) * 100}%` }}
                 />
               </div>
@@ -274,56 +274,56 @@ export const JournalResultsPage: React.FC = () => {
       {/* Itemized Criteria Evidence Table */}
       {assessment && (
         <div className="ss-card overflow-hidden shadow-paper">
-          <div className="p-5 border-b border-[#0A3D36]/15 bg-[#FAF6EE]">
-            <h2 className="font-serif font-bold text-xl text-[#0A3D36]">
+          <div className="p-5 border-b border-[#0B192C]/15 bg-[#FAF7F2]">
+            <h2 className="font-serif font-bold text-xl text-[#0B192C]">
               Itemized Evaluation Criteria & Explanations
             </h2>
-            <p className="text-xs text-[#4B635E]">
+            <p className="text-xs text-[#475E79]">
               Every point awarded or withheld is strictly explained by deterministic rule results.
             </p>
           </div>
 
-          <div className="divide-y divide-[#0A3D36]/10 bg-[#FFFDF9]">
+          <div className="divide-y divide-[#0B192C]/10 bg-[#FFFFFF]">
             {assessment.criteriaResults?.map((c) => {
               const isVerified = c.status === 'VERIFIED';
               const isFailed = c.status === 'FAILED';
 
               return (
-                <div key={c.id} className="p-4 sm:p-5 hover:bg-[#FAF6EE] transition-colors flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                <div key={c.id} className="p-4 sm:p-5 hover:bg-[#FAF7F2] transition-colors flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                   <div className="space-y-1.5 max-w-3xl">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-[9.5px] uppercase font-bold tracking-wider text-[#0A3D36] px-1.5 py-0.5 rounded-sm bg-[#F2E8D8] border border-[#0A3D36]/20">
+                      <span className="font-mono text-[9.5px] uppercase font-bold tracking-wider text-[#0B192C] px-1.5 py-0.5 rounded-sm bg-[#EBDDCD] border border-[#0B192C]/20">
                         {c.pillar}
                       </span>
-                      <h4 className="font-serif font-bold text-sm text-[#0A3D36]">
+                      <h4 className="font-serif font-bold text-sm text-[#0B192C]">
                         {c.name}
                       </h4>
                     </div>
 
-                    <p className="text-xs text-[#4B635E] leading-relaxed">
+                    <p className="text-xs text-[#475E79] leading-relaxed">
                       {c.explanation}
                     </p>
 
-                    <div className="flex items-center gap-2 text-[10px] font-mono text-[#0A3D36]">
-                      <span>Source: <strong className="text-[#0A3D36]">{c.sourceName}</strong></span>
+                    <div className="flex items-center gap-2 text-[10px] font-mono text-[#0B192C]">
+                      <span>Source: <strong className="text-[#0B192C]">{c.sourceName}</strong></span>
                     </div>
                   </div>
 
                   <div className="flex items-center sm:flex-col sm:items-end justify-between gap-2 flex-shrink-0">
-                    <span className="font-mono text-xs sm:text-sm font-bold text-[#0A3D36] tabular-nums">
+                    <span className="font-mono text-xs sm:text-sm font-bold text-[#0B192C] tabular-nums">
                       {c.awardedPoints} / {c.maxPoints} pts
                     </span>
 
                     <span
                       className={`inline-flex items-center gap-1 text-[10px] font-mono uppercase px-2 py-0.5 rounded-sm border ${
                         isVerified
-                          ? 'bg-[#E8F8F5] border-[#109C89] text-[#0A3D36] font-bold'
+                          ? 'bg-[#EAF5F2] border-[#167C6B] text-[#0B192C] font-bold'
                           : isFailed
                           ? 'bg-[#FDF2F2] border-[#E05252] text-[#A81B1B] font-bold'
-                          : 'bg-[#F5EFE3] border-[#D5BA9B] text-[#4B635E]'
+                          : 'bg-[#F5EFE3] border-[#D5BA9B] text-[#475E79]'
                       }`}
                     >
-                      {isVerified ? <CheckCircle2 className="w-3 h-3 text-[#109C89]" /> : isFailed ? <XCircle className="w-3 h-3 text-[#A81B1B]" /> : <HelpCircle className="w-3 h-3" />}
+                      {isVerified ? <CheckCircle2 className="w-3 h-3 text-[#167C6B]" /> : isFailed ? <XCircle className="w-3 h-3 text-[#A81B1B]" /> : <HelpCircle className="w-3 h-3" />}
                       {c.status}
                     </span>
                   </div>
@@ -337,17 +337,17 @@ export const JournalResultsPage: React.FC = () => {
       {/* Verifiable Registry Provenance Records */}
       {assessment && assessment.evidenceRecords && assessment.evidenceRecords.length > 0 && (
         <div className="ss-card p-5 space-y-3 shadow-paper">
-          <h3 className="font-mono font-bold text-xs text-[#0A3D36] uppercase tracking-wider">
+          <h3 className="font-mono font-bold text-xs text-[#0B192C] uppercase tracking-wider">
             Evidence Provenance & Registry Verification Timestamps
           </h3>
           <div className="space-y-2">
             {assessment.evidenceRecords.map((e) => (
-              <div key={e.id} className="p-3 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+              <div key={e.id} className="p-3 rounded-sm bg-[#FAF7F2] border border-[#0B192C]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
                 <div>
-                  <div className="font-mono font-bold text-[#0A3D36] text-[11px]">{e.sourceName}</div>
-                  <div className="text-[#4B635E] text-[11px] mt-0.5">{e.extractedSummary}</div>
+                  <div className="font-mono font-bold text-[#0B192C] text-[11px]">{e.sourceName}</div>
+                  <div className="text-[#475E79] text-[11px] mt-0.5">{e.extractedSummary}</div>
                 </div>
-                <div className="text-[10px] font-mono text-[#0A3D36] sm:text-right">
+                <div className="text-[10px] font-mono text-[#0B192C] sm:text-right">
                   Verified: {new Date(e.verifiedAt).toISOString()}
                 </div>
               </div>

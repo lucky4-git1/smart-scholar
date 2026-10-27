@@ -53,24 +53,24 @@ Manuscript without assigned handle,,3,1`
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#0A3D36]">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#0B192C]">
       
       {/* Navigation */}
       <div className="flex items-center justify-between">
-        <Link to="/doi-doctor" className="text-xs font-mono text-[#4B635E] hover:text-[#0A3D36] inline-flex items-center gap-1.5 font-semibold">
+        <Link to="/doi-doctor" className="text-xs font-mono text-[#475E79] hover:text-[#0B192C] inline-flex items-center gap-1.5 font-semibold">
           <ArrowLeft className="w-3.5 h-3.5" /> Back to DOI Doctor
         </Link>
       </div>
 
       {/* Header */}
       <div>
-        <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
+        <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0B192C] bg-[#EBDDCD] px-2 py-0.5 rounded-sm border border-[#0B192C]/15">
           DOI Census · Journal Inventory Reconciliation
         </span>
-        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A3D36] tracking-tight mt-2">
+        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0B192C] tracking-tight mt-2">
           Article Census & DOI Reconciliation
         </h1>
-        <p className="text-xs sm:text-sm text-[#4B635E] mt-1.5 max-w-2xl leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#475E79] mt-1.5 max-w-2xl leading-relaxed">
           Reconcile your complete published article inventory against live Crossref handle deposits. Detect non-resolving DOIs, missing metadata fields, and unregistered back-catalog volumes.
         </p>
       </div>
@@ -79,14 +79,14 @@ Manuscript without assigned handle,,3,1`
       <div className="ss-card p-6 shadow-paper max-w-3xl">
         <form onSubmit={handleReconcile} className="space-y-4">
           <div>
-            <label className="block text-xs font-mono uppercase tracking-wider text-[#0A3D36] font-bold mb-1.5">
+            <label className="block text-xs font-mono uppercase tracking-wider text-[#0B192C] font-bold mb-1.5">
               Paste Article Inventory CSV (Title, DOI, Volume, Issue)
             </label>
             <textarea
               rows={6}
               value={csvInput}
               onChange={e => setCsvInput(e.target.value)}
-              className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm p-3 text-xs font-mono text-[#0A3D36] placeholder-[#4B635E]/60 focus:outline-none focus:border-[#0A3D36] focus:ring-1 focus:ring-[#0A3D36]"
+              className="w-full bg-[#FFFFFF] border border-[#0B192C]/25 rounded-sm p-3 text-xs font-mono text-[#0B192C] placeholder-[#475E79]/60 focus:outline-none focus:border-[#0B192C] focus:ring-1 focus:ring-[#0B192C]"
             />
           </div>
 
@@ -113,13 +113,13 @@ Manuscript without assigned handle,,3,1`
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             
             <div className="ss-card p-4 shadow-paper">
-              <span className="text-[10px] font-mono uppercase text-[#4B635E] font-bold block">Total Articles</span>
-              <span className="font-mono text-2xl font-bold text-[#0A3D36] tabular-nums mt-1 block">{report.totalRecords}</span>
+              <span className="text-[10px] font-mono uppercase text-[#475E79] font-bold block">Total Articles</span>
+              <span className="font-mono text-2xl font-bold text-[#0B192C] tabular-nums mt-1 block">{report.totalRecords}</span>
             </div>
 
             <div className="ss-card p-4 shadow-paper">
-              <span className="text-[10px] font-mono uppercase text-[#109C89] font-bold block">Resolving DOIs</span>
-              <span className="font-mono text-2xl font-bold text-[#109C89] tabular-nums mt-1 block">{report.resolvedCount}</span>
+              <span className="text-[10px] font-mono uppercase text-[#167C6B] font-bold block">Resolving DOIs</span>
+              <span className="font-mono text-2xl font-bold text-[#167C6B] tabular-nums mt-1 block">{report.resolvedCount}</span>
             </div>
 
             <div className="ss-card p-4 shadow-paper">
@@ -128,8 +128,8 @@ Manuscript without assigned handle,,3,1`
             </div>
 
             <div className="ss-card p-4 shadow-paper">
-              <span className="text-[10px] font-mono uppercase text-[#0A3D36] font-bold block">Healthy Rate</span>
-              <span className="font-mono text-2xl font-bold text-[#109C89] tabular-nums mt-1 block">{report.healthyRate}%</span>
+              <span className="text-[10px] font-mono uppercase text-[#0B192C] font-bold block">Healthy Rate</span>
+              <span className="font-mono text-2xl font-bold text-[#167C6B] tabular-nums mt-1 block">{report.healthyRate}%</span>
             </div>
 
           </div>
@@ -138,7 +138,7 @@ Manuscript without assigned handle,,3,1`
           <div className="ss-card overflow-hidden shadow-paper">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-[#0A3D36] text-[#FAF6EE] font-mono uppercase text-[10.5px]">
+                <thead className="bg-[#0B192C] text-[#FAF7F2] font-mono uppercase text-[10.5px]">
                   <tr>
                     <th className="py-3 px-4 font-bold">Article Title</th>
                     <th className="py-3 px-4 font-bold">Registered DOI</th>
@@ -147,34 +147,34 @@ Manuscript without assigned handle,,3,1`
                     <th className="py-3 px-4 font-bold">Actionable Repair Step</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#0A3D36]/10 bg-[#FFFDF9]">
+                <tbody className="divide-y divide-[#0B192C]/10 bg-[#FFFFFF]">
                   {report.rows?.map((r: any, idx: number) => {
                     const isResolving = r.status === 'RESOLVING';
                     const isBroken = r.status === 'BROKEN_RESOLUTION';
 
                     return (
-                      <tr key={idx} className="hover:bg-[#FAF6EE] transition-colors">
-                        <td className="py-3.5 px-4 font-serif font-bold text-sm text-[#0A3D36] max-w-xs truncate">
+                      <tr key={idx} className="hover:bg-[#FAF7F2] transition-colors">
+                        <td className="py-3.5 px-4 font-serif font-bold text-sm text-[#0B192C] max-w-xs truncate">
                           {r.title}
                         </td>
-                        <td className="py-3.5 px-4 font-mono text-[#0A3D36] font-semibold">
+                        <td className="py-3.5 px-4 font-mono text-[#0B192C] font-semibold">
                           {r.doi || '— None —'}
                         </td>
                         <td className="py-3.5 px-4">
                           <span className={`inline-block font-mono text-[10.5px] font-bold px-2 py-0.5 rounded-sm border ${
                             isResolving
-                              ? 'bg-[#E8F8F5] border-[#109C89] text-[#0A3D36]'
+                              ? 'bg-[#EAF5F2] border-[#167C6B] text-[#0B192C]'
                               : isBroken
                               ? 'bg-[#FDF2F2] border-[#E05252] text-[#A81B1B]'
-                              : 'bg-[#FEF5ED] border-[#F6AC6D] text-[#8C460C]'
+                              : 'bg-[#FAF7F2] border-[#E06B43] text-[#8C460C]'
                           }`}>
                             {r.status}
                           </span>
                         </td>
-                        <td className="py-3.5 px-4 font-mono font-bold text-[#0A3D36] tabular-nums">
+                        <td className="py-3.5 px-4 font-mono font-bold text-[#0B192C] tabular-nums">
                           {r.completeness}%
                         </td>
-                        <td className="py-3.5 px-4 text-[#4B635E] text-[11px]">
+                        <td className="py-3.5 px-4 text-[#475E79] text-[11px]">
                           {r.remediation}
                         </td>
                       </tr>

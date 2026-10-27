@@ -4,17 +4,16 @@
 
 @layer base {
   :root {
-    --bg-base: #F6EEDB;
-    --pine-hero: #0C4840;
-    --pine-deep: #0A3D36;
-    --seafoam: #22D0B9;
-    --seafoam-bright: #29D5BF;
-    --apricot-warm: #FEDAB8;
-    --apricot-accent: #F6AC6D;
-    --card-paper: #FFFDF9;
-    --ink-text: #0A3D36;
-    --ink-muted: #3D5A53;
-    --border-ink: rgba(10, 61, 54, 0.16);
+    --bg-base: #F5EFEB;
+    --navy-hero: #10243E;
+    --navy-deep: #0B192C;
+    --terracotta: #E06B43;
+    --terracotta-bright: #EB8461;
+    --ochre-warm: #EBDDCD;
+    --card-paper: #FFFFFF;
+    --ink-text: #0B192C;
+    --ink-muted: #475E79;
+    --border-ink: rgba(11, 25, 44, 0.15);
   }
 
   html, body {
@@ -47,42 +46,57 @@
 
 /* Tactile Y2K Academic Paper Cards - Clean, Crisp Interiors, NO Texture Inside Cards */
 .ss-card {
-  background-color: #FFFDF9;
-  border: 1px solid rgba(10, 61, 54, 0.16);
+  background-color: #FFFFFF;
+  border: 1px solid rgba(11, 25, 44, 0.15);
   border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(10, 61, 54, 0.04), 0 8px 20px -6px rgba(10, 61, 54, 0.06);
+  box-shadow: 0 1px 3px rgba(11, 25, 44, 0.04), 0 8px 20px -6px rgba(11, 25, 44, 0.06);
   transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .ss-card:hover {
-  border-color: rgba(10, 61, 54, 0.35);
-  box-shadow: 0 4px 14px rgba(10, 61, 54, 0.08), 0 16px 28px -6px rgba(10, 61, 54, 0.1);
+  border-color: rgba(11, 25, 44, 0.35);
+  box-shadow: 0 4px 14px rgba(11, 25, 44, 0.08), 0 16px 28px -6px rgba(11, 25, 44, 0.1);
   transform: translateY(-1px);
 }
 
-.ss-card-pine {
-  background-color: #0A3D36;
+.ss-card-navy {
+  background-color: #0B192C;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 4px;
-  color: #FAF6EE;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(4, 27, 23, 0.35);
+  color: #FAF7F2;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(7, 15, 26, 0.35);
+}
+
+.ss-card-pine {
+  background-color: #0B192C;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  color: #FAF7F2;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(7, 15, 26, 0.35);
+}
+
+.ss-card-terracotta {
+  background-color: #FDF1ED;
+  border: 1px solid rgba(224, 107, 67, 0.28);
+  border-radius: 4px;
+  color: #0B192C;
 }
 
 .ss-card-apricot {
-  background-color: #FEDAB8;
-  border: 1px solid rgba(10, 61, 54, 0.18);
+  background-color: #EBDDCD;
+  border: 1px solid rgba(11, 25, 44, 0.18);
   border-radius: 4px;
-  color: #0A3D36;
+  color: #0B192C;
 }
 
 .ss-btn-primary {
-  background-color: #22D0B9;
-  color: #062923;
+  background-color: #E06B43;
+  color: #FFFFFF;
   font-weight: 700;
   border-radius: 4px;
-  border: 1px solid #109C89;
+  border: 1px solid #C8532B;
   padding: 0.5rem 1.15rem;
-  box-shadow: 2px 2px 0px 0px #0A3D36;
+  box-shadow: 2px 2px 0px 0px #0B192C;
   transition: all 0.12s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
@@ -91,24 +105,24 @@
 }
 
 .ss-btn-primary:hover {
-  background-color: #29D5BF;
+  background-color: #EB8461;
   transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0px 0px #0A3D36;
+  box-shadow: 3px 3px 0px 0px #0B192C;
 }
 
 .ss-btn-primary:active {
   transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px 0px #0A3D36;
+  box-shadow: 1px 1px 0px 0px #0B192C;
 }
 
 .ss-btn-secondary {
-  background-color: #FFFDF9;
-  color: #0A3D36;
-  border: 1px solid rgba(10, 61, 54, 0.25);
+  background-color: #FFFFFF;
+  color: #0B192C;
+  border: 1px solid rgba(11, 25, 44, 0.25);
   font-weight: 600;
   border-radius: 4px;
   padding: 0.5rem 1rem;
-  box-shadow: 1px 1px 0px 0px rgba(10, 61, 54, 0.15);
+  box-shadow: 1px 1px 0px 0px rgba(11, 25, 44, 0.15);
   transition: all 0.12s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
@@ -117,19 +131,19 @@
 }
 
 .ss-btn-secondary:hover {
-  background-color: #F7EEDB;
-  border-color: #0A3D36;
+  background-color: #F5EFEB;
+  border-color: #0B192C;
   transform: translate(-1px, -1px);
-  box-shadow: 2px 2px 0px 0px #0A3D36;
+  box-shadow: 2px 2px 0px 0px #0B192C;
 }
 
 .ss-btn-secondary:active {
   transform: translate(1px, 1px);
-  box-shadow: 0px 0px 0px 0px #0A3D36;
+  box-shadow: 0px 0px 0px 0px #0B192C;
 }
 
 .ss-rule {
   height: 1px;
-  background-color: rgba(10, 61, 54, 0.14);
+  background-color: rgba(11, 25, 44, 0.14);
   width: 100%;
 }

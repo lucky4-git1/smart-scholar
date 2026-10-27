@@ -31,14 +31,14 @@ export const StatusPage: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8 text-[#0A3D36]">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8 text-[#0B192C]">
       
       <div className="flex items-center justify-between">
         <div>
-          <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
+          <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0B192C] bg-[#EBDDCD] px-2 py-0.5 rounded-sm border border-[#0B192C]/15">
             Real-Time Infrastructure Health
           </span>
-          <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A3D36] tracking-tight mt-2">
+          <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0B192C] tracking-tight mt-2">
             System & Adapter Status
           </h1>
         </div>
@@ -54,16 +54,16 @@ export const StatusPage: React.FC = () => {
       </div>
 
       {/* Main Status Card */}
-      <div className="ss-card border-2 border-[#109C89] p-6 flex items-center justify-between shadow-paper">
+      <div className="ss-card border-2 border-[#167C6B] p-6 flex items-center justify-between shadow-paper">
         <div className="flex items-center gap-3.5">
-          <div className="w-10 h-10 rounded-sm bg-[#E8F8F5] border border-[#109C89] flex items-center justify-center text-[#0A3D36]">
-            <CheckCircle2 className="w-5 h-5 text-[#109C89]" />
+          <div className="w-10 h-10 rounded-sm bg-[#EAF5F2] border border-[#167C6B] flex items-center justify-center text-[#0B192C]">
+            <CheckCircle2 className="w-5 h-5 text-[#167C6B]" />
           </div>
           <div>
-            <h2 className="font-serif font-bold text-lg text-[#0A3D36]">
+            <h2 className="font-serif font-bold text-lg text-[#0B192C]">
               All Core Systems & Adapters Operational
             </h2>
-            <p className="text-xs text-[#4B635E] font-mono mt-0.5">
+            <p className="text-xs text-[#475E79] font-mono mt-0.5">
               Last checked: {health?.timestamp || new Date().toISOString()}
             </p>
           </div>
@@ -72,20 +72,20 @@ export const StatusPage: React.FC = () => {
 
       {/* Adapters List */}
       <div className="space-y-3">
-        <h3 className="font-serif font-bold text-lg text-[#0A3D36]">
+        <h3 className="font-serif font-bold text-lg text-[#0B192C]">
           External Bibliographic Registry Adapters
         </h3>
 
-        <div className="divide-y divide-[#0A3D36]/10 ss-card overflow-hidden shadow-paper">
+        <div className="divide-y divide-[#0B192C]/10 ss-card overflow-hidden shadow-paper">
           {adapters.map((a, i) => (
-            <div key={i} className="p-4 flex items-center justify-between text-xs hover:bg-[#FAF6EE] transition-colors">
+            <div key={i} className="p-4 flex items-center justify-between text-xs hover:bg-[#FAF7F2] transition-colors">
               <div>
-                <span className="font-serif font-bold text-sm text-[#0A3D36] block">{a.name}</span>
-                <span className="font-mono text-[11px] text-[#4B635E]">{a.endpoint}</span>
+                <span className="font-serif font-bold text-sm text-[#0B192C] block">{a.name}</span>
+                <span className="font-mono text-[11px] text-[#475E79]">{a.endpoint}</span>
               </div>
               <div className="flex items-center gap-3">
-                <span className="font-mono text-[10.5px] text-[#4B635E] font-semibold">{a.latency}</span>
-                <span className="font-mono text-[10px] uppercase px-2 py-0.5 rounded-sm bg-[#E8F8F5] border border-[#109C89] text-[#0A3D36] font-bold">
+                <span className="font-mono text-[10.5px] text-[#475E79] font-semibold">{a.latency}</span>
+                <span className="font-mono text-[10px] uppercase px-2 py-0.5 rounded-sm bg-[#EAF5F2] border border-[#167C6B] text-[#0B192C] font-bold">
                   {a.status}
                 </span>
               </div>

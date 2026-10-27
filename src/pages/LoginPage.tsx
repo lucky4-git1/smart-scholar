@@ -38,17 +38,17 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 text-[#0A3D36]">
+    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 text-[#0B192C]">
       <div className="w-full max-w-md space-y-6 ss-card p-8 shadow-paper">
         
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-sm bg-[#0A3D36] border border-[#06231E] flex items-center justify-center text-[#22D0B9] mx-auto shadow-sm">
+          <div className="w-12 h-12 rounded-sm bg-[#0B192C] border border-[#070F1A] flex items-center justify-center text-[#E06B43] mx-auto shadow-sm">
             <ShieldCheck className="w-6 h-6" />
           </div>
-          <h1 className="font-serif font-bold text-2xl sm:text-3xl text-[#0A3D36] tracking-tight">
+          <h1 className="font-serif font-bold text-2xl sm:text-3xl text-[#0B192C] tracking-tight">
             Sign in to Smart Scholars
           </h1>
-          <p className="text-xs text-[#4B635E]">
+          <p className="text-xs text-[#475E79]">
             Access saved checks, institutional watchlists, and indexing dossiers.
           </p>
         </div>
@@ -61,7 +61,7 @@ export const LoginPage: React.FC = () => {
 
         <form onSubmit={handleSubmit} className="space-y-4 text-xs">
           <div>
-            <label className="block font-mono text-[#0A3D36] uppercase font-bold mb-1">
+            <label className="block font-mono text-[#0B192C] uppercase font-bold mb-1">
               Email Address
             </label>
             <input
@@ -69,12 +69,12 @@ export const LoginPage: React.FC = () => {
               required
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm px-3 py-2 text-sm text-[#0A3D36] placeholder-[#4B635E]/60 focus:outline-none focus:border-[#0A3D36] focus:ring-1 focus:ring-[#0A3D36]"
+              className="w-full bg-[#FFFFFF] border border-[#0B192C]/25 rounded-sm px-3 py-2 text-sm text-[#0B192C] placeholder-[#475E79]/60 focus:outline-none focus:border-[#0B192C] focus:ring-1 focus:ring-[#0B192C]"
             />
           </div>
 
           <div>
-            <label className="block font-mono text-[#0A3D36] uppercase font-bold mb-1">
+            <label className="block font-mono text-[#0B192C] uppercase font-bold mb-1">
               Password
             </label>
             <input
@@ -82,7 +82,7 @@ export const LoginPage: React.FC = () => {
               required
               value={password}
               onChange={e => setPassword(e.target.value)}
-              className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm px-3 py-2 text-sm text-[#0A3D36] placeholder-[#4B635E]/60 focus:outline-none focus:border-[#0A3D36] focus:ring-1 focus:ring-[#0A3D36]"
+              className="w-full bg-[#FFFFFF] border border-[#0B192C]/25 rounded-sm px-3 py-2 text-sm text-[#0B192C] placeholder-[#475E79]/60 focus:outline-none focus:border-[#0B192C] focus:ring-1 focus:ring-[#0B192C]"
             />
           </div>
 
@@ -96,31 +96,31 @@ export const LoginPage: React.FC = () => {
         </form>
 
         {/* Demo Credentials Quick Fill */}
-        <div className="pt-4 border-t border-[#0A3D36]/15 space-y-2">
-          <span className="text-[10px] font-mono uppercase text-[#4B635E] font-bold block text-center">
+        <div className="pt-4 border-t border-[#0B192C]/15 space-y-2">
+          <span className="text-[10px] font-mono uppercase text-[#475E79] font-bold block text-center">
             Demo Credentials
           </span>
           <div className="flex gap-2">
             <button
               type="button"
               onClick={setDemoAdmin}
-              className="flex-1 py-1.5 px-2 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/20 text-[11px] font-mono font-bold text-[#0A3D36] hover:bg-[#FEDAB8] transition-colors"
+              className="flex-1 py-1.5 px-2 rounded-sm bg-[#FAF7F2] border border-[#0B192C]/20 text-[11px] font-mono font-bold text-[#0B192C] hover:bg-[#EBDDCD] transition-colors"
             >
               Fill Admin
             </button>
             <button
               type="button"
               onClick={setDemoAuditor}
-              className="flex-1 py-1.5 px-2 rounded-sm bg-[#FAF6EE] border border-[#0A3D36]/20 text-[11px] font-mono font-bold text-[#0A3D36] hover:bg-[#FEDAB8] transition-colors"
+              className="flex-1 py-1.5 px-2 rounded-sm bg-[#FAF7F2] border border-[#0B192C]/20 text-[11px] font-mono font-bold text-[#0B192C] hover:bg-[#EBDDCD] transition-colors"
             >
               Fill Auditor
             </button>
           </div>
         </div>
 
-        <div className="text-center text-xs text-[#4B635E]">
+        <div className="text-center text-xs text-[#475E79]">
           Don't have an account?{' '}
-          <Link to="/auth/register" className="text-[#0A3D36] hover:underline font-bold">
+          <Link to="/auth/register" className="text-[#0B192C] hover:underline font-bold">
             Create an Account
           </Link>
         </div>

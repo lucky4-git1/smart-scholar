@@ -10,17 +10,17 @@ export const GradeBadge: React.FC<GradeBadgeProps> = ({ grade = 'UNVERIFIED', si
     switch (grade) {
       case 'A+':
       case 'A':
-        return 'bg-[#E8F8F5] border-[#109C89] text-[#0A3D36] font-bold';
+        return 'bg-[#EAF5F2] border-[#167C6B] text-[#0E5448] font-bold';
       case 'B':
-        return 'bg-[#EAF5F3] border-[#18BAA4] text-[#0C4840] font-semibold';
+        return 'bg-[#EEF4FA] border-[#2E6FBF] text-[#0B192C] font-semibold';
       case 'C':
-        return 'bg-[#FEF5ED] border-[#F6AC6D] text-[#8C460C] font-semibold';
+        return 'bg-[#FEF6E9] border-[#D97706] text-[#92400E] font-semibold';
       case 'D':
-        return 'bg-[#FDF0E7] border-[#EF8D41] text-[#9E3E00] font-semibold';
+        return 'bg-[#FDF1ED] border-[#E06B43] text-[#A73E18] font-semibold';
       case 'RED_FLAG':
-        return 'bg-[#FDF2F2] border-[#E05252] text-[#A81B1B] font-extrabold';
+        return 'bg-[#FEF2F2] border-[#DC2626] text-[#991B1B] font-extrabold';
       default:
-        return 'bg-[#F5EFE3] border-[#D5BA9B] text-[#4B635E]';
+        return 'bg-[#F5EFEB] border-[#DFC8B0] text-[#475E79]';
     }
   };
 
@@ -41,19 +41,19 @@ export const SeverityBadge: React.FC<{ severity: 'CRITICAL' | 'WARNING' | 'INFO'
   switch (severity) {
     case 'CRITICAL':
       return (
-        <span className="inline-block text-[10.5px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-sm bg-[#FDF2F2] border border-[#E05252] text-[#A81B1B] font-bold">
+        <span className="inline-block text-[10.5px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-sm bg-[#FEF2F2] border border-[#DC2626] text-[#991B1B] font-bold">
           Critical Defect
         </span>
       );
     case 'WARNING':
       return (
-        <span className="inline-block text-[10.5px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-sm bg-[#FEF5ED] border border-[#F6AC6D] text-[#8C460C] font-semibold">
+        <span className="inline-block text-[10.5px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-sm bg-[#FEF6E9] border border-[#D97706] text-[#92400E] font-semibold">
           Warning
         </span>
       );
     default:
       return (
-        <span className="inline-block text-[10.5px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-sm bg-[#F5EFE3] border border-[#D5BA9B] text-[#4B635E]">
+        <span className="inline-block text-[10.5px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-sm bg-[#F5EFEB] border border-[#DFC8B0] text-[#475E79]">
           Informational
         </span>
       );

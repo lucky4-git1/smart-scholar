@@ -76,11 +76,11 @@ export const IndexingApplicationsPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#0A3D36]">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#0B192C]">
       
       {/* Navigation */}
       <div className="flex items-center justify-between">
-        <Link to="/indexing/directory" className="text-xs font-mono text-[#4B635E] hover:text-[#0A3D36] inline-flex items-center gap-1.5 font-semibold">
+        <Link to="/indexing/directory" className="text-xs font-mono text-[#475E79] hover:text-[#0B192C] inline-flex items-center gap-1.5 font-semibold">
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Index Directory
         </Link>
         <button
@@ -94,29 +94,29 @@ export const IndexingApplicationsPage: React.FC = () => {
 
       {/* Header */}
       <div>
-        <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0A3D36] bg-[#FEDAB8] px-2 py-0.5 rounded-sm border border-[#0A3D36]/15">
+        <span className="font-mono text-[10.5px] uppercase font-bold tracking-wider text-[#0B192C] bg-[#EBDDCD] px-2 py-0.5 rounded-sm border border-[#0B192C]/15">
           GetIndexed · Dossier Workflow Tracker
         </span>
-        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A3D36] tracking-tight mt-2">
+        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0B192C] tracking-tight mt-2">
           Indexing Application Dossiers
         </h1>
-        <p className="text-xs sm:text-sm text-[#4B635E] mt-1.5 max-w-2xl leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#475E79] mt-1.5 max-w-2xl leading-relaxed">
           Manage preparation, policy audit attachments, verification evidence, and submission status across your journals.
         </p>
       </div>
 
       {/* Applications List */}
       {loading ? (
-        <div className="py-12 text-center text-xs text-[#4B635E] font-mono">
+        <div className="py-12 text-center text-xs text-[#475E79] font-mono">
           Loading dossiers...
         </div>
       ) : applications.length === 0 ? (
         <div className="ss-card p-10 text-center space-y-3 shadow-paper">
-          <FileCheck className="w-8 h-8 text-[#4B635E] mx-auto" />
-          <h3 className="font-serif font-bold text-base text-[#0A3D36]">
+          <FileCheck className="w-8 h-8 text-[#475E79] mx-auto" />
+          <h3 className="font-serif font-bold text-base text-[#0B192C]">
             No Application Dossiers Tracked Yet
           </h3>
-          <p className="text-xs text-[#4B635E] max-w-md mx-auto">
+          <p className="text-xs text-[#475E79] max-w-md mx-auto">
             Create an application dossier to track eligibility criteria, editorial board documents, and target submission deadlines.
           </p>
           <button onClick={() => setShowModal(true)} className="ss-btn-primary text-xs font-bold py-2 px-4 mt-2">
@@ -127,7 +127,7 @@ export const IndexingApplicationsPage: React.FC = () => {
         <div className="ss-card overflow-hidden shadow-paper">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#0A3D36] text-[#FAF6EE] font-mono uppercase text-[10.5px]">
+              <thead className="bg-[#0B192C] text-[#FAF7F2] font-mono uppercase text-[10.5px]">
                 <tr>
                   <th className="py-3 px-4 font-bold">Journal</th>
                   <th className="py-3 px-4 font-bold">Target Index</th>
@@ -137,37 +137,37 @@ export const IndexingApplicationsPage: React.FC = () => {
                   <th className="py-3 px-4 font-bold text-right">Update Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#0A3D36]/10 bg-[#FFFDF9]">
+              <tbody className="divide-y divide-[#0B192C]/10 bg-[#FFFFFF]">
                 {applications.map((a) => (
-                  <tr key={a.id} className="hover:bg-[#FAF6EE] transition-colors">
-                    <td className="py-3.5 px-4 font-serif font-bold text-sm text-[#0A3D36]">
+                  <tr key={a.id} className="hover:bg-[#FAF7F2] transition-colors">
+                    <td className="py-3.5 px-4 font-serif font-bold text-sm text-[#0B192C]">
                       {a.journal.title}
                     </td>
-                    <td className="py-3.5 px-4 font-mono text-[#0A3D36] font-semibold">
+                    <td className="py-3.5 px-4 font-mono text-[#0B192C] font-semibold">
                       {a.indexingService.name}
                     </td>
                     <td className="py-3.5 px-4">
                       <span className={`inline-block text-[10.5px] font-mono font-bold px-2 py-0.5 rounded-sm border uppercase ${
                         a.status === 'ACCEPTED'
-                          ? 'bg-[#E8F8F5] border-[#109C89] text-[#0A3D36]'
+                          ? 'bg-[#EAF5F2] border-[#167C6B] text-[#0B192C]'
                           : a.status === 'SUBMITTED'
                           ? 'bg-[#EBF5FB] border-[#2980B9] text-[#1B4F72]'
-                          : 'bg-[#FEF5ED] border-[#F6AC6D] text-[#8C460C]'
+                          : 'bg-[#FAF7F2] border-[#E06B43] text-[#8C460C]'
                       }`}>
                         {a.status}
                       </span>
                     </td>
-                    <td className="py-3.5 px-4 font-mono text-[#4B635E]">
+                    <td className="py-3.5 px-4 font-mono text-[#475E79]">
                       {a.targetSubmitDate ? new Date(a.targetSubmitDate).toLocaleDateString() : '—'}
                     </td>
-                    <td className="py-3.5 px-4 text-[#4B635E] max-w-xs truncate">
+                    <td className="py-3.5 px-4 text-[#475E79] max-w-xs truncate">
                       {a.dossierNotes || 'None'}
                     </td>
                     <td className="py-3.5 px-4 text-right">
                       <select
                         value={a.status}
                         onChange={(e) => handleUpdateStatus(a.id, e.target.value)}
-                        className="bg-[#FFFDF9] border border-[#0A3D36]/25 text-[11px] font-mono text-[#0A3D36] font-semibold rounded-sm px-2 py-1 focus:outline-none focus:border-[#0A3D36]"
+                        className="bg-[#FFFFFF] border border-[#0B192C]/25 text-[11px] font-mono text-[#0B192C] font-semibold rounded-sm px-2 py-1 focus:outline-none focus:border-[#0B192C]"
                       >
                         <option value="PREPARING">PREPARING</option>
                         <option value="SUBMITTED">SUBMITTED</option>
@@ -186,20 +186,20 @@ export const IndexingApplicationsPage: React.FC = () => {
 
       {/* Create Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#06231E]/60 backdrop-blur-sm p-4">
-          <div className="bg-[#FFFDF9] border-2 border-[#0A3D36] rounded-sm max-w-lg w-full p-6 space-y-4 shadow-paper text-[#0A3D36]">
-            <h3 className="font-serif font-bold text-xl text-[#0A3D36]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#070F1A]/60 backdrop-blur-sm p-4">
+          <div className="bg-[#FFFFFF] border-2 border-[#0B192C] rounded-sm max-w-lg w-full p-6 space-y-4 shadow-paper text-[#0B192C]">
+            <h3 className="font-serif font-bold text-xl text-[#0B192C]">
               New Indexing Application Dossier
             </h3>
 
             <form onSubmit={handleCreate} className="space-y-3.5 text-xs">
               <div>
-                <label className="block font-mono text-[#0A3D36] font-bold uppercase mb-1">Select Journal</label>
+                <label className="block font-mono text-[#0B192C] font-bold uppercase mb-1">Select Journal</label>
                 <select
                   required
                   value={selectedJournalId}
                   onChange={e => setSelectedJournalId(e.target.value)}
-                  className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm p-2 text-[#0A3D36] font-medium focus:outline-none focus:border-[#0A3D36]"
+                  className="w-full bg-[#FFFFFF] border border-[#0B192C]/25 rounded-sm p-2 text-[#0B192C] font-medium focus:outline-none focus:border-[#0B192C]"
                 >
                   <option value="">— Select a Journal —</option>
                   {journals.map(j => (
@@ -209,12 +209,12 @@ export const IndexingApplicationsPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block font-mono text-[#0A3D36] font-bold uppercase mb-1">Target Indexing Service</label>
+                <label className="block font-mono text-[#0B192C] font-bold uppercase mb-1">Target Indexing Service</label>
                 <select
                   required
                   value={selectedServiceId}
                   onChange={e => setSelectedServiceId(e.target.value)}
-                  className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm p-2 text-[#0A3D36] font-medium focus:outline-none focus:border-[#0A3D36]"
+                  className="w-full bg-[#FFFFFF] border border-[#0B192C]/25 rounded-sm p-2 text-[#0B192C] font-medium focus:outline-none focus:border-[#0B192C]"
                 >
                   <option value="">— Select an Index —</option>
                   {services.map(s => (
@@ -224,23 +224,23 @@ export const IndexingApplicationsPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block font-mono text-[#0A3D36] font-bold uppercase mb-1">Target Submission Date</label>
+                <label className="block font-mono text-[#0B192C] font-bold uppercase mb-1">Target Submission Date</label>
                 <input
                   type="date"
                   value={targetDate}
                   onChange={e => setTargetDate(e.target.value)}
-                  className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm p-2 text-[#0A3D36] font-medium focus:outline-none focus:border-[#0A3D36]"
+                  className="w-full bg-[#FFFFFF] border border-[#0B192C]/25 rounded-sm p-2 text-[#0B192C] font-medium focus:outline-none focus:border-[#0B192C]"
                 />
               </div>
 
               <div>
-                <label className="block font-mono text-[#0A3D36] font-bold uppercase mb-1">Dossier Preparation Notes</label>
+                <label className="block font-mono text-[#0B192C] font-bold uppercase mb-1">Dossier Preparation Notes</label>
                 <textarea
                   rows={3}
                   value={dossierNotes}
                   onChange={e => setDossierNotes(e.target.value)}
                   placeholder="e.g. Audit completed, updating editorial board affiliations before submitting to DOAJ."
-                  className="w-full bg-[#FFFDF9] border border-[#0A3D36]/25 rounded-sm p-2 text-[#0A3D36] placeholder-[#4B635E]/60 focus:outline-none focus:border-[#0A3D36]"
+                  className="w-full bg-[#FFFFFF] border border-[#0B192C]/25 rounded-sm p-2 text-[#0B192C] placeholder-[#475E79]/60 focus:outline-none focus:border-[#0B192C]"
                 />
               </div>
 
